@@ -303,3 +303,171 @@ html {
   scroll-behavior: smooth;
 }
 
+/****************************************
+            Sign-Up Page
+*****************************************/
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+}
+
+.user-sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e8ea;
+  padding: 12px 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-nav div {
+  font-weight: 500;
+  color: #111416;
+  cursor: pointer;
+}
+
+.header-nav .signup-btn {
+  background-color: #1c6df2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-nav .signup-btn:hover {
+  background-color: #0050d6;
+}
+
+.logo img {
+  height: 24px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111416;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+}
+
+.nav div {
+  font-weight: 500;
+  color: #111416;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background-color: #1c6df2;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 480px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.user-type {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.user-type label {
+  flex: 1;
+  background-color: #eff2f4;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #607089;
+  transition: background-color 0.3s;
+}
+
+.user-type input[type="radio"]:checked + label {
+  background-color: #1c6df2;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field {
+  background-color: #eff2f4;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #111416;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button.register-button {
+  background-color: #1c6df2;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #607089;
+}
+
+.login-link a:link,
+.login-link a:hover,
+.login-link a:active,
+.login-link a:visited {
+  color: #005fff;
+}
