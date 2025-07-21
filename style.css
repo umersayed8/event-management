@@ -559,3 +559,210 @@ input:focus {
 .login-link a:hover {
   text-decoration: underline;
 }
+/*****************
+    Login
+*****************/
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* --- Header & Navigation Bar (Shared Styles) --- */
+.main-header {
+    background-color: var(--background-color);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+
+/* --- Main Content (Shared Styles) --- */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* --- Login Page Specific Styles --- */
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.login-form h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--grey-bg-light);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.login-form input::placeholder {
+    color: var(--text-color-light);
+}
+
+.login-form input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -1px;
+    background-color: var(--background-color);
+}
+
+.login-form .form-options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-form .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    cursor: pointer;
+}
+
+.login-form .remember-me input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--primary-color);
+}
+
+
+/* --- Buttons (Shared Styles) --- */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* NEW: Style for a white button with a colored border */
+.btn-outline {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: var(--grey-bg-light);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--grey-bg-medium);
+}
+
+.btn-block {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+/* --- Separator & Links (Scoped to Login Form) --- */
+.login-form .separator {
+    color: var(--text-color-light);
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.login-form .signup-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.login-form .signup-link a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-form .signup-link a:hover {
+    text-decoration: underline;
+}
