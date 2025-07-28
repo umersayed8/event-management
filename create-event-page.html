@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Event - Evently</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="./organizer.css">
+</head>
+<body>
+
+    <header class="main-header" style="justify-content: space-between;width: 95%; margin: 0 auto;">
+        <div class="logo">
+            <div class=""><i class="fa fa-cube"></i></div>
+            <span>Evently</span>
+        </div>
+        
+        <div class="user-profile">
+            <nav class="main-nav">
+            <a href="./organizer-dashboard.html">Dashboard</a>
+            <a href="#" class="active">Events</a>
+            <a href="#">Sponsors</a>
+            <a href="#">Analytics</a>
+            <a href="#">Resources</a>
+        </nav>
+            <button class="notification-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </button>
+            <img src="https://placehold.co/40x40/EFEFEF/333?text=S" alt="User profile picture" class="profile-pic">
+        </div>
+    </header>
+
+    <main class="create-event-container">
+        <div class="form-header">
+            <h1>Create New Event</h1>
+            <p>Fill in the details below to create your event.</p>
+        </div>
+
+        <form class="create-event-form" action="./event-successfully.html" method="POST">
+            <div class="form-group">
+                <label for="event-title">Event Title</label>
+                <input type="text" id="event-title" placeholder="Enter event title">
+            </div>
+            
+            <div class="form-group">
+                <label for="event-date">Date</label>
+                <input type="date" id="event-date" placeholder="Select date">
+            </div>
+
+            <div class="form-group">
+                <label for="event-location">Location</label>
+                <input type="text" id="event-location" placeholder="Enter location">
+            </div>
+
+            <div class="form-group">
+                <label for="event-category">Category</label>
+                <input type="text" id="event-category" placeholder="Select category">
+            </div>
+
+            <div class="form-group">
+                <label for="event-description">Description</label>
+                <textarea id="event-description" rows="5" placeholder="Enter expected audience size"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="audience-size">Audience Size</label>
+                <input type="number" id="audience-size" placeholder="Enter expected audience size">
+            </div>
+
+            <div class="form-group">
+                <label for="ticket-price">Ticket Price</label>
+                <input type="text" id="ticket-price" placeholder="Enter ticket price">
+            </div>
+
+            <div class="form-group">
+                <label>Upload Banner</label>
+                <div class="upload-area" id="upload-area">
+                    <p>Click to upload or drag and drop a banner image for your event.</p>
+                    <button type="button" class="btn-upload">Upload Image</button>
+                    <input type="file" id="file-input" hidden accept="image/*">
+                    <p id="file-name"></p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- External JavaScript -->
+    <script src="./script.js"></script>
+</body>
+</html>

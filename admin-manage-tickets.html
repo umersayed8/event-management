@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Event - Indie Rock Night</title>
+  <link rel="stylesheet" href="admin-manage-tickets.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Evently</div>
+    <nav>
+      <a href="#">Create Event</a>
+      <a href="#">Explore</a>
+      <a href="#">My Tickets</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="#">My Events</a> / 
+      <a href="#">Indie Rock Night</a> / 
+      <span>Manage</span>
+    </nav>
+
+    <h1 class="title">Indie Rock Night</h1>
+    <p class="subtitle">Sat, Jul 20 · 7:00 PM</p>
+
+    <div class="tabs">
+      <a href="#" class="active">Tickets</a>
+      <a href="#">Payments</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <section class="ticket-types">
+      <h3>Ticket Types</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Ticket Type</th>
+            <th>Price</th>
+            <th>Quantity Available</th>
+            <th>Quantity Sold</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>General Admission</td>
+            <td>$20.00</td>
+            <td>100</td>
+            <td>50</td>
+            <td><span class="status active">Active</span></td>
+          </tr>
+          <tr>
+            <td>VIP</td>
+            <td>$60.00</td>
+            <td>20</td>
+            <td>10</td>
+            <td><span class="status active">Active</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sales-summary">
+      <h3>Sales Summary</h3>
+      <div class="summary-grid">
+        <div class="summary-box">
+          <p class="label">Total Tickets Sold</p>
+          <p class="value">60</p>
+        </div>
+        <div class="summary-box">
+          <p class="label">Total Revenue</p>
+          <p class="value">$1,500</p>
+        </div>
+        <div class="summary-box">
+          <p class="label">Tickets Remaining</p>
+          <p class="value">60</p>
+        </div>
+      </div>
+
+      <div class="progress-label">
+        Tickets Sold
+        <span>50%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" style="width: 50%"></div>
+      </div>
+      <p class="progress-text">60 of 120 tickets sold</p>
+
+      <div class="actions">
+        <button class="btn secondary">Adjust Availability</button>
+        <button class="btn primary">Adjust Pricing</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin-manage-tickets.js"></script>
+</body>
+</html>

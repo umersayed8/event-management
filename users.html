@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evently - Users</title>
+  <link rel="stylesheet" href="users.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">📅 Evently</div>
+    <nav class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Content</a>
+      <a class="active" href="#">Users</a>
+      <a href="#">Settings</a>
+    </nav>
+    <div class="user-icon">🧑‍💼</div>
+  </header>
+
+  <main class="content">
+    <h1>Users</h1>
+    <p class="subtitle">Manage all users on the platform</p>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search users" />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Status</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="users.js"></script>
+</body>
+</html>

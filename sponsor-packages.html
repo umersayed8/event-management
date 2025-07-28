@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsorship Packages</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Feather Icons for simple icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header / Navigation -->
+        <header class="flex justify-between items-center py-5">
+            <div class="flex items-center space-x-8">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="./sponsor-dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+                    <a href="#" class="text-gray-900 font-semibold">Sponsorships</a>
+                </nav>
+                 <button class="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                    <i data-feather="bell" class="w-5 h-5"></i>
+                </button>
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80" alt="User Avatar" onError="this.onerror=null;this.src='https://placehold.co/40x40/e2e8f0/64748b?text=User';">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="py-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Page Title -->
+                <div class="mb-10">
+                    <h1 class="text-4xl font-bold text-gray-900">Sponsorship Packages</h1>
+                    <p class="mt-2 text-lg text-gray-600">Explore our sponsorship tiers and benefits for the upcoming TechConnect Conference.</p>
+                </div>
+
+                <!-- Sponsorship Table -->
+                <div id="sponsorship-table" class="border border-gray-200 rounded-lg">
+                    <!-- Table Header -->
+                    <div class="grid grid-cols-10 gap-4 px-6 py-4 border-b border-gray-200 bg-gray-50 text-sm font-semibold text-gray-600">
+                        <div class="col-span-2">Package</div>
+                        <div class="col-span-2">Price</div>
+                        <div class="col-span-6">Benefits</div>
+                    </div>
+                    <!-- Table Body -->
+                    <div id="sponsorship-body" class="divide-y divide-gray-200">
+                        <!-- Rows will be injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Feather Icons
+            feather.replace();
+
+            // --- Data for Sponsorship Packages ---
+            // In a real application, this data would likely be fetched from an API.
+            const packages = [
+                {
+                    name: 'Gold',
+                    price: '$5,000',
+                    benefits: 'Logo placement on all event materials, 2 speaking slots, 10x10 booth space, access to attendee data, 5 social media mentions'
+                },
+                {
+                    name: 'Silver',
+                    price: '$3,000',
+                    benefits: 'Logo placement on website and select materials, 1 speaking slot, 5x10 booth space, limited attendee data, 3 social media mentions'
+                },
+                {
+                    name: 'Bronze',
+                    price: '$1,500',
+                    benefits: 'Logo placement on website, 5x5 booth space, 1 social media mention'
+                }
+            ];
+
+            // --- Function to Render Packages ---
+            const renderPackages = () => {
+                const tableBody = document.getElementById('sponsorship-body');
+                if (!tableBody) return;
+
+                // Clear existing content
+                tableBody.innerHTML = '';
+
+                // Create and append a row for each package
+                packages.forEach(pkg => {
+                    const row = document.createElement('div');
+                    row.className = 'grid grid-cols-10 gap-4 px-6 py-5 items-center text-sm';
+                    
+                    row.innerHTML = `
+                        <div class="col-span-2 font-medium text-gray-900">${pkg.name}</div>
+                        <div class="col-span-2 text-gray-700">${pkg.price}</div>
+                        <div class="col-span-6 text-gray-600 leading-relaxed">${pkg.benefits}</div>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+            };
+
+            // --- Initial Render ---
+            renderPackages();
+        });
+    </script>
+</body>
+</html>

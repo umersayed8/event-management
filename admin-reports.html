@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reports - Evently</title>
+  <link rel="stylesheet" href="admin-reports.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">📊 Evently</div>
+    <ul class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Content</a></li>
+      <li class="profile-circle">🧑</li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>Reports</h1>
+    <p class="subtitle">Analyze platform performance and user activity with detailed reports.</p>
+
+    <!-- Platform Overview -->
+    <section class="overview-cards">
+      <div class="card">
+        <h3>Total Members</h3>
+        <p class="stat">12,345</p>
+      </div>
+      <div class="card">
+        <h3>Active Members (Last 30 Days)</h3>
+        <p class="stat">8,765</p>
+      </div>
+      <div class="card">
+        <h3>New Members (Last 30 Days)</h3>
+        <p class="stat">1,234</p>
+      </div>
+    </section>
+
+    <!-- Engagement Metrics -->
+    <section class="engagement">
+      <div class="metric">
+        <h4>Member Engagement Over Time</h4>
+        <p class="growth">+15% <span class="light">Last 30 Days</span></p>
+        <div class="graph-placeholder">📈</div>
+      </div>
+      <div class="metric">
+        <h4>Content Interactions</h4>
+        <p class="growth">+8% <span class="light">Last 30 Days</span></p>
+        <div class="bar-chart">
+          <div><span>Users</span></div>
+          <div><span>Comments</span></div>
+          <div><span>Shares</span></div>
+          <div><span>Posts</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report Customization -->
+    <section class="custom-report">
+      <h4>Report Customization</h4>
+      <label>Report Type</label>
+      <input type="text" placeholder="e.g. Engagement, Events" />
+      <div class="date-range">
+        <input type="date" placeholder="Start Date" />
+        <input type="date" placeholder="End Date" />
+      </div>
+      <button onclick="generateReport()">Generate Report</button>
+    </section>
+
+    <!-- Recent Reports -->
+    <section class="recent-reports">
+      <h4>Recent Reports</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Report Name</th>
+            <th>Type</th>
+            <th>Date Generated</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Engagement Report - January 2024</td>
+            <td>Engagement</td>
+            <td>2024-01-20</td>
+            <td class="status">Completed</td>
+            <td><a href="#">Download</a></td>
+          </tr>
+          <tr>
+            <td>Event Participation Report - Q1 2024</td>
+            <td>Events</td>
+            <td>2024-04-01</td>
+            <td class="status">Completed</td>
+            <td><a href="#">Download</a></td>
+          </tr>
+          <tr>
+            <td>Sponsor Performance Report - 2023</td>
+            <td>Sponsors</td>
+            <td>2024-01-15</td>
+            <td class="status">Completed</td>
+            <td><a href="#">Download</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="admin-reports.js"></script>
+</body>
+</html>

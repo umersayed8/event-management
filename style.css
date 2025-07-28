@@ -1,0 +1,1227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background-color: #fff;
+  color: #111;
+  line-height: 1.6;
+}
+/* --- CSS Variables & Global Styles --- */
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover-color: #0b5ed7;
+    --text-color: #212529;
+    --text-color-light: #6c757d;
+    --background-color: #ffffff;
+    --grey-bg-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --font-family: 'Inter', sans-serif;
+    --green-status: #198754;
+    --yellow-status: #ffc107;
+    --red-status: #dc3545;
+}
+
+/*********************************************************
+          Home Page
+*****************************************************/
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  border-bottom: 1px solid #e5e8ea;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+header .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: 14px;
+  color: #111;
+  transition: color 0.2s;
+}
+
+.btn {
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background: #1c6df2;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #0050d6;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.hero {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background-color: #aaa;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.hero p {
+  font-size: 16px;
+  color: #fff;
+}
+.hero-bg {
+  background: url("your-image.png") center/cover;
+  border-radius: 8px;
+  padding: 80px 20px;
+}
+section {
+  max-width: 960px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.card {
+  flex: 1 1 260px;
+  border: 1px solid #dbdde5;
+  padding: 16px;
+  border-radius: 8px;
+}
+.card i {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card p {
+  font-size: 14px;
+  color: #607089;
+}
+/****************************************
+            Sign-Up Page
+*****************************************/
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+}
+
+.user-sign-up-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e8ea;
+  padding: 12px 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-nav div {
+  font-weight: 500;
+  color: #111416;
+  cursor: pointer;
+}
+
+.header-nav .signup-btn {
+  background-color: #1c6df2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-nav .signup-btn:hover {
+  background-color: #0050d6;
+}
+
+.logo img {
+  height: 24px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111416;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+}
+
+.nav div {
+  font-weight: 500;
+  color: #111416;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background-color: #1c6df2;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 480px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.user-type {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.user-type label {
+  flex: 1;
+  background-color: #eff2f4;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #607089;
+  transition: background-color 0.3s;
+}
+
+.user-type input[type="radio"]:checked + label {
+  background-color: #1c6df2;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field {
+  background-color: #eff2f4;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #111416;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button.register-button {
+  background-color: #1c6df2;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #607089;
+}
+
+.login-link a:link,
+.login-link a:hover,
+.login-link a:active,
+.login-link a:visited {
+  color: #005fff;
+}
+
+/*******************************  Faders  *********************************/
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/****************************************
+            Sign-Up Page
+*****************************************/
+
+/* --- CSS Variables & Basic Reset --- */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Header & Corrected Navigation Bar --- */
+.main-header {
+  background-color: var(--background-color);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* --- Main Content & Centered Form Layout --- */
+main {
+  flex-grow: 1; /* Allows this section to fill available space */
+  display: flex;
+  justify-content: center; /* Horizontally centers content */
+  align-items: center; /* Vertically centers content */
+  padding: 2rem 1rem;
+}
+
+.registration-form {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Account Type Selector --- */
+.account-type-selector {
+  display: flex;
+  background-color: var(--grey-bg-medium);
+  border-radius: 8px;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+}
+
+.account-type {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--text-color-light);
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  font-family: var(--font-family);
+}
+
+.account-type.active {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-color: #ddd;
+}
+
+/* --- Form Elements & Password Toggle --- */
+.form-group {
+  margin-bottom: 1rem;
+  position: relative; /* Needed for positioning the toggle button */
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--grey-bg-light);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+/* Add space on the right of password fields for the toggle button */
+.form-group input[type="password"] {
+  padding-right: 4.5rem;
+}
+
+input::placeholder {
+  color: var(--text-color-light);
+}
+
+input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -1px;
+  background-color: var(--background-color);
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-light);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+.password-toggle:hover {
+  color: var(--text-color);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* MODIFIED: Style for the white sign-up button */
+.btn-outline {
+  background-color: #fff;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: var(--grey-bg-light);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--grey-bg-medium);
+}
+
+.btn-block {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* --- Separator & Login Link --- */
+.separator {
+  color: var(--text-color-light);
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.login-link a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+/*****************
+    Login
+*****************/
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* --- Header & Navigation Bar (Shared Styles) --- */
+.main-header {
+    background-color: var(--background-color);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+
+/* --- Main Content (Shared Styles) --- */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* --- Login Page Specific Styles --- */
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.login-form h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--grey-bg-light);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.login-form input::placeholder {
+    color: var(--text-color-light);
+}
+
+.login-form input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -1px;
+    background-color: var(--background-color);
+}
+
+.login-form .form-options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-form .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    cursor: pointer;
+}
+
+.login-form .remember-me input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--primary-color);
+}
+
+
+/* --- Buttons (Shared Styles) --- */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* NEW: Style for a white button with a colored border */
+.btn-outline {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: var(--grey-bg-light);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--grey-bg-medium);
+}
+
+.btn-block {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+/* --- Separator & Links (Scoped to Login Form) --- */
+.login-form .separator {
+    color: var(--text-color-light);
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.login-form .signup-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.login-form .signup-link a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+/***************************************************************************
+              Organizer Dashboard
+***************************************************************************/
+
+/* --- CSS Variables & Global Styles --- */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--text-color-light);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--text-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notification-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color-light);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* --- Main Dashboard Container --- */
+.dashboard-container {
+    padding: 2rem 5%;
+}
+
+.welcome-section h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* --- Stats Cards --- */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background-color: var(--grey-bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: var(--text-color-light);
+    margin-bottom: 0.5rem;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* --- Events Section --- */
+.events-section {
+    width: 100%;
+}
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.events-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* --- Events Table --- */
+.events-table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Ensures table looks good on smaller viewports before scrolling */
+}
+
+.events-table th,
+.events-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.events-table thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-color-light);
+    background-color: var(--grey-bg-light);
+}
+
+.events-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.events-table tbody td {
+    font-weight: 500;
+}
+
+/* --- Status Badges & Actions --- */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.status-matched {
+    background-color: var(--green-status);
+}
+
+.status-pending {
+    background-color: var(--yellow-status);
+    color: var(--text-color);
+}
+
+.status-not-matched {
+    background-color: var(--red-status);
+}
+
+.action-links a {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
+
+.action-links a:last-child {
+    margin-right: 0;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+/***************************************************************************
+              Contact Page
+***************************************************************************/
+/* --- General & Variables --- */
+:root {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --background-color: #fff;
+    --input-bg: #f2f4f7;
+    --button-bg: #cce7ff;
+    --button-text: #333;
+    --border-color: #e0e0e0;
+    --error-color: #d93025; /* Red for errors */
+    --success-color: #1e8e3e; /* Green for success */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.main-nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* --- Main Content --- */
+main {
+    padding: 60px 0;
+}
+
+.contact-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form-section h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+}
+
+/* --- Form --- */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid transparent; /* Added for smooth transition */
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--primary-color);
+    transition: border-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* --- UPDATED/NEW STYLES FOR VALIDATION --- */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: block;
+    min-height: 1em; /* Prevents layout shift */
+}
+
+.invalid-field {
+    border-color: var(--error-color) !important; /* Overrides other border styles */
+}
+
+#formStatus {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    min-height: 1.5em; /* Prevents layout shift */
+}
+
+#formStatus.success {
+    color: var(--success-color);
+}
+
+#formStatus.error {
+    color: var(--error-color);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #b8daff;
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+/* --- END OF UPDATED/NEW STYLES --- */
+
+/* --- Contact Information Section --- */
+.contact-info-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-info-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.contact-info-section p {
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.contact-info-section a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
