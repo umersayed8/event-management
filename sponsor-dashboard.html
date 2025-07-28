@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Using Inter font as a base */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* A light gray similar to the image */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="flex h-screen">
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="flex justify-between items-center p-6 bg-white border-b border-gray-200">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-2xl font-bold text-gray-900">Evently</h1>
+                    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                        <a href="#" class="text-gray-900">Dashboard</a>
+                        <a href="#" class="hover:text-gray-900">Sponsorships</a>
+                        <a href="#" class="hover:text-gray-900">Events</a>
+                        <a href="#" class="hover:text-gray-900">Reports</a>
+                        <a href="#" class="hover:text-gray-900">Settings</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar">
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6 md:p-8">
+                <div class="max-w-7xl mx-auto">
+                    
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-gray-100 p-6 rounded-xl">
+                            <p class="text-sm text-gray-600">Total Sponsorships</p>
+                            <p class="text-3xl font-semibold text-gray-900">125</p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-xl">
+                            <p class="text-sm text-gray-600">Total Events</p>
+                            <p class="text-3xl font-semibold text-gray-900">350</p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-xl">
+                            <p class="text-sm text-gray-600">Upcoming Events</p>
+                            <p class="text-3xl font-semibold text-gray-900">15</p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-xl">
+                            <p class="text-sm text-gray-600">Revenue Generated</p>
+                            <p class="text-3xl font-semibold text-gray-900">$250,000</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 my-8">
+                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="eventListings">Event Listings</button>
+                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="sponsorPackage">Sponsorship Packages</button>
+                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="eventCalendar">Event Calendar</button>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Sponsorship Trends</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h4 class="font-semibold text-gray-800">Sponsorship Growth Over Time</h4>
+                            <p class="text-sm text-gray-500">Last 12 Months</p>
+                            <p class="text-2xl font-bold my-2">+15% <span class="text-sm font-medium text-green-600">this quarter</span></p>
+                            <div class="h-56">
+                                <canvas id="sponsorshipGrowthChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200">
+                            <h4 class="font-semibold text-gray-800">Revenue by Sponsorship Type</h4>
+                            <p class="text-sm text-gray-500">This Quarter</p>
+                            <p class="text-2xl font-bold my-2">+10%</p>
+                            <div class="h-56">
+                                <canvas id="revenueByTypeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Upcoming Events</h3>
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-gray-50 text-xs text-gray-600 uppercase">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 font-medium">Event Name</th>
+                                    <th scope="col" class="px-6 py-4 font-medium">Date</th>
+                                    <th scope="col" class="px-6 py-4 font-medium">Location</th>
+                                    <th scope="col" class="px-6 py-4 font-medium">Sponsors</th>
+                                    <th scope="col" class="px-6 py-4 font-medium">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Tech Conference 2024</td>
+                                    <td class="px-6 py-4">2024-07-15</td>
+                                    <td class="px-6 py-4">San Francisco, CA</td>
+                                    <td class="px-6 py-4">Acme Corp, Beta Inc</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Marketing Summit</td>
+                                    <td class="px-6 py-4">2024-08-20</td>
+                                    <td class="px-6 py-4">New York, NY</td>
+                                    <td class="px-6 py-4">Gamma Ltd</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Startup Expo</td>
+                                    <td class="px-6 py-4">2024-09-05</td>
+                                    <td class="px-6 py-4">Austin, TX</td>
+                                    <td class="px-6 py-4">Delta LLC, Epsilon Co</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Industry Forum</td>
+                                    <td class="px-6 py-4">2024-10-12</td>
+                                    <td class="px-6 py-4">Chicago, IL</td>
+                                    <td class="px-6 py-4">Zeta Group</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-medium text-gray-900">Innovation Workshop</td>
+                                    <td class="px-6 py-4">2024-11-18</td>
+                                    <td class="px-6 py-4">Seattle, WA</td>
+                                    <td class="px-6 py-4">Theta Inc</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+<script>
+    document.querySelector('#eventListings').addEventListener('click', function() {
+        window.location.href = "./sponsor-events-listing.html";
+    });
+    document.querySelector('#sponsorPackage').addEventListener('click', function() {
+        window.location.href = './sponsor-packages.html';
+    });
+    document.querySelector('#eventCalendar').addEventListener('click', function() {
+        window.location.href = './sponsor-event-calendar.html';
+    });
+</script>
+<script src="./charts.js">
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,647 @@
+/*******************************************************
+            DashBoard Page
+*******************************************************/
+
+/* --- CSS Variables & Global Styles --- */
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover-color: #0b5ed7;
+    --text-color: #212529;
+    --text-color-light: #6c757d;
+    --background-color: #ffffff;
+    --grey-bg-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --font-family: 'Inter', sans-serif;
+    --green-status: #198754;
+    --yellow-status: #ffc107;
+    --red-status: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0; /* Prevents the logo from shrinking */
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto; /* This centers the nav in the available space */
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--text-color-light);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--text-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0; /* Prevents the profile section from shrinking */
+}
+
+.notification-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color-light);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* --- Main Dashboard Container --- */
+.dashboard-container {
+    padding: 2rem 5%;
+}
+
+.welcome-section h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* --- Stats Cards --- */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background-color: var(--grey-bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: var(--text-color-light);
+    margin-bottom: 0.5rem;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* --- Events Section --- */
+.events-section {
+    width: 100%;
+}
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.events-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* --- Events Table --- */
+.events-table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Ensures table looks good on smaller viewports before scrolling */
+}
+
+.events-table th,
+.events-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.events-table thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-color-light);
+    background-color: var(--grey-bg-light);
+}
+
+.events-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.events-table tbody td {
+    font-weight: 500;
+}
+
+/* --- Status Badges & Actions --- */
+.status-badge {
+    display: inline-block;
+    width: 120px; /* Set a fixed width for all badges */
+    text-align: center; /* Center the text inside the badge */
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.status-matched {
+    background-color: var(--green-status);
+}
+
+.status-pending {
+    background-color: var(--yellow-status);
+    color: var(--text-color);
+}
+
+.status-not-matched {
+    background-color: var(--red-status);
+}
+
+.action-links a {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
+
+.action-links a:last-child {
+    margin-right: 0;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- Create Event Button Container --- */
+.create-evetn-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.create-evetn-btn a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.create-evetn-btn a:hover {
+    background-color: var(--primary-hover-color);
+}
+/*******************************************************
+            Create Evnet Page
+*******************************************************/
+/* --- Shared Header & Navigation --- */
+.main-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--text-color-light);
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--text-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.notification-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color-light);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* --- Main Create Event Container --- */
+.create-event-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    font-size: 1rem;
+    color: var(--text-color-light);
+}
+
+/* --- Form Styling --- */
+.create-event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--grey-bg-light);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-color-light);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* --- Upload Area --- */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.upload-area.dragover {
+    border-color: var(--primary-color);
+    background-color: #f0f6ff;
+}
+
+.upload-area p {
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+}
+
+.btn-upload {
+    background-color: #fff;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#file-name {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* --- Form Actions --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+/*************************************************
+    Event Successfully
+*****************************************************/
+
+/* --- CSS Variables and General Setup --- */
+:root {
+    --primary-green: #2ecc71;
+    --secondary-green: #e0f8e9;
+    --dark-text: #212529;
+    --secondary-text: #6c757d;
+    --light-text: #ffffff;
+    --border-color: #dee2e6;
+    --page-bg: #f8f9fa;
+    --header-bg: #ffffff;
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--page-bg);
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--dark-text);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-bell svg {
+    color: var(--secondary-text);
+    transition: color 0.3s ease;
+}
+
+.notification-bell:hover svg {
+    color: var(--dark-text);
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+
+/* --- Main Success Page Content --- */
+.success-page {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    max-width: 550px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--light-text);
+}
+
+.btn-primary:hover {
+    background-color: #27ae60; /* Slightly darker green */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-green);
+    color: #1a7e44; /* Darker text for contrast */
+}
+
+.btn-secondary:hover {
+    background-color: #d4f4e1;
+    transform: translateY(-2px);
+}

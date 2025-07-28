@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f9f9f9;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bell {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.avatar {
+  background: #f3f3f3;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+.add-btn {
+  background: #eee;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.search {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+thead {
+  background: #f6f6f6;
+  text-align: left;
+}
+
+th, td {
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+.badge {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.gold { background: #f5e7c4; color: #a37d00; }
+.silver { background: #e6e6e6; color: #555; }
+.bronze { background: #f2d3b6; color: #804000; }
+
+.view-link {
+  color: #666;
+  text-decoration: none;
+}
