@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently - Connect, Sponsor, and Attend Events</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <!-- Left Side: Logo -->
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <!-- Right Side: Nav & Actions -->
+            <div class="flex items-center gap-8">
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Browse Events</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">For Sponsors</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">For Organizers</a>
+                </nav>
+                <div class="hidden items-center gap-4 md:flex">
+                    <a href="./login-page.html" class="rounded-md bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">Login</a>
+                    <a href="./sign-up.html" class="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+         <div class="px-20 py-5">
+        <div class="relative h-[500px] bg-slate-800 rounded-lg overflow-hidden">
+            <img class="absolute inset-0 h-full w-full object-cover opacity-30" src="../images/landing-page.png" alt="Audience at a conference">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="max-w-3xl text-center text-white px-6">
+                    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Connect, Sponsor, and Attend Events Seamlessly</h1>
+                    <p class="mt-4 text-lg text-slate-200">Evently is your all-in-one platform for discovering, sponsoring, and organizing events. Whether you're looking to connect with potential sponsors, find exciting events to attend, or manage your own events, we've got you covered.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <!-- How It Works Section -->
+            <section>
+                <h2 class="text-3xl font-bold text-center text-slate-900">How Evently Works</h2>
+                
+                <!-- For Sponsors -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-semibold text-slate-900">For Sponsors</h3>
+                    <p class="mt-2 text-base text-slate-600">Connect with event organizers and explore sponsorship opportunities that align with your brand's goals. Our platform makes it easy to find and support events that resonate with your target audience.</p>
+                    <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Discover Events</h4>
+                            <p class="mt-1 text-sm text-slate-600">Browse a wide range of events seeking sponsorship.</p>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 19.5v-8.25A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v-3.75m-3.75 3.75v-3.75m7.5 3.75v-3.75M3 13.5h18M3 17.25h18" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Sponsor Events</h4>
+                            <p class="mt-1 text-sm text-slate-600">Easily sponsor events and manage your contributions.</p>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A2.25 2.25 0 011.5 18.75v-6.75c0-.621.504-1.125 1.125-1.125H6.75" /><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 13.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v6.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125v-6.75z" /><path stroke-linecap="round" stroke-linejoin="round" d="M18.375 13.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v6.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125v-6.75z" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Track ROI</h4>
+                            <p class="mt-1 text-sm text-slate-600">Monitor the impact of your sponsorships with detailed analytics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- For Organizers -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-slate-900">For Organizers</h3>
+                    <p class="mt-2 text-base text-slate-600">Streamline your event planning process and connect with potential sponsors. Our platform provides the tools you need to manage your events, attract attendees, and secure valuable sponsorships.</p>
+                    <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h18" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Create Events</h4>
+                            <p class="mt-1 text-sm text-slate-600">List, create, and manage your event listings.</p>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962a3.75 3.75 0 015.404 0L18 18.72m-7.5-2.962l-3.741-.479a3 3 0 00-4.682 2.72" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a3 3 0 100-6 3 3 0 000 6z" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Find Sponsors</h4>
+                            <p class="mt-1 text-sm text-slate-600">Connect with sponsors interested in supporting your event.</p>
+                        </div>
+                        <div class="rounded-lg border border-slate-200 bg-white p-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-12v.75m0 3v.75m0 3v.75m0 3V18m-9-12h18M3 7.5h18M3 12h18m-9 5.25h.008v.008H12v-.008z" /></svg>
+                            <h4 class="mt-4 text-lg font-semibold">Manage Attendees</h4>
+                            <p class="mt-1 text-sm text-slate-600">Sell tickets, track registrations, and manage event logistics.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Highlights Section -->
+            <section class="mt-20">
+                <h2 class="text-3xl font-bold text-center text-slate-900">Event Highlights</h2>
+                <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg">
+                            <img class="w-full h-56 object-cover transform transition-transform duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Tech summit stage">
+                        </div>
+                        <h4 class="mt-4 text-lg font-semibold text-slate-900">Tech Innovators Summit</h4>
+                        <p class="mt-1 text-sm text-slate-600">A gathering of leading minds in technology.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg">
+                            <img class="w-full h-56 object-cover transform transition-transform duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="People networking at an event">
+                        </div>
+                        <h4 class="mt-4 text-lg font-semibold text-slate-900">Startup Networking Mixer</h4>
+                        <p class="mt-1 text-sm text-slate-600">Connect with fellow entrepreneurs and investors.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-lg">
+                             <img class="w-full h-56 object-cover transform transition-transform duration-300 group-hover:scale-105" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Business conference presentation">
+                        </div>
+                        <h4 class="mt-4 text-lg font-semibold text-slate-900">Future of Business Conference</h4>
+                        <p class="mt-1 text-sm text-slate-600">Explore the latest trends shaping the business world.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

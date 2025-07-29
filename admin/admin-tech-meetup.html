@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Meetup at The Innovation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <header class="bg-white shadow-sm">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Venues</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Speakers</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="#" class="hidden sm:block rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-900">
+                    Create Event
+                </a>
+                <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
+        <div class="mb-10">
+            <h1 class="text-4xl font-bold tracking-tight text-slate-900">Tech Meetup at The Innovation Hub</h1>
+            <p class="mt-2 text-base text-slate-500">
+                Hosted by <a href="#" class="font-medium text-blue-600 hover:underline">Future Forward Tech</a>
+            </p>
+        </div>
+
+        <section>
+            <h2 class="text-lg font-semibold text-slate-900">Event Details</h2>
+            <div class="mt-4 border-y border-slate-200">
+                <div class="grid grid-cols-1 gap-y-6 gap-x-8 py-6 sm:grid-cols-2">
+                    <div>
+                        <p class="text-sm text-slate-500">Date</p>
+                        <p class="mt-1 font-medium text-slate-800">Saturday, July 20, 2024</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Time</p>
+                        <p class="mt-1 font-medium text-slate-800">8:00 PM - 2:00 AM</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-y-6 gap-x-8 border-t border-slate-200 py-6 sm:grid-cols-2">
+                     <div>
+                        <p class="text-sm text-slate-500">Location</p>
+                        <p class="mt-1 font-medium text-slate-800">The Innovation Hub, 123 Main Street, Anytown</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-slate-500">Speakers</p>
+                        <p class="mt-1 font-medium text-slate-800">Dr. Anya Sharma, Ben Carter, Chloë Davis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-10">
+            <h2 class="text-lg font-semibold text-slate-900">Ticket Information</h2>
+            <div class="mt-4 grid grid-cols-2 gap-8 sm:grid-cols-4">
+                <div>
+                    <p class="text-sm text-slate-500">General Admission</p>
+                    <p class="mt-1 text-lg font-semibold text-slate-800">$20</p>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500">VIP</p>
+                    <p class="mt-1 text-lg font-semibold text-slate-800">$50</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-lg font-semibold text-slate-900">Sales Data</h2>
+            <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div class="rounded-lg border border-slate-200 bg-white p-6">
+                    <p class="text-sm font-medium text-slate-500">Tickets Sold</p>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-slate-900">150</p>
+                </div>
+                <div class="rounded-lg border border-slate-200 bg-white p-6">
+                    <p class="text-sm font-medium text-slate-500">Revenue</p>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-slate-900">$3,500</p>
+                </div>
+                <div class="rounded-lg border border-slate-200 bg-white p-6">
+                    <p class="text-sm font-medium text-slate-500">Remaining</p>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-slate-900">50</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-12 flex items-center gap-4">
+            <button type="button" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Edit Event</button>
+            <button type="button" class="rounded-lg bg-slate-100 px-5 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-200">Manage Tickets</button>
+        </div>
+
+    </main>
+</body>
+</html>

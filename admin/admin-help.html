@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Help & Docs</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply the Inter font and a light background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        /* Smooth transition for accordion icon rotation */
+        .accordion-arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Main Container -->
+    <div class="min-h-screen">
+
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                         <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                    </div>
+                    
+                    
+                    <!-- Profile Icon -->
+                    <div class="flex items-center">
+                        <div class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            S
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <!-- Page Title -->
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-bold text-gray-900">Help & Docs</h1>
+                <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Find answers to common questions, explore detailed documentation, or contact our support team for assistance.</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-12">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <input type="text" id="searchInput" class="block w-full pl-12 pr-4 py-3 border-gray-200 rounded-lg leading-5 bg-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Search for help topics">
+                </div>
+            </div>
+
+            <!-- Frequently Asked Questions -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                <div id="faq-container" class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-5 text-left font-semibold text-gray-800">
+                            <span>How do I add a new user?</span>
+                            <svg class="accordion-arrow w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content hidden px-5 pb-5 text-gray-600">
+                            To add a new user, navigate to the 'Users' section in the admin panel. Click the 'Add User' button, fill in the required details (name, email, role), and submit the form. An invitation will be sent to the new user's email address.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-5 text-left font-semibold text-gray-800">
+                            <span>What are the different user roles and permissions?</span>
+                             <svg class="accordion-arrow w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content hidden px-5 pb-5 text-gray-600">
+                           Our platform supports multiple user roles, including Administrator, Editor, and Viewer. Each role has a specific set of permissions that control access to different features and data. You can find a detailed breakdown in the 'User Management' documentation.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white border border-gray-200 rounded-lg">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-5 text-left font-semibold text-gray-800">
+                            <span>How can I reset a user's password?</span>
+                             <svg class="accordion-arrow w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content hidden px-5 pb-5 text-gray-600">
+                            As an administrator, you can reset a user's password from the 'Users' section. Find the user, click on the 'Edit' action, and select the 'Send Password Reset' option. The user will receive an email with instructions to set a new password.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentation -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Documentation</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="#" class="flex items-center p-5 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-indigo-500 transition">
+                        <svg class="w-6 h-6 text-gray-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        <span class="font-semibold">User Management</span>
+                    </a>
+                    <a href="#" class="flex items-center p-5 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-indigo-500 transition">
+                        <svg class="w-6 h-6 text-gray-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962a3.75 3.75 0 015.962 0L14.25 6h-4.5l-1.962 5.25a3.75 3.75 0 015.962 0zM16.5 18.75h-9a9.094 9.094 0 00-3.741-.479 3 3 0 004.682-2.72m-3.741 3.192a3.75 3.75 0 015.962 0z" />
+                        </svg>
+                        <span class="font-semibold">Group Management</span>
+                    </a>
+                    <a href="#" class="flex items-center p-5 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-indigo-500 transition">
+                        <svg class="w-6 h-6 text-gray-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.007 1.11-1.11h2.592c.55.103 1.02.57 1.11 1.11l.09 1.586c.295.126.587.277.87.45l1.358-.584c.54-.233 1.18.16 1.35.704l1.296 2.247c.17.544-.16 1.18-.7 1.352l-1.14.492c-.022.163-.038.328-.047.495l.182 1.449c.233.54-.16 1.18-.704 1.35l-2.247 1.296c-.544.17-1.18-.16-1.352-.7l-.492-1.14c-.163-.022-.328-.038-.495-.047l-1.449.182c-.54.233-1.18-.16-1.35-.704l-1.296-2.247c-.17-.544.16-1.18.7-1.352l1.14-.492c.022-.163.038-.328.047-.495l-.182-1.449A1.2 1.2 0 019.594 3.94zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z" />
+                        </svg>
+                        <span class="font-semibold">Settings Configuration</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Support</h2>
+                <p class="text-gray-500 mb-6 max-w-xl mx-auto">If you need further assistance, please contact our support team. You can reach us via email or submit a support ticket.</p>
+                <a href="#" class="inline-block bg-gray-100 text-gray-800 font-semibold py-2 px-5 rounded-lg border border-gray-300 hover:bg-gray-200 transition">
+                    Email Support
+                </a>
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Accordion Functionality ---
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+    
+    accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const content = trigger.nextElementSibling;
+            const arrow = trigger.querySelector('.accordion-arrow');
+            
+            // Toggle content visibility
+            content.classList.toggle('hidden');
+            
+            // Rotate arrow
+            if (content.classList.contains('hidden')) {
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+
+    // --- Search Functionality ---
+    const searchInput = document.getElementById('searchInput');
+    const faqContainer = document.getElementById('faq-container');
+    const faqItems = faqContainer.querySelectorAll('.faq-item');
+
+    searchInput.addEventListener('keyup', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.accordion-trigger span').textContent.toLowerCase();
+            if (question.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

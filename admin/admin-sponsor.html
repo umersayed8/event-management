@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Content</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Members</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-5">
+                <button class="text-slate-500 hover:text-slate-800">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                </button>
+                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-orange-400 text-sm font-bold text-white">A</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-full px-6 py-8 lg:px-8">
+        <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Sponsors</h1>
+            <button class="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50">Add Sponsor</button>
+        </div>
+
+        <div class="mt-8">
+            <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <input type="search" name="search" id="search" class="block w-full max-w-sm rounded-md border-0 py-2.5 pl-10 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm" placeholder="Search sponsors">
+            </div>
+        </div>
+
+        <div class="mt-6 flow-root">
+            <div class="-mx-6 -my-2 overflow-x-auto lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                    <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Company Name</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Contact</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Sponsorship Level</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Associated Campaigns/Events</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 bg-white" id="sponsors-table-body">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Data for the sponsors table. In a real app, this would come from an API.
+        const sponsors = [
+            { company: 'Tech Innovators Inc.', contact: 'contact@techinnovators.com', level: 'Gold', campaign: 'Tech Conference 2024' },
+            { company: 'Global Solutions Ltd.', contact: 'info@globalsolutions.com', level: 'Silver', campaign: 'Community Outreach Program' },
+            { company: 'Creative Minds Agency', contact: 'hello@creativeminds.com', level: 'Bronze', campaign: 'Art Exhibition' },
+            { company: 'EcoTech Solutions', contact: 'support@ecotechsolutions.com', level: 'Gold', campaign: 'Sustainability Summit' },
+            { company: 'Digital Dynamics Corp.', contact: 'inquiries@digitaldynamics.com', level: 'Silver', campaign: 'Digital Marketing Workshop' },
+            { company: 'Innovate Forward LLC', contact: 'partnerships@innovateforward.com', level: 'Bronze', campaign: 'Innovation Challenge' },
+            { company: 'Future Trends Group', contact: 'contact@futuretrends.com', level: 'Gold', campaign: 'Future of Tech Forum' },
+            { company: 'Strategic Alliances Inc.', contact: 'info@strategicalliances.com', level: 'Silver', campaign: 'Business Networking Event' },
+            { company: 'Creative Visionaries Co.', contact: 'hello@creativevisionaries.co', level: 'Bronze', campaign: 'Design Thinking Workshop' },
+            { company: 'Sustainable Growth Partners', contact: 'support@sustainablegrowth.com', level: 'Gold', campaign: 'Green Business Expo' },
+        ];
+
+        // Define badge color classes for each sponsorship level
+        const badgeColors = {
+            Gold: 'bg-amber-100 text-amber-800',
+            Silver: 'bg-slate-200 text-slate-800',
+            Bronze: 'bg-orange-200 text-orange-800' // Using orange for a distinct bronze look
+        };
+
+        const tableBody = document.getElementById('sponsors-table-body');
+
+        // Function to create and append a table row
+        function createSponsorRow(sponsor) {
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-slate-50';
+
+            const level = sponsor.level;
+            const badgeClass = badgeColors[level] || 'bg-gray-100 text-gray-800';
+
+            row.innerHTML = `
+                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-slate-900">${sponsor.company}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${sponsor.contact}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">
+                    <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${badgeClass}">
+                        ${sponsor.level}
+                    </span>
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${sponsor.campaign}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                    <a href="#" class="text-blue-600 hover:text-blue-800">View</a>
+                </td>
+            `;
+            return row;
+        }
+
+        // Populate the table with sponsor data
+        sponsors.forEach(sponsor => {
+            const sponsorRow = createSponsorRow(sponsor);
+            tableBody.appendChild(sponsorRow);
+        });
+
+    </script>
+</body>
+</html>

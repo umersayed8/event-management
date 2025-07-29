@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account - Evently</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Optional: You can customize Tailwind here if needed
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+
+</head>
+
+<body class="bg-white font-inter">
+
+    <header class="bg-white sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto flex items-center justify-between p-4">
+            <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="./home-page.html" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                <a href="./login-page.html"
+                    class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition-all">Login</a>
+            </div>
+
+            <button id="menu-btn" class="block md:hidden focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <div id="menu" class="hidden md:hidden">
+            <a href="./home-page.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+            <a href="#"
+                class="block py-2 px-4 text-sm bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold">Sign-up</a>
+        </div>
+    </header>
+    <main class="bg-gray-50 flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md space-y-6">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-gray-900">Create Your Account</h1>
+            </div>
+
+            <div id="account-type-selector" class="flex bg-gray-200 p-1 rounded-xl">
+                <button type="button" data-type="organizer"
+                    class="account-type-btn w-full p-2 text-sm font-semibold text-gray-600 rounded-lg transition-colors">Organizer</button>
+                <button type="button" data-type="sponsor"
+                    class="account-type-btn w-full p-2 text-sm font-semibold text-gray-600 rounded-lg transition-colors">Sponsor</button>
+                <button type="button" data-type="ticket-buyer"
+                    class="account-type-btn w-full p-2 text-sm font-semibold text-blue-700 bg-white shadow-sm rounded-lg transition-colors">Ticket
+                    Buyer</button>
+            </div>
+
+            <form id="signupForm" method="POST" class="space-y-4">
+                <div>
+                    <input type="email" id="email" placeholder="Email" required
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="password" placeholder="Password" required
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <button type="button"
+                        class="password-toggle absolute top-1/2 right-4 -translate-y-1/2 text-sm font-semibold text-gray-500 hover:text-blue-600">Show</button>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <button type="button"
+                        class="password-toggle absolute top-1/2 right-4 -translate-y-1/2 text-sm font-semibold text-gray-500 hover:text-blue-600">Show</button>
+                </div>
+
+                <div>
+                    <input type="text" id="full-name" placeholder="Full Name" required
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                </div>
+                <div>
+                    <input type="tel" id="phone" placeholder="Phone Number" required
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-all text-base">Register</button>
+            </form>
+
+            <div class="flex items-center">
+                <div class="flex-grow bg-gray-300 h-px"></div>
+                <span class="mx-4 text-sm font-medium text-gray-500">Or sign up with</span>
+                <div class="flex-grow bg-gray-300 h-px"></div>
+            </div>
+
+            <button type="button"
+                class="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-all">
+                <svg class="google-icon" width="20" height="20" viewBox="0 0 533.5 544.3"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
+                        fill="#4285f4" />
+                    <path
+                        d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z"
+                        fill="#34a853" />
+                    <path
+                        d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z"
+                        fill="#fbbc04" />
+                    <path
+                        d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 340.6 0 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
+                        fill="#ea4335" />
+                </svg>
+                Sign up with Google
+            </button>
+
+            <p class="text-center text-sm text-gray-600">
+                Already have an account? <a href="./login-page.html"
+                    class="font-semibold text-blue-600 hover:underline">Log-in</a>
+            </p>
+        </div>
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // --- Shared Variable ---
+            let selectedRole = "ticket_buyer"; // Default role
+
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+
+            if (menuBtn && menu) {
+                menuBtn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+
+            // --- Password Visibility Toggle ---
+            const toggleButtons = document.querySelectorAll(".password-toggle");
+            toggleButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const passwordInput = button.previousElementSibling;
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        button.textContent = "Hide";
+                    } else {
+                        passwordInput.type = "password";
+                        button.textContent = "Show";
+                    }
+                });
+            });
+
+            // --- Account Type Selector (Combined Logic) ---
+            const accountTypeButtons = document.querySelectorAll(".account-type-btn");
+            accountTypeButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    // Remove active styles from all buttons
+                    accountTypeButtons.forEach((btn) => {
+                        btn.classList.remove("bg-white", "text-blue-700", "shadow-sm");
+                        btn.classList.add("text-gray-600");
+                    });
+
+                    // Add active styles to the clicked button
+                    button.classList.add("bg-white", "text-blue-700", "shadow-sm");
+                    button.classList.remove("text-gray-600");
+
+                    // Update the selectedRole variable
+                    selectedRole = button.dataset.type.replace(/-/g, "_");
+                    console.log("Selected role:", selectedRole);
+                });
+            });
+
+            // --- Form Submission ---
+            const signupForm = document.getElementById("signupForm");
+            if(signupForm) {
+                signupForm.addEventListener("submit", function(e) {
+                    e.preventDefault();
+
+                    const fullName = document.getElementById("full-name").value;
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+                    const confirmPassword = document.getElementById("confirm-password").value;
+
+                    if (password !== confirmPassword) {
+                        alert("Passwords do not match!");
+                        return;
+                    }
+
+                   fetch("http://localhost/event-management-backend/auth/register.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({
+        name: fullName,
+        email: email,
+        password: password,
+        role: selectedRole
+    })
+})
+.then(async res => {
+    const contentType = res.headers.get("Content-Type");
+
+    if (!res.ok) {
+        const errorText = contentType && contentType.includes("application/json")
+            ? await res.json()
+            : await res.text();
+        throw new Error(errorText.error || errorText || "Registration failed");
+    }
+
+    const data = await res.json();
+    if (data.user_id) {
+        alert("Registration successful!");
+        window.location.href = "login-page.html";
+    } else {
+        alert(data.error || "Registration failed");
+    }
+})
+.catch(err => {
+    console.error("Error:", err);
+    alert("An error occurred: " + err.message);
+});
+
+                });
+            }
+        }); // <-- THIS IS THE CORRECTLY PLACED CLOSING BRACE/PARENTHESIS
+    </script>
+
+</body>
+</html>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Users</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
+                </nav>
+            </div>
+            <div class="flex items-center">
+                <div class="h-9 w-9 rounded-full bg-slate-800">
+                     <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704e" alt="User avatar" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
+        <div class="mb-10">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900">Settings</h1>
+            <p class="mt-1 text-base text-slate-500">Configure your platform settings</p>
+        </div>
+
+        <form action="#" method="POST">
+            <div class="space-y-8">
+                <div class="space-y-6">
+                    <div>
+                        <label for="site-name" class="block text-sm font-medium leading-6 text-slate-900">Site Name</label>
+                        <div class="mt-2">
+                            <input type="text" name="site-name" id="site-name" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="site-logo" class="block text-sm font-medium leading-6 text-slate-900">Site Logo</label>
+                        <div class="mt-2">
+                            <input type="text" name="site-logo" id="site-logo" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="default-language" class="block text-sm font-medium leading-6 text-slate-900">Default Language</label>
+                        <div class="mt-2">
+                            <input type="text" name="default-language" id="default-language" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 border-t border-slate-200 pt-8">
+                    <h2 class="text-xl font-semibold leading-7 text-slate-900">User Settings</h2>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <label for="email-verification" class="text-sm font-medium leading-6 text-slate-900">Email Verification</label>
+                            <p class="text-sm text-slate-500">Require users to verify their email address before accessing the platform.</p>
+                        </div>
+                        <button type="button" class="toggle-switch bg-slate-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" role="switch" aria-checked="false">
+                            <span class="pointer-events-none translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+                        </button>
+                    </div>
+                     <div>
+                        <label for="default-user-role" class="block text-sm font-medium leading-6 text-slate-900">Default User Role</label>
+                        <div class="mt-2">
+                            <input type="text" name="default-user-role" id="default-user-role" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6 border-t border-slate-200 pt-8">
+                    <h2 class="text-xl font-semibold leading-7 text-slate-900">Event Settings</h2>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <label for="event-submission-guidelines" class="text-sm font-medium leading-6 text-slate-900">Event Submission Guidelines</label>
+                            <p class="text-sm text-slate-500">Allow users to submit events for review before publishing.</p>
+                        </div>
+                        <button type="button" class="toggle-switch bg-slate-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" role="switch" aria-checked="false">
+                            <span class="pointer-events-none translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+                        </button>
+                    </div>
+                     <div>
+                        <label for="default-event-visibility" class="block text-sm font-medium leading-6 text-slate-900">Default Event Visibility</label>
+                        <div class="mt-2">
+                            <input type="text" name="default-event-visibility" id="default-event-visibility" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 border-t border-slate-200 pt-8">
+                    <h2 class="text-xl font-semibold leading-7 text-slate-900">Sponsor Settings</h2>
+                     <div>
+                        <label for="sponsorship-tiers" class="block text-sm font-medium leading-6 text-slate-900">Sponsorship Tiers</label>
+                        <div class="mt-2">
+                            <input type="text" name="sponsorship-tiers" id="sponsorship-tiers" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="sponsorship-agreement" class="block text-sm font-medium leading-6 text-slate-900">Sponsorship Agreement Template</label>
+                        <div class="mt-2">
+                            <input type="text" name="sponsorship-agreement" id="sponsorship-agreement" class="block w-full rounded-md border-0 py-2 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex justify-end border-t border-slate-200 pt-6">
+                <button type="submit" class="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save Changes</button>
+            </div>
+        </form>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleSwitches = document.querySelectorAll('.toggle-switch');
+            
+            toggleSwitches.forEach(button => {
+                button.addEventListener('click', () => {
+                    const isChecked = button.getAttribute('aria-checked') === 'true';
+                    const knob = button.querySelector('span');
+
+                    button.setAttribute('aria-checked', !isChecked);
+                    
+                    if (!isChecked) {
+                        button.classList.remove('bg-slate-200');
+                        button.classList.add('bg-blue-600');
+                        knob.classList.remove('translate-x-0');
+                        knob.classList.add('translate-x-5');
+                    } else {
+                        button.classList.remove('bg-blue-600');
+                        button.classList.add('bg-slate-200');
+                        knob.classList.remove('translate-x-5');
+                        knob.classList.add('translate-x-0');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

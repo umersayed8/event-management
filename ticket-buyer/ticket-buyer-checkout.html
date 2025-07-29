@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Evently</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <!-- Left Side: Logo -->
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <!-- Right Side: Nav & Actions -->
+            <div class="flex items-center gap-8">
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                </nav>
+                <div class="flex items-center gap-5">
+                    <button class="text-slate-400 hover:text-slate-600">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </button>
+                    <button class="text-slate-400 hover:text-slate-600">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </button>
+                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-2xl px-6 py-12 lg:px-8">
+        
+        <!-- Breadcrumbs -->
+        <nav class="text-sm font-medium text-slate-500">
+            <a href="#" class="hover:underline">Events</a>
+            <span class="mx-2">/</span>
+            <span class="font-medium text-slate-700">Your Cart</span>
+        </nav>
+
+        <h1 class="mt-4 text-3xl font-bold tracking-tight text-slate-900">Your Cart</h1>
+
+        <div class="mt-10">
+            <!-- Cart Item -->
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 class="font-semibold text-slate-800">Indie Rock Night</h2>
+                    <p class="mt-1 text-sm text-slate-500">The Echo - Los Angeles, CA</p>
+                    <p class="text-sm text-slate-500">Sat, Jul 20 - 7:00 PM</p>
+                </div>
+                <p class="font-semibold text-slate-800">$25</p>
+            </div>
+            
+            <!-- Subtotal Section -->
+            <div class="mt-8 border-t border-slate-200 pt-8 space-y-4">
+                <h3 class="text-lg font-semibold text-slate-900 sr-only">Subtotal</h3>
+                <div class="flex justify-between text-base text-slate-600">
+                    <span>Tickets</span>
+                    <span>$25.00</span>
+                </div>
+                <div class="flex justify-between text-base text-slate-600">
+                    <span>Fees</span>
+                    <span>$2.50</span>
+                </div>
+                <div class="flex justify-between text-base font-semibold text-slate-900">
+                    <span>Total</span>
+                    <span>$27.50</span>
+                </div>
+            </div>
+
+            <!-- Checkout Button -->
+            <div class="mt-10">
+                <button type="button" class="w-full rounded-lg bg-blue-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-blue-700" id="checkout">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('checkout').addEventListener('click', function() {
+            window.location.href = "./ticket-buyer-payment.html";
+        })
+    </script>
+</body>
+</html>

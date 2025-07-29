@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats - Indie Rock Night</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <!-- Left Side: Logo and Nav -->
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Explore</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">My Tickets</a>
+                </nav>
+            </div>
+            <!-- Right Side: Search and Profile -->
+            <div class="flex items-center gap-6">
+                <div class="relative hidden sm:block">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                           <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input type="search" class="block w-full rounded-md border-0 bg-slate-100 py-2 pl-10 pr-3 text-slate-900 placeholder:text-slate-500" placeholder="Search">
+                </div>
+                <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-4xl px-6 py-10 lg:px-8">
+        
+        <!-- Breadcrumbs & Page Title -->
+        <div>
+            <nav class="text-sm font-medium text-slate-500">
+                <a href="#" class="hover:underline">Music</a>
+                <span class="mx-2">/</span>
+                <a href="#" class="hover:underline">Rock</a>
+                <span class="mx-2">/</span>
+                <span class="font-medium text-slate-700">Indie Rock</span>
+            </nav>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">Indie Rock Night</h1>
+            <p class="mt-1 text-base text-slate-500">Sat, Jul 20 · 7:00 PM · The Roxy Theatre, Los Angeles</p>
+        </div>
+
+        <!-- Seating Image -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-slate-900">Select your seats</h2>
+            <div class="mt-4">
+                <img class="w-full h-auto rounded-lg object-cover" src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&q=80" alt="Theater seating chart">
+            </div>
+        </div>
+
+        <!-- Tickets Section -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900">Tickets</h2>
+            <div class="mt-4 space-y-6" id="ticket-options">
+                <!-- Ticket Option 1: VIP -->
+                <div class="ticket-option flex items-center justify-between border-b border-slate-200 pb-6">
+                    <div>
+                        <p class="font-semibold text-slate-900">VIP</p>
+                        <p class="text-sm text-slate-600">$50</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="quantity-btn minus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100 disabled:opacity-50" disabled data-action="minus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <span class="quantity-display w-4 text-center font-semibold">0</span>
+                        <button class="quantity-btn plus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100" data-action="plus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ticket Option 2: Bottom Tier -->
+                <div class="ticket-option flex items-center justify-between border-b border-slate-200 pb-6">
+                    <div>
+                        <p class="font-semibold text-slate-900">Bottom Tier</p>
+                        <p class="text-sm text-slate-600">$75</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="quantity-btn minus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100 disabled:opacity-50" disabled data-action="minus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <span class="quantity-display w-4 text-center font-semibold">0</span>
+                        <button class="quantity-btn plus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100" data-action="plus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ticket Option 3: Middle Tier -->
+                <div class="ticket-option flex items-center justify-between border-b border-slate-200 pb-6">
+                    <div>
+                        <p class="font-semibold text-slate-900">Middle Tier</p>
+                        <p class="text-sm text-slate-600">$35</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="quantity-btn minus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100 disabled:opacity-50" disabled data-action="minus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <span class="quantity-display w-4 text-center font-semibold">0</span>
+                        <button class="quantity-btn plus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100" data-action="plus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ticket Option 4: Top Tier -->
+                <div class="ticket-option flex items-center justify-between">
+                    <div>
+                        <p class="font-semibold text-slate-900">Top Tier</p>
+                        <p class="text-sm text-slate-600">$25</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button class="quantity-btn minus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100 disabled:opacity-50" disabled data-action="minus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <span class="quantity-display w-4 text-center font-semibold">0</span>
+                        <button class="quantity-btn plus-btn rounded-full p-1 text-slate-500 hover:bg-slate-100" data-action="plus">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue Button -->
+        <div class="mt-10 flex justify-end">
+            <button id="continue-btn" type="button" class="rounded-lg bg-slate-200 px-6 py-3 text-base font-semibold text-slate-500 cursor-not-allowed" disabled>
+                Continue
+            </button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketOptionsContainer = document.getElementById('ticket-options');
+            const continueBtn = document.getElementById('continue-btn');
+
+            function updateTotal() {
+                let totalTickets = 0;
+                const quantityDisplays = ticketOptionsContainer.querySelectorAll('.quantity-display');
+                quantityDisplays.forEach(display => {
+                    totalTickets += parseInt(display.textContent);
+                });
+
+                if (totalTickets > 0) {
+                    continueBtn.disabled = false;
+                    continueBtn.classList.remove('bg-slate-200', 'text-slate-500', 'cursor-not-allowed');
+                    continueBtn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                } else {
+                    continueBtn.disabled = true;
+                    continueBtn.classList.add('bg-slate-200', 'text-slate-500', 'cursor-not-allowed');
+                    continueBtn.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                }
+            }
+
+            ticketOptionsContainer.addEventListener('click', (e) => {
+                const target = e.target.closest('.quantity-btn');
+                if (!target) return;
+
+                const parentOption = target.closest('.ticket-option');
+                const quantityDisplay = parentOption.querySelector('.quantity-display');
+                const minusBtn = parentOption.querySelector('.minus-btn');
+                let quantity = parseInt(quantityDisplay.textContent);
+
+                if (target.dataset.action === 'plus') {
+                    quantity++;
+                } else if (target.dataset.action === 'minus' && quantity > 0) {
+                    quantity--;
+                }
+
+                quantityDisplay.textContent = quantity;
+                minusBtn.disabled = quantity === 0;
+
+                updateTotal();
+            });
+            
+            // Set initial state for the Middle Tier ticket to 1
+            const middleTierOption = Array.from(ticketOptionsContainer.querySelectorAll('.ticket-option')).find(el => el.querySelector('p').textContent === 'Middle Tier');
+            if(middleTierOption) {
+                const quantityDisplay = middleTierOption.querySelector('.quantity-display');
+                const minusBtn = middleTierOption.querySelector('.minus-btn');
+                quantityDisplay.textContent = '1';
+                minusBtn.disabled = false;
+                updateTotal();
+            }
+
+        });
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            window.location.href = "./ticket-buyer-checkout.html";
+        })
+    </script>
+</body>
+</html>

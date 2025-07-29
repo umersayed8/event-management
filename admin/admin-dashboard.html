@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Feather Icons for simple icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            /* A light gray similar to the image */
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            color: #4b5563;
+            /* text-gray-600 */
+            font-weight: 500;
+        }
+
+        .sidebar-link:hover {
+            background-color: #e5e7eb;
+            /* bg-gray-200 */
+        }
+
+        .sidebar-link.active {
+            background-color: #f3f4f6;
+            /* bg-gray-100 */
+            color: #111827;
+            /* text-gray-900 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <div class="flex h-screen bg-white">
+        <!-- Sidebar -->
+        <aside class="w-64 flex-shrink-0 border-r border-gray-200 flex flex-col">
+            <div class="h-16 flex items-center px-6">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <nav class="flex-1 px-4 py-4 space-y-2">
+                <a href="#" class="sidebar-link active">
+                    <i data-feather="home" class="w-5 h-5 mr-3"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="./admin-users.html" class="sidebar-link">
+                    <i data-feather="users" class="w-5 h-5 mr-3"></i>
+                    <span>Users</span>
+                </a>
+                <a href="./admin-events.html" class="sidebar-link">
+                    <i data-feather="calendar" class="w-5 h-5 mr-3"></i>
+                    <span>Events</span>
+                </a>
+                <a href="./admin-sponsor.html" class="sidebar-link">
+                    <i data-feather="award" class="w-5 h-5 mr-3"></i>
+                    <span>Sponsors</span>
+                </a>
+                <a href="./admin-reports.html" class="sidebar-link">
+                    <i data-feather="bar-chart-2" class="w-5 h-5 mr-3"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="./admin-settings.html" class="sidebar-link">
+                    <i data-feather="settings" class="w-5 h-5 mr-3"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="px-4 py-4">
+                <a href="./admin-help.html" class="sidebar-link">
+                    <i data-feather="help-circle" class="w-5 h-5 mr-3"></i>
+                    <span>Help and Docs</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto bg-gray-50">
+            <div class="p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
+
+                <!-- Stat Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-sm text-gray-600">Total Users</p>
+                        <p class="text-3xl font-semibold text-gray-900">1,234</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-sm text-gray-600">Events</p>
+                        <p class="text-3xl font-semibold text-gray-900">567</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-sm text-gray-600">Revenue</p>
+                        <p class="text-3xl font-semibold text-gray-900">$89,012</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <p class="text-sm text-gray-600">Tickets Sold</p>
+                        <p class="text-3xl font-semibold text-gray-900">34,567</p>
+                    </div>
+                </div>
+
+                <!-- Overview Section -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Chart 1: User Growth -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h3 class="font-semibold text-gray-800">User Growth</h3>
+                            <p class="text-2xl font-bold text-gray-900 mt-1">+12%</p>
+                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+12%</span></p>
+                            <div class="h-48 mt-4">
+                                <canvas id="userGrowthChart1"></canvas>
+                            </div>
+                        </div>
+                        <!-- Chart 2: Ticket Sales Trend -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h3 class="font-semibold text-gray-800">Ticket Sales Trend</h3>
+                            <p class="text-2xl font-bold text-gray-900 mt-1">+8%</p>
+                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+8%</span></p>
+                            <div class="h-48 mt-4">
+                                <canvas id="ticketSalesChart1"></canvas>
+                            </div>
+                        </div>
+                        <!-- Chart 3: User Growth (Duplicate) -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h3 class="font-semibold text-gray-800">Event Frequency</h3>
+                            <p class="text-2xl font-bold text-gray-900 mt-1">+7%</p>
+                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+9%</span></p>
+                            <div class="h-48 mt-4">
+                                <canvas id="userGrowthChart2"></canvas>
+                            </div>
+                        </div>
+                        <!-- Chart 4: Ticket Sales Trend (Duplicate) -->
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <h3 class="font-semibold text-gray-800">Sponsor Funds</h3>
+                            <p class="text-2xl font-bold text-gray-900 mt-1">+10%</p>
+                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+4%</span></p>
+                            <div class="h-48 mt-4">
+                                <canvas id="ticketSalesChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Feather Icons
+            feather.replace();
+
+            // --- Chart.js Configuration ---
+
+            // Common data and options for the line charts
+            const chartData = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Trend',
+                    data: [65, 59, 80, 81, 56, 95, 70, 65, 59, 80, 81, 56, 95, 70].slice(0, 7), // Example data
+                    fill: false,
+                    borderColor: '#6366f1', // indigo-500
+                    tension: 0.4,
+                    pointRadius: 0,
+                    borderWidth: 2,
+                }]
+            };
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#9ca3af' } // gray-400
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { display: false },
+                        border: { display: false }
+                    }
+                }
+            };
+
+            // --- Create Charts ---
+
+            // Function to create a new chart
+            const createChart = (canvasId, data, options) => {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: data,
+                    options: options
+                });
+            };
+
+            // Create all four charts using the same configuration
+            createChart('userGrowthChart1', chartData, chartOptions);
+            createChart('ticketSalesChart1', chartData, chartOptions);
+            createChart('userGrowthChart2', chartData, chartOptions);
+            createChart('ticketSalesChart2', chartData, chartOptions);
+        });
+    </script>
+</body>
+
+</html>

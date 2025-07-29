@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Ticket - Evently</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <!-- Left Side: Logo -->
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <!-- Right Side: Nav & Actions -->
+            <div class="flex items-center gap-8">
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Profile</a>
+                </nav>
+                <div class="flex items-center gap-5">
+                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
+        
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900">Your Ticket</h1>
+
+        <div class="mt-8 overflow-hidden rounded-lg bg-white shadow">
+            <!-- Event Info Header -->
+            <div class="p-6">
+                <div class="flex flex-col items-start gap-6 sm:flex-row">
+                    <img class="h-40 w-full rounded-md object-cover sm:w-48" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Band performing on stage">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900">Indie Rock Night</h2>
+                        <p class="mt-1 text-base text-slate-600">Fri, Jul 12 · 8:00 PM · The Underground</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Details -->
+            <div class="border-t border-slate-200 px-6 py-6">
+                <h3 class="text-lg font-semibold text-slate-900">Ticket Details</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-slate-600">Ticket Type</span>
+                        <span class="text-sm font-medium text-slate-900">$25</span>
+                    </div>
+                    <div class="flex justify-between">
+                         <span class="text-sm text-slate-600">General Admission</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-slate-600">Seat</span>
+                        <span class="text-sm font-medium text-slate-900">A1-12</span>
+                    </div>
+                     <div class="flex justify-between">
+                        <span class="text-sm text-slate-600">Section A, Row 1, Seat 12</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-slate-600">Ticket Holder</span>
+                        <span class="text-sm font-medium text-slate-900">Sophia Carter</span>
+                    </div>
+                     <div class="flex justify-between">
+                        <span class="text-sm text-slate-600">Sophia Carter</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="border-t border-slate-200 bg-amber-50 p-6 sm:p-10">
+                 <h3 class="text-lg font-semibold text-slate-900">QR Code</h3>
+                 <div class="mt-4 flex justify-center">
+                    <div class="rounded-lg bg-white p-4 shadow-md">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Event:IndieRockNight;Ticket:A1-12;Holder:SophiaCarter" alt="Event Ticket QR Code">
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

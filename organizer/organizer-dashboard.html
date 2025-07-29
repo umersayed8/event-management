@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using a more modern font for a closer match to the image */
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-8">
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Analytics</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Settings</a>
+                </nav>
+                 <div class="flex items-center gap-5">
+                    <button class="text-slate-500 hover:text-slate-800">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </button>
+                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900">Welcome back, Sarah</h1>
+
+        <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-lg bg-slate-100 p-6">
+                <p class="text-sm font-medium text-slate-600">Total Events</p>
+                <p class="mt-2 text-4xl font-bold text-slate-900">25</p>
+            </div>
+            <div class="rounded-lg bg-slate-100 p-6">
+                <p class="text-sm font-medium text-slate-600">Tickets Sold</p>
+                <p class="mt-2 text-4xl font-bold text-slate-900">1250</p>
+            </div>
+            <div class="rounded-lg bg-slate-100 p-6">
+                <p class="text-sm font-medium text-slate-600">Revenue</p>
+                <p class="mt-2 text-4xl font-bold text-slate-900">$75,000</p>
+            </div>
+            <div class="rounded-lg bg-slate-100 p-6">
+                <p class="text-sm font-medium text-slate-600">Sponsors</p>
+                <p class="mt-2 text-4xl font-bold text-slate-900">15</p>
+            </div>
+        </div>
+
+        <section class="mt-12">
+            <h2 class="text-xl font-semibold leading-7 text-slate-900">Your Events</h2>
+            <div class="mt-4 flow-root">
+                <div class="-mx-6 -my-2 overflow-x-auto lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <div class="overflow-hidden rounded-lg border border-slate-200">
+                            <table class="min-w-full divide-y divide-slate-200">
+                                <thead class="bg-white">
+                                    <tr>
+                                        <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Event Name</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Date</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Tickets Sold</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Revenue</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Sponsor Status</th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white" id="events-table-body">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-6 flex justify-end">
+            <button type="button" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700" id="createEvent">Create New Event</button>
+        </div>
+    </main>
+
+    <script>
+        const events = [
+            { name: 'Tech Innovators Summit', date: '2024-07-15', ticketsSold: 350, revenue: '$25,000', status: 'Matched' },
+            { name: 'Marketing Masters Conference', date: '2024-08-20', ticketsSold: 200, revenue: '$15,000', status: 'Pending' },
+            { name: 'Startup Showcase', date: '2024-09-10', ticketsSold: 400, revenue: '$20,000', status: 'Matched' },
+            { name: 'Design Thinking Workshop', date: '2024-10-05', ticketsSold: 150, revenue: '$10,000', status: 'Not Matched' },
+            { name: 'FinTech Forum', date: '2024-11-12', ticketsSold: 150, revenue: '$5,000', status: 'Not Matched' }
+        ];
+
+        const tableBody = document.getElementById('events-table-body');
+
+        function createEventRow(event) {
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-slate-50';
+
+            // Define badge class based on status. Sticking to neutral gray as in the image.
+            const badgeClass = 'bg-slate-100 text-slate-800';
+
+            row.innerHTML = `
+                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-slate-900">${event.name}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${event.date}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${event.ticketsSold}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${event.revenue}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm">
+                    <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${badgeClass}">
+                        ${event.status}
+                    </span>
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                    <div class="flex items-center gap-2 text-blue-600">
+                        <a href="#" class="hover:underline">View</a>
+                        <span class="text-slate-300">|</span>
+                        <a href="#" class="hover:underline">Edit</a>
+                        <span class="text-slate-300">|</span>
+                        <a href="#" class="hover:underline">Delete</a>
+                    </div>
+                </td>
+            `;
+            return row;
+        }
+
+        events.forEach(event => {
+            const eventRow = createEventRow(event);
+            tableBody.appendChild(eventRow);
+        });
+        document.getElementById("createEvent").addEventListener('click', function() {
+            window.location.href = "./create-event-page.html";
+        })
+    </script>
+</body>
+</html>

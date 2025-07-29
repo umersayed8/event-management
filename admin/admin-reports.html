@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently - Reports</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Applying Inter font to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            /* A slightly off-white background */
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- Main Container -->
+    <div class="flex flex-col min-h-screen">
+
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo and Nav -->
+                    <div class="flex items-center space-x-8">
+                        <a href="#" class="flex items-center space-x-2">
+                            <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                            <span class="text-xl font-bold text-gray-900">Evently</span>
+                        </a>
+                        <nav class="hidden md:flex items-center space-x-6">
+                            <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Dashboard</a>
+                            <a href="#"
+                                class="text-sm font-bold text-gray-900 border-b-2 border-gray-800 pb-1">Content</a>
+                        </nav>
+                    </div>
+                    <!-- Profile Icon -->
+                    <div class="flex items-center">
+                        <img class="h-9 w-9 rounded-full object-cover"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&q=60"
+                            alt="User profile">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900">Reports</h1>
+                <p class="text-gray-500 mt-1">Analyze platform performance and user activity with detailed reports.</p>
+            </div>
+
+            <!-- Platform Overview Stats -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Platform Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Stat Card 1 -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-1">Total Members</p>
+                        <p class="text-3xl font-bold text-gray-900">12,345</p>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-1">Active Members (Last 30 Days)</p>
+                        <p class="text-3xl font-bold text-gray-900">8,765</p>
+                    </div>
+                    <!-- Stat Card 3 -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <p class="text-sm text-gray-500 mb-1">New Members (Last 30 Days)</p>
+                        <p class="text-3xl font-bold text-gray-900">1,234</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engagement Metrics Charts -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Engagement Metrics</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Line Chart Card -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-md font-semibold text-gray-700">Member Engagement Over Time</h3>
+                        <p class="text-2xl font-bold text-green-600 mt-1">+15%</p>
+                        <p class="text-xs text-gray-500">Last 30 Days +15%</p>
+                        <div class="mt-4 h-48">
+                            <canvas id="memberEngagementChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Bar Chart Card -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-md font-semibold text-gray-700">Content Interactions</h3>
+                        <p class="text-2xl font-bold text-green-600 mt-1">+8%</p>
+                        <p class="text-xs text-gray-500">Last 30 Days +8%</p>
+                        <div class="mt-4 h-48">
+                            <canvas id="contentInteractionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Customization Form -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Report Customization</h2>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                    <form class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-end">
+                        <div class="md:col-span-1">
+                            <label for="report-type" class="block text-sm font-medium text-gray-700">Report Type</label>
+                            <select id="report-type" name="report-type"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option>Engagement</option>
+                                <option>Events</option>
+                                <option>Sponsors</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                            <input type="date" name="start-date" id="start-date"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
+                            <input type="date" name="end-date" id="end-date"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+                                Generate Report
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Recent Reports Table -->
+            <div>
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Recent Reports</h2>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Report Name</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Type</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Date Generated</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Engagement
+                                        Report - January 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Engagement</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-02-01</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Download</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Event
+                                        Participation Report - Q1 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Events</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-04-01</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Download</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Sponsor
+                                        Performance Report - 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sponsors</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-01-15</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Download</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Member Engagement Chart (Line) ---
+            const ctxLine = document.getElementById('memberEngagementChart').getContext('2d');
+            const memberEngagementChart = new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Engagement',
+                        data: [65, 59, 80, 81, 56, 95],
+                        fill: false,
+                        borderColor: '#4a5568', // gray-700
+                        tension: 0.4,
+                        pointRadius: 0, // Hide points
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { display: false },
+                            grid: { display: false, drawBorder: false }
+                        },
+                        x: {
+                            ticks: { color: '#6b7280' }, // gray-500
+                            grid: { display: false, drawBorder: false }
+                        }
+                    }
+                }
+            });
+
+            // --- Content Interactions Chart (Bar) ---
+            const ctxBar = document.getElementById('contentInteractionsChart').getContext('2d');
+            const contentInteractionsChart = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Likes', 'Comments', 'Shares', 'Posts'],
+                    datasets: [{
+                        label: 'Interactions',
+                        data: [120, 80, 45, 90],
+                        backgroundColor: [
+                            '#e5e7eb', // gray-200
+                            '#e5e7eb',
+                            '#e5e7eb',
+                            '#e5e7eb'
+                        ],
+                        borderRadius: 4,
+                        barPercentage: 0.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { display: false },
+                            grid: { display: false, drawBorder: false }
+                        },
+                        x: {
+                            ticks: { color: '#6b7280' }, // gray-500
+                            grid: { display: false, drawBorder: false }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
