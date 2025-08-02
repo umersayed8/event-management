@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users - Evently</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Using a more modern font for a closer match to the image */
         @import url('https://rsms.me/inter/inter.css');
         html { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- Header -->
     <header class="bg-white border-b border-slate-200">
         <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
-            <!-- Left Side: Logo and Nav -->
             <div class="flex items-center gap-12">
-                <a href="#" class="flex items-center space-x-2">
+                <a href="./admin-dashboard.html" class="flex items-center space-x-2">
                     <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -30,42 +26,31 @@
                     <span class="text-xl font-bold text-gray-900">Evently</span>
                 </a>
                 <nav class="hidden items-center gap-8 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Content</a>
-                    <a href="#" class="text-sm font-medium text-blue-600 font-semibold">Users</a>
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Settings</a>
+                    <a href="./admin-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                    <a href="./admin-users.html" class="text-sm font-medium text-blue-600 font-semibold">Users</a>
                 </nav>
             </div>
-            <!-- Right Side: Profile Icon -->
             <div class="flex items-center">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-teal-500 text-sm font-bold text-white">
-                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
-                </div>
+                <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="mx-auto max-w-full px-6 py-8 lg:px-8">
-        <!-- Page Header -->
         <div class="mb-8">
             <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Users</h1>
             <p class="mt-1 text-base text-slate-500">Manage all users on the platform</p>
         </div>
 
-        <!-- Search Bar -->
         <div class="mt-8">
             <div class="relative">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                    <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                    </svg>
+                    <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
                 </div>
-                <input type="search" name="search" id="search" class="block w-full max-w-md rounded-lg border-0 bg-slate-100 py-3 pl-11 pr-4 text-slate-900 ring-1 ring-inset ring-transparent placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm" placeholder="Search users">
+                <input type="search" name="search" id="search-input" class="block w-full max-w-md rounded-lg border-0 bg-slate-100 py-3 pl-11 pr-4 text-slate-900 ring-1 ring-inset ring-transparent placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm" placeholder="Search users by name or email">
             </div>
         </div>
 
-        <!-- Users Table -->
         <div class="mt-6 flow-root">
             <div class="-mx-6 -my-2 overflow-x-auto lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -73,7 +58,7 @@
                         <table class="min-w-full divide-y divide-slate-200">
                             <thead class="bg-white">
                                 <tr>
-                                    <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Username</th>
+                                    <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Name</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Email</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Join Date</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Status</th>
@@ -82,8 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200 bg-white" id="users-table-body">
-                                <!-- Rows will be inserted here by JavaScript -->
-                            </tbody>
+                                </tbody>
                         </table>
                     </div>
                 </div>
@@ -92,64 +76,91 @@
     </main>
 
     <script>
-        // Data for the users table. In a real app, this would come from an API.
-        const users = [
-            { username: '@alex_smith', email: 'alex.smith@email.com', joinDate: '2023-01-15', status: 'Active', role: 'Standard User' },
-            { username: '@jane_doe', email: 'jane.doe@email.com', joinDate: '2022-11-20', status: 'Active', role: 'Admin' },
-            { username: '@mike_jones', email: 'mike.jones@email.com', joinDate: '2023-03-05', status: 'Inactive', role: 'Standard User' },
-            { username: '@sara_miller', email: 'sara.miller@email.com', joinDate: '2023-02-10', status: 'Active', role: 'Standard User' },
-            { username: '@david_brown', email: 'david.brown@email.com', joinDate: '2022-12-28', status: 'Active', role: 'Standard User' },
-            { username: '@emily_clark', email: 'emily.clark@email.com', joinDate: '2023-04-12', status: 'Inactive', role: 'Standard User' },
-            { username: '@chris_evans', email: 'chris.evans@email.com', joinDate: '2023-01-22', status: 'Active', role: 'Standard User' },
-            { username: '@olivia_white', email: 'olivia.white@email.com', joinDate: '2022-10-18', status: 'Active', role: 'Admin' },
-            { username: '@ryan_green', email: 'ryan.green@email.com', joinDate: '2023-03-10', status: 'Inactive', role: 'Standard User' },
-            { username: '@sophia_taylor', email: 'sophia.taylor@email.com', joinDate: '2023-02-25', status: 'Active', role: 'Standard User' },
-        ];
+    document.addEventListener('DOMContentLoaded', () => {
+        const tableBody = document.getElementById('users-table-body');
+        const searchInput = document.getElementById('search-input');
+        let debounceTimer;
 
-        // Define badge color classes for each status
         const statusColors = {
-            Active: 'bg-green-100 text-green-800',
-            Inactive: 'bg-red-100 text-red-800'
+            active: 'bg-green-100 text-green-800',
+            inactive: 'bg-red-100 text-red-800'
         };
 
-        const tableBody = document.getElementById('users-table-body');
+        const roleColors = {
+            admin: 'bg-indigo-100 text-indigo-800',
+            organizer: 'bg-blue-100 text-blue-800',
+            sponsor: 'bg-amber-100 text-amber-800',
+            ticket_buyer: 'bg-slate-100 text-slate-800'
+        };
 
-        // Function to create and append a table row
-        function createUserRow(user) {
-            const row = document.createElement('tr');
-            row.className = 'hover:bg-slate-50';
+        // Renders the list of users in the table
+        function renderUsers(users) {
+            tableBody.innerHTML = ''; // Clear existing table rows
+            if (users.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-slate-500">No users found.</td></tr>';
+                return;
+            }
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50';
 
-            const status = user.status;
-            const statusBadgeClass = statusColors[status] || 'bg-slate-100 text-slate-800';
-            const roleBadgeClass = 'bg-slate-100 text-slate-800';
+                const statusBadgeClass = statusColors[user.status] || 'bg-slate-100 text-slate-800';
+                const roleBadgeClass = roleColors[user.role] || 'bg-slate-100 text-slate-800';
+                const joinDate = new Date(user.created_at).toLocaleDateString();
+                const formattedRole = user.role.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-            row.innerHTML = `
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-slate-900">${user.username}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${user.email}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${user.joinDate}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm">
-                    <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${statusBadgeClass}">
-                        ${user.status}
-                    </span>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm">
-                     <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${roleBadgeClass}">
-                        ${user.role}
-                    </span>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium">
-                    <a href="#" class="text-blue-600 hover:text-blue-800">View</a>
-                </td>
-            `;
-            return row;
+                row.innerHTML = `
+                    <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-slate-900">${user.name}</td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${user.email}</td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${joinDate}</td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm">
+                        <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${statusBadgeClass}">
+                            ${user.status.charAt(0).toUpperCase() + user.status.slice(1)}
+                        </span>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm">
+                         <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${roleBadgeClass}">
+                            ${formattedRole}
+                        </span>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                        <a href="#" class="text-blue-600 hover:text-blue-800">View</a>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
         }
 
-        // Populate the table with user data
-        users.forEach(user => {
-            const userRow = createUserRow(user);
-            tableBody.appendChild(userRow);
+        // Fetches users from the API, optionally with a search term
+        function fetchUsers(searchTerm = '') {
+            const url = `http://localhost/event-management-backend/admin/get_all_users.php?search=${encodeURIComponent(searchTerm)}`;
+            
+            fetch(url, { credentials: 'include' })
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to fetch users.');
+                    return response.json();
+                })
+                .then(users => {
+                    renderUsers(users);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-red-500">Could not load users.</td></tr>';
+                });
+        }
+
+        // Listen for input on the search bar
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            // Debounce to prevent API calls on every keystroke
+            debounceTimer = setTimeout(() => {
+                fetchUsers(e.target.value);
+            }, 300);
         });
 
+        // Initial load of all users
+        fetchUsers();
+    });
     </script>
 </body>
 </html>

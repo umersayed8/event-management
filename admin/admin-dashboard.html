@@ -5,44 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evently Dashboard</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Feather Icons for simple icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        /* Use Inter as the default font */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
-            /* A light gray similar to the image */
         }
-
         .sidebar-link {
             display: flex;
             align-items: center;
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             color: #4b5563;
-            /* text-gray-600 */
             font-weight: 500;
         }
-
         .sidebar-link:hover {
             background-color: #e5e7eb;
-            /* bg-gray-200 */
         }
-
         .sidebar-link.active {
             background-color: #f3f4f6;
-            /* bg-gray-100 */
             color: #111827;
-            /* text-gray-900 */
             font-weight: 600;
         }
     </style>
@@ -51,7 +38,6 @@
 <body class="text-gray-800">
 
     <div class="flex h-screen bg-white">
-        <!-- Sidebar -->
         <aside class="w-64 flex-shrink-0 border-r border-gray-200 flex flex-col">
             <div class="h-16 flex items-center px-6">
                 <a href="#" class="flex items-center space-x-2">
@@ -99,137 +85,148 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="flex-1 overflow-y-auto bg-gray-50">
             <div class="p-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
+                <h1 id="welcome-message" class="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
 
-                <!-- Stat Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <div class="bg-gray-100 p-6 rounded-lg">
                         <p class="text-sm text-gray-600">Total Users</p>
-                        <p class="text-3xl font-semibold text-gray-900">1,234</p>
+                        <p id="total-users-stat" class="text-3xl font-semibold text-gray-900">0</p>
                     </div>
                     <div class="bg-gray-100 p-6 rounded-lg">
                         <p class="text-sm text-gray-600">Events</p>
-                        <p class="text-3xl font-semibold text-gray-900">567</p>
+                        <p id="total-events-stat" class="text-3xl font-semibold text-gray-900">0</p>
                     </div>
                     <div class="bg-gray-100 p-6 rounded-lg">
                         <p class="text-sm text-gray-600">Revenue</p>
-                        <p class="text-3xl font-semibold text-gray-900">$89,012</p>
+                        <p id="total-revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p>
                     </div>
                     <div class="bg-gray-100 p-6 rounded-lg">
                         <p class="text-sm text-gray-600">Tickets Sold</p>
-                        <p class="text-3xl font-semibold text-gray-900">34,567</p>
+                        <p id="total-tickets-sold-stat" class="text-3xl font-semibold text-gray-900">0</p>
                     </div>
                 </div>
 
-                <!-- Overview Section -->
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Chart 1: User Growth -->
-                        <div class="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 class="font-semibold text-gray-800">User Growth</h3>
-                            <p class="text-2xl font-bold text-gray-900 mt-1">+12%</p>
-                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+12%</span></p>
-                            <div class="h-48 mt-4">
-                                <canvas id="userGrowthChart1"></canvas>
-                            </div>
-                        </div>
-                        <!-- Chart 2: Ticket Sales Trend -->
-                        <div class="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 class="font-semibold text-gray-800">Ticket Sales Trend</h3>
-                            <p class="text-2xl font-bold text-gray-900 mt-1">+8%</p>
-                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+8%</span></p>
-                            <div class="h-48 mt-4">
-                                <canvas id="ticketSalesChart1"></canvas>
-                            </div>
-                        </div>
-                        <!-- Chart 3: User Growth (Duplicate) -->
-                        <div class="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 class="font-semibold text-gray-800">Event Frequency</h3>
-                            <p class="text-2xl font-bold text-gray-900 mt-1">+7%</p>
-                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+9%</span></p>
-                            <div class="h-48 mt-4">
-                                <canvas id="userGrowthChart2"></canvas>
-                            </div>
-                        </div>
-                        <!-- Chart 4: Ticket Sales Trend (Duplicate) -->
-                        <div class="bg-white p-6 rounded-lg border border-gray-200">
-                            <h3 class="font-semibold text-gray-800">Sponsor Funds</h3>
-                            <p class="text-2xl font-bold text-gray-900 mt-1">+10%</p>
-                            <p class="text-sm text-gray-500">Last 30 Days <span class="text-green-500">+4%</span></p>
-                            <div class="h-48 mt-4">
-                                <canvas id="ticketSalesChart2"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800">User Growth</h3>
+            <div class="h-48 mt-4">
+                <canvas id="userGrowthChart1"></canvas>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800">Ticket Sales Trend</h3>
+            <div class="h-48 mt-4">
+                <canvas id="ticketSalesChart1"></canvas>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800">Event Frequency</h3>
+            <div class="h-48 mt-4">
+                <canvas id="userGrowthChart2"></canvas>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="font-semibold text-gray-800">Sponsor Funds</h3>
+            <div class="h-48 mt-4">
+                <canvas id="ticketSalesChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
             </div>
         </main>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Feather Icons
-            feather.replace();
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Feather Icons
+        feather.replace();
 
-            // --- Chart.js Configuration ---
+        // --- FETCH ADMIN STATS (no changes here) ---
+        fetch('http://localhost/event-management-backend/admin/get_admin_stats.php', {
+            credentials: 'include'
+        })
+        .then(response => {
+            if (!response.ok) {
+                window.location.href = '../login-page.html';
+                throw new Error('Admin authentication failed.');
+            }
+            return response.json();
+        })
+        .then(stats => {
+            document.getElementById('welcome-message').textContent = `Welcome, ${stats.admin_name}`;
+            document.getElementById('total-users-stat').textContent = stats.total_users.toLocaleString('en-US');
+            document.getElementById('total-events-stat').textContent = stats.total_events.toLocaleString('en-US');
+            document.getElementById('total-revenue-stat').textContent = `$${stats.total_revenue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            document.getElementById('total-tickets-sold-stat').textContent = stats.total_tickets_sold.toLocaleString('en-US');
+        })
+        .catch(error => {
+            console.error('Error fetching admin stats:', error);
+        });
 
-            // Common data and options for the line charts
-            const chartData = {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        // --- Chart.js Configuration ---
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { enabled: true, intersect: false, mode: 'index' } },
+            scales: {
+                x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
+                y: { grid: { display: false }, ticks: { display: false }, border: { display: false } }
+            }
+        };
+
+        const createChart = (canvasId, chartData, options) => {
+            const ctx = document.getElementById(canvasId)?.getContext('2d');
+            if (ctx) {
+                new Chart(ctx, { type: 'line', data: chartData, options: options });
+            }
+        };
+        
+        // --- NEW: FETCH DYNAMIC DATA FOR USER GROWTH CHART ---
+        fetch('http://localhost/event-management-backend/admin/get_user_growth_data.php', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(userGrowth => {
+            const userGrowthChartData = {
+                labels: userGrowth.labels, // Use dynamic labels
                 datasets: [{
-                    label: 'Trend',
-                    data: [65, 59, 80, 81, 56, 95, 70, 65, 59, 80, 81, 56, 95, 70].slice(0, 7), // Example data
+                    label: 'New Users',
+                    data: userGrowth.data,  // Use dynamic data
                     fill: false,
-                    borderColor: '#6366f1', // indigo-500
+                    borderColor: '#6366f1',
                     tension: 0.4,
-                    pointRadius: 0,
+                    pointRadius: 2,
                     borderWidth: 2,
                 }]
             };
+            createChart('userGrowthChart1', userGrowthChartData, chartOptions);
+        })
+        .catch(error => console.error('Error fetching user growth data:', error));
 
-            const chartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: false }
-                },
-                scales: {
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#9ca3af' } // gray-400
-                    },
-                    y: {
-                        grid: { display: false },
-                        ticks: { display: false },
-                        border: { display: false }
-                    }
-                }
-            };
 
-            // --- Create Charts ---
-
-            // Function to create a new chart
-            const createChart = (canvasId, data, options) => {
-                const ctx = document.getElementById(canvasId).getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: data,
-                    options: options
-                });
-            };
-
-            // Create all four charts using the same configuration
-            createChart('userGrowthChart1', chartData, chartOptions);
-            createChart('ticketSalesChart1', chartData, chartOptions);
-            createChart('userGrowthChart2', chartData, chartOptions);
-            createChart('ticketSalesChart2', chartData, chartOptions);
-        });
-    </script>
+        // --- DUMMY DATA FOR OTHER CHARTS (for now) ---
+        const dummyChartData = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Trend',
+                data: [12, 19, 3, 5, 2, 3, 9],
+                fill: false,
+                borderColor: '#6366f1',
+                tension: 0.4,
+                pointRadius: 2,
+                borderWidth: 2,
+            }]
+        };
+        createChart('ticketSalesChart1', dummyChartData, chartOptions);
+        createChart('userGrowthChart2', dummyChartData, chartOptions);
+        createChart('ticketSalesChart2', dummyChartData, chartOptions);
+    });
+</script>
 </body>
 
 </html>

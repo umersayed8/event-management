@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart - Evently</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Using a more modern font for a closer match to the image */
@@ -14,10 +13,8 @@
 </head>
 <body class="bg-slate-50">
 
-    <!-- Header -->
     <header class="bg-white">
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-            <!-- Left Side: Logo -->
             <div class="flex items-center gap-12">
                 <a href="#" class="flex items-center space-x-2">
                     <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -30,7 +27,6 @@
                     <span class="text-xl font-bold text-gray-900">Evently</span>
                 </a>
             </div>
-            <!-- Right Side: Nav & Actions -->
             <div class="flex items-center gap-8">
                 <nav class="hidden items-center gap-8 md:flex">
                     <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
@@ -49,10 +45,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="mx-auto max-w-2xl px-6 py-12 lg:px-8">
-        
-        <!-- Breadcrumbs -->
         <nav class="text-sm font-medium text-slate-500">
             <a href="#" class="hover:underline">Events</a>
             <span class="mx-2">/</span>
@@ -62,34 +55,30 @@
         <h1 class="mt-4 text-3xl font-bold tracking-tight text-slate-900">Your Cart</h1>
 
         <div class="mt-10">
-            <!-- Cart Item -->
             <div class="flex justify-between items-start">
                 <div>
-                    <h2 class="font-semibold text-slate-800">Indie Rock Night</h2>
-                    <p class="mt-1 text-sm text-slate-500">The Echo - Los Angeles, CA</p>
-                    <p class="text-sm text-slate-500">Sat, Jul 20 - 7:00 PM</p>
+                    <h2 id="event-title" class="font-semibold text-slate-800"></h2>
+                    <p id="event-location" class="mt-1 text-sm text-slate-500"></p>
+                    <p id="event-date" class="text-sm text-slate-500"></p>
                 </div>
-                <p class="font-semibold text-slate-800">$25</p>
+                <p id="ticket-price" class="font-semibold text-slate-800"></p>
             </div>
             
-            <!-- Subtotal Section -->
             <div class="mt-8 border-t border-slate-200 pt-8 space-y-4">
-                <h3 class="text-lg font-semibold text-slate-900 sr-only">Subtotal</h3>
                 <div class="flex justify-between text-base text-slate-600">
-                    <span>Tickets</span>
-                    <span>$25.00</span>
+                    <span id="ticket-label"></span>
+                    <span id="subtotal-price"></span>
                 </div>
                 <div class="flex justify-between text-base text-slate-600">
                     <span>Fees</span>
-                    <span>$2.50</span>
+                    <span id="fees-price"></span>
                 </div>
                 <div class="flex justify-between text-base font-semibold text-slate-900">
                     <span>Total</span>
-                    <span>$27.50</span>
+                    <span id="total-price"></span>
                 </div>
             </div>
 
-            <!-- Checkout Button -->
             <div class="mt-10">
                 <button type="button" class="w-full rounded-lg bg-blue-600 px-6 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-blue-700" id="checkout">
                     Checkout
@@ -97,10 +86,57 @@
             </div>
         </div>
     </main>
+
     <script>
-        document.getElementById('checkout').addEventListener('click', function() {
-            window.location.href = "./ticket-buyer-payment.html";
-        })
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const ticketId = params.get('ticket_id');
+
+            if (!ticketId) {
+                document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Ticket ID not found.</h1>';
+                return;
+            }
+
+            // Fetch the details for this specific ticket purchase
+            fetch(`http://localhost/event-management-backend/tickets/get_ticket_details.php?ticket_id=${ticketId}`, {
+                credentials: 'include' // Important for session-based authentication
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error || 'Could not load ticket details.') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Populate the page with the fetched data
+                const subtotal = parseFloat(data.amount_paid);
+                // For demonstration, we'll calculate a 10% fee. In a real app, this might come from the server.
+                const fees = subtotal * 0.10; 
+                const total = subtotal + fees;
+                const eventDate = new Date(data.event_date);
+
+                document.getElementById('event-title').textContent = data.event_title;
+                document.getElementById('event-location').textContent = data.event_location;
+                document.getElementById('event-date').textContent = `${eventDate.toDateString()} · ${eventDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                
+                document.getElementById('ticket-label').textContent = `Tickets (${data.quantity})`;
+                document.getElementById('ticket-price').textContent = `$${subtotal.toFixed(2)}`;
+                
+                document.getElementById('subtotal-price').textContent = `$${subtotal.toFixed(2)}`;
+                document.getElementById('fees-price').textContent = `$${fees.toFixed(2)}`;
+                document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+            })
+            .catch(error => {
+                console.error('Error fetching ticket details:', error);
+                document.querySelector('main').innerHTML = `<h1 class="text-center text-red-600 font-bold text-2xl">${error.message}</h1>`;
+            });
+
+            // The checkout button would eventually lead to a payment gateway
+            document.getElementById('checkout').addEventListener('click', function() {
+                window.location.href = `./ticket-buyer-payment.html?ticket_id=${ticketId}`;
+                // In a real application, you would integrate with Stripe, PayPal, etc. here.
+            });
+        });
     </script>
 </body>
 </html>

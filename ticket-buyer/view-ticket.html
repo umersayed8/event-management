@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Tickets - Evntly</title>
+    <title>Your Tickets - Evently</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,37 +14,27 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Main Header -->
     <header class="bg-white border-b border-gray-200">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-8">
-                    <a href="#" class="flex items-center space-x-2">
-                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-900">Evently</span>
-                </a>
+                    <a href="./ticket-buyer-dashboard.html" class="flex items-center space-x-2">
+                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span class="text-xl font-bold text-gray-900">Evently</span>
+                    </a>
                 </div>
                 <div class="flex items-center">
                     <div class="flex items-baseline space-x-4">
-                            <a href="./user-dashboard.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-900">Home</a>
-                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-900">Explore</a>
-                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 bg-gray-100">My Events</a>
-                        </div>
-                    <div class="mr-4">
-                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
-                            </div>
-                            <input type="text" placeholder="Search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
+                        <a href="./ticket-buyer-dashboard.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-900">Explore</a>
+                        <a href="./view-ticket.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 bg-gray-100">My Tickets</a>
                     </div>
-                    <img class="h-8 w-8 rounded-full" src="https://placehold.co/40x40/EFEFEF/333333?text=A" alt="User Avatar">
+                    <img class="ml-6 h-8 w-8 rounded-full" src="https://placehold.co/40x40/EFEFEF/333333?text=A" alt="User Avatar">
                 </div>
             </div>
         </nav>
@@ -53,37 +43,73 @@
     <main class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-gray-900">Your Tickets</h1>
 
-        <div class="mt-8 space-y-8">
-            <!-- Ticket Card 1 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div class="md:flex">
-                    <div class="md:flex-shrink-0">
-                        <img class="h-48 w-full object-cover md:w-48" src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?q=80&w=2070&auto=format&fit=crop" alt="Summer Music Festival">
-                    </div>
-                    <div class="p-8">
-                        <h2 class="text-2xl font-bold text-gray-900">Summer Music Festival</h2>
-                        <p class="mt-1 text-md text-gray-600">Sat, Jul 20 · 7:00 PM · The Grand Theater</p>
-                        <p class="mt-4 text-gray-500">Enjoy a night of live music with top artists. Doors open at 6:00 PM.</p>
-                    </div>
-                </div>
+        <div id="ticket-list-container" class="mt-8 space-y-8">
             </div>
-
-            <!-- Ticket Card 2 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div class="md:flex">
-                    <div class="md:flex-shrink-0">
-                        <img class="h-48 w-full object-cover md:w-48" src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=1974&auto=format&fit=crop" alt="Tech Conference 2024">
-                    </div>
-                    <div class="p-8">
-                        <h2 class="text-2xl font-bold text-gray-900">Tech Conference 2024</h2>
-                        <p class="mt-1 text-md text-gray-600">Fri, Aug 15 · 8:30 PM · City Arena</p>
-                        <p class="mt-4 text-gray-500">Explore the latest in technology and innovation. Keynote speakers and workshops available.</p>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketListContainer = document.getElementById('ticket-list-container');
+
+            // Fetch the user's confirmed tickets from the backend
+            fetch('http://localhost/event-management-backend/tickets/get_my_tickets.php', {
+                credentials: 'include' // Important for session-based authentication
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // This could happen if the user is not logged in
+                    return response.json().then(err => { throw new Error(err.error || 'Could not load tickets.') });
+                }
+                return response.json();
+            })
+            .then(tickets => {
+                if (tickets.length === 0) {
+                    ticketListContainer.innerHTML = '<p class="text-center text-gray-500">You have not purchased any tickets yet.</p>';
+                    return;
+                }
+
+                // Clear container and create a card for each ticket
+                ticketListContainer.innerHTML = '';
+                tickets.forEach(ticket => {
+                    const ticketCard = createTicketCard(ticket);
+                    ticketListContainer.appendChild(ticketCard);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching tickets:', error);
+                ticketListContainer.innerHTML = `<p class="text-center text-red-600">${error.message}</p>`;
+            });
+
+            // Function to create the HTML for a single ticket card
+            function createTicketCard(ticket) {
+                const card = document.createElement('a');
+                // Each card links to the specific ticket view page
+                card.href = `./your-ticket.html?ticket_id=${ticket.ticket_id}`;
+                card.className = 'block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300';
+
+                const eventDate = new Date(ticket.date);
+                const formattedDate = `${eventDate.toDateString()} · ${eventDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                
+                // Use a fallback image if the event doesn't have one
+                const imageUrl = ticket.banner_image 
+                    ? `http://localhost/event-management-backend/${ticket.banner_image}` 
+                    : 'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop';
+
+                card.innerHTML = `
+                    <div class="md:flex">
+                        <div class="md:flex-shrink-0">
+                            <img class="h-48 w-full object-cover md:w-48" src="${imageUrl}" alt="${ticket.title}">
+                        </div>
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold text-gray-900">${ticket.title}</h2>
+                            <p class="mt-1 text-md text-gray-600">${formattedDate} · ${ticket.location}</p>
+                            <p class="mt-4 text-blue-600 font-semibold">View Ticket &rarr;</p>
+                        </div>
+                    </div>
+                `;
+                return card;
+            }
+        });
+    </script>
 </body>
 </html>

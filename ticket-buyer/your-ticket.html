@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Ticket - Evently</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Using a more modern font for a closer match to the image */
         @import url('https://rsms.me/inter/inter.css');
-        html { font-family: 'Inter', sans-serif; }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
     </style>
 </head>
+
 <body class="bg-slate-50">
 
-    <!-- Header -->
     <header class="bg-white">
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-            <!-- Left Side: Logo -->
             <div class="flex items-center gap-12">
                 <a href="./ticket-buyer-dashboard.html" class="flex items-center space-x-2">
                     <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -30,75 +32,119 @@
                     <span class="text-xl font-bold text-gray-900">Evently</span>
                 </a>
             </div>
-            <!-- Right Side: Nav & Actions -->
             <div class="flex items-center gap-8">
                 <nav class="hidden items-center gap-8 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="./ticket-buyer-dashboard.html"
+                        class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
                     <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Profile</a>
                 </nav>
                 <div class="flex items-center gap-5">
-                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                        alt="User avatar" />
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
-        
+
         <h1 class="text-3xl font-bold tracking-tight text-slate-900">Your Ticket</h1>
 
         <div class="mt-8 overflow-hidden rounded-lg bg-white shadow">
-            <!-- Event Info Header -->
             <div class="p-6">
                 <div class="flex flex-col items-start gap-6 sm:flex-row">
-                    <img class="h-40 w-full rounded-md object-cover sm:w-48" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Band performing on stage">
+                    <img id="event-image" class="h-40 w-full rounded-md object-cover sm:w-48" src="" alt="Event Image">
                     <div class="flex-1">
-                        <h2 class="text-2xl font-bold text-slate-900">Indie Rock Night</h2>
-                        <p class="mt-1 text-base text-slate-600">Fri, Jul 12 · 8:00 PM · The Underground</p>
+                        <h2 id="event-title" class="text-2xl font-bold text-slate-900"></h2>
+                        <p id="event-details" class="mt-1 text-base text-slate-600"></p>
                     </div>
                 </div>
             </div>
 
-            <!-- Ticket Details -->
             <div class="border-t border-slate-200 px-6 py-6">
                 <h3 class="text-lg font-semibold text-slate-900">Ticket Details</h3>
                 <div class="mt-4 space-y-4">
                     <div class="flex justify-between">
                         <span class="text-sm text-slate-600">Ticket Type</span>
-                        <span class="text-sm font-medium text-slate-900">$25</span>
+                        <span id="ticket-price" class="text-sm font-medium text-slate-900"></span>
                     </div>
                     <div class="flex justify-between">
-                         <span class="text-sm text-slate-600">General Admission</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-sm text-slate-600">Seat</span>
-                        <span class="text-sm font-medium text-slate-900">A1-12</span>
-                    </div>
-                     <div class="flex justify-between">
-                        <span class="text-sm text-slate-600">Section A, Row 1, Seat 12</span>
+                        <span id="ticket-type-name" class="text-sm text-slate-600"></span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-sm text-slate-600">Ticket Holder</span>
-                        <span class="text-sm font-medium text-slate-900">Sophia Carter</span>
-                    </div>
-                     <div class="flex justify-between">
-                        <span class="text-sm text-slate-600">Sophia Carter</span>
+                        <span id="ticket-holder" class="text-sm font-medium text-slate-900"></span>
                     </div>
                 </div>
             </div>
 
-            <!-- QR Code Section -->
             <div class="border-t border-slate-200 bg-amber-50 p-6 sm:p-10">
-                 <h3 class="text-lg font-semibold text-slate-900">QR Code</h3>
-                 <div class="mt-4 flex justify-center">
+                <h3 class="text-lg font-semibold text-slate-900">QR Code</h3>
+                <div class="mt-4 flex justify-center">
                     <div class="rounded-lg bg-white p-4 shadow-md">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Event:IndieRockNight;Ticket:A1-12;Holder:SophiaCarter" alt="Event Ticket QR Code">
+                        <img id="qr-code-image" src="" alt="Event Ticket QR Code">
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const ticketId = params.get('ticket_id');
+
+            if (!ticketId) {
+                document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Ticket information not found.</h1>';
+                return;
+            }
+
+            // Fetch the final, confirmed ticket details
+            fetch(`http://localhost/event-management-backend/tickets/get_ticket_details.php?ticket_id=${ticketId}`, {
+                credentials: 'include'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { throw new Error(err.error || 'Could not load ticket.') });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const eventDate = new Date(data.event_date);
+                    const pricePerTicket = parseFloat(data.amount_paid) / parseInt(data.quantity);
+
+                    // Populate Header
+                    document.getElementById('event-title').textContent = data.event_title;
+                    document.getElementById('event-details').textContent = `${eventDate.toDateString()} · ${eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · ${data.event_location}`;
+                    // This would be the event banner image if you store it
+                    // This would be the event banner image if you store it
+                    const eventImage = document.getElementById('event-image');
+                    if (data.banner_image) {
+                        eventImage.src = `http://localhost/event-management-backend/${data.banner_image}`;
+                    } else {
+                        // Fallback image if no banner is set in the database
+                        eventImage.src = 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop';
+                    }
+
+                    // Populate Ticket Details
+                    document.getElementById('ticket-price').textContent = `$${pricePerTicket.toFixed(2)}`;
+                    document.getElementById('ticket-type-name').textContent = `General Admission (${data.quantity} ticket(s))`;
+                    document.getElementById('ticket-holder').textContent = data.ticket_holder_name;
+
+                    // Generate Dynamic QR Code
+                    const qrData = `Evently Ticket - ID: ${ticketId}, Event: ${data.event_title}, Holder: ${data.ticket_holder_name}`;
+                    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
+                    document.getElementById('qr-code-image').src = qrCodeUrl;
+
+                    // Update page title
+                    document.title = `Your Ticket for ${data.event_title}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching ticket:', error);
+                    document.querySelector('main').innerHTML = `<h1 class="text-center text-red-600 font-bold text-2xl">${error.message}</h1>`;
+                });
+        });
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Sponsorships - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="./organizer-dashboard.html" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <nav class="hidden items-center gap-8 md:flex">
+                <a href="./organizer-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                <a href="./organizer-sponsorships.html" class="text-sm font-semibold text-blue-600">Sponsorships</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900">Manage Sponsorships</h1>
+        <p class="mt-1 text-base text-slate-500">Review and respond to sponsorship proposals for your events.</p>
+
+        <div id="proposals-container" class="mt-8 space-y-6">
+            </div>
+    </main>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const proposalsContainer = document.getElementById('proposals-container');
+
+        // Fetch all proposals for the logged-in organizer
+        fetch('http://localhost/event-management-backend/sponsorships/get_sponsorship_proposals.php', {
+            credentials: 'include'
+        })
+        .then(response => {
+            if (!response.ok) {
+                window.location.href = '../login-page.html';
+                throw new Error('Authentication failed.');
+            }
+            return response.json();
+        })
+        .then(proposals => {
+            renderProposals(proposals);
+        })
+        .catch(error => {
+            console.error('Error fetching proposals:', error);
+            proposalsContainer.innerHTML = `<p class="text-red-600">${error.message}</p>`;
+        });
+
+        // Renders the proposal cards to the page
+        function renderProposals(proposals) {
+            proposalsContainer.innerHTML = '';
+            if (proposals.length === 0) {
+                proposalsContainer.innerHTML = `<p class="text-center text-gray-500 py-8">You have not received any sponsorship proposals yet.</p>`;
+                return;
+            }
+            proposals.forEach(proposal => {
+                const card = createProposalCard(proposal);
+                proposalsContainer.appendChild(card);
+            });
+        }
+        
+        // Creates the HTML for a single proposal card
+        function createProposalCard(proposal) {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-lg shadow-sm border border-gray-200 p-6';
+            
+            const statusColors = {
+                pending: 'bg-yellow-100 text-yellow-800',
+                accepted: 'bg-green-100 text-green-800',
+                rejected: 'bg-red-100 text-red-800'
+            };
+            const statusColor = statusColors[proposal.status] || 'bg-gray-100 text-gray-800';
+            const statusText = proposal.status.charAt(0).toUpperCase() + proposal.status.slice(1);
+
+            let actionButtonsHTML = '';
+            if (proposal.status === 'pending') {
+                actionButtonsHTML = `
+                    <div class="mt-4 flex gap-4">
+                        <button class="accept-btn flex-1 rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700" data-id="${proposal.sponsorship_id}">Accept</button>
+                        <button class="reject-btn flex-1 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700" data-id="${proposal.sponsorship_id}">Reject</button>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-sm font-medium text-gray-500">For Event: <span class="text-blue-600 font-semibold">${proposal.event_title}</span></p>
+                        <h2 class="text-xl font-bold text-gray-900 mt-1">Proposal from ${proposal.sponsor_name}</h2>
+                    </div>
+                    <span class="status-badge inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full ${statusColor}">${statusText}</span>
+                </div>
+                <p class="mt-4 text-gray-700 bg-gray-50 p-4 rounded-md">${proposal.proposal_text}</p>
+                <div class="action-buttons-container">${actionButtonsHTML}</div>
+            `;
+            return card;
+        }
+
+        // --- NEW: EVENT LISTENER FOR ACCEPT/REJECT BUTTONS ---
+        proposalsContainer.addEventListener('click', function(e) {
+            const target = e.target;
+            const isAccept = target.classList.contains('accept-btn');
+            const isReject = target.classList.contains('reject-btn');
+
+            if (isAccept || isReject) {
+                const sponsorshipId = target.dataset.id;
+                const newStatus = isAccept ? 'accepted' : 'rejected';
+                
+                updateProposalStatus(sponsorshipId, newStatus, target);
+            }
+        });
+
+        // Function to send the status update to the backend
+        function updateProposalStatus(sponsorshipId, status, button) {
+            fetch('http://localhost/event-management-backend/sponsorships/update_sponsorship_status.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sponsorship_id: sponsorshipId, status: status })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error) });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the UI on success
+                const card = button.closest('.bg-white');
+                const statusBadge = card.querySelector('.status-badge');
+                const buttonContainer = card.querySelector('.action-buttons-container');
+
+                // Update status badge
+                const newStatusText = status.charAt(0).toUpperCase() + status.slice(1);
+                const newColorClass = status === 'accepted' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+                statusBadge.textContent = newStatusText;
+                statusBadge.className = `status-badge inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full ${newColorClass}`;
+                
+                // Remove the action buttons
+                buttonContainer.innerHTML = '';
+            })
+            .catch(error => {
+                alert(`Error: ${error.message}`);
+            });
+        }
+    });
+</script>
+</body>
+</html>

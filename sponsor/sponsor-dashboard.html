@@ -10,35 +10,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Using Inter font as a base */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* A light gray similar to the image */
+            background-color: #f9fafb;
         }
     </style>
 </head>
 <body class="text-gray-800">
-
     <div class="flex h-screen">
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="flex justify-between items-center p-6 bg-white border-b border-gray-200">
                 <div class="flex items-center space-x-8">
                     <a href="#" class="flex items-center space-x-2">
-                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-900">Evently</span>
-                </a>
+                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                        <span class="text-xl font-bold text-gray-900">Evently</span>
+                    </a>
                     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
                         <a href="#" class="text-gray-900">Dashboard</a>
                         <a href="#" class="hover:text-gray-900">Sponsorships</a>
                         <a href="#" class="hover:text-gray-900">Events</a>
-                        <a href="#" class="hover:text-gray-900">Reports</a>
-                        <a href="#" class="hover:text-gray-900">Settings</a>
                     </nav>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -49,24 +45,24 @@
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6 md:p-8">
                 <div class="max-w-7xl mx-auto">
                     
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
+                    <h2 id="welcome-message" class="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Total Sponsorships</p>
-                            <p class="text-3xl font-semibold text-gray-900">125</p>
+                            <p class="text-sm text-gray-600">Proposals Sent</p>
+                            <p id="proposals-sent-stat" class="text-3xl font-semibold text-gray-900">0</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Total Events</p>
-                            <p class="text-3xl font-semibold text-gray-900">350</p>
+                            <p class="text-sm text-gray-600">Accepted Sponsorships</p>
+                            <p id="accepted-sponsorships-stat" class="text-3xl font-semibold text-gray-900">0</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-xl">
                             <p class="text-sm text-gray-600">Upcoming Events</p>
-                            <p class="text-3xl font-semibold text-gray-900">15</p>
+                            <p id="upcoming-events-stat" class="text-3xl font-semibold text-gray-900">0</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-xl">
                             <p class="text-sm text-gray-600">Revenue Generated</p>
-                            <p class="text-3xl font-semibold text-gray-900">$250,000</p>
+                            <p id="revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p>
                         </div>
                     </div>
 
@@ -79,24 +75,14 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Sponsorship Trends</h3>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                         <div class="bg-white p-6 rounded-xl border border-gray-200">
-                            <h4 class="font-semibold text-gray-800">Sponsorship Growth Over Time</h4>
-                            <p class="text-sm text-gray-500">Last 12 Months</p>
-                            <p class="text-2xl font-bold my-2">+15% <span class="text-sm font-medium text-green-600">this quarter</span></p>
-                            <div class="h-56">
-                                <canvas id="sponsorshipGrowthChart"></canvas>
-                            </div>
+                             <div class="h-56"><canvas id="sponsorshipGrowthChart"></canvas></div>
                         </div>
                         <div class="bg-white p-6 rounded-xl border border-gray-200">
-                            <h4 class="font-semibold text-gray-800">Revenue by Sponsorship Type</h4>
-                            <p class="text-sm text-gray-500">This Quarter</p>
-                            <p class="text-2xl font-bold my-2">+10%</p>
-                            <div class="h-56">
-                                <canvas id="revenueByTypeChart"></canvas>
-                            </div>
+                             <div class="h-56"><canvas id="revenueByTypeChart"></canvas></div>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Upcoming Events</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Your Upcoming Sponsored Events</h3>
                     <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <table class="w-full text-sm text-left">
                             <thead class="bg-gray-50 text-xs text-gray-600 uppercase">
@@ -104,64 +90,21 @@
                                     <th scope="col" class="px-6 py-4 font-medium">Event Name</th>
                                     <th scope="col" class="px-6 py-4 font-medium">Date</th>
                                     <th scope="col" class="px-6 py-4 font-medium">Location</th>
-                                    <th scope="col" class="px-6 py-4 font-medium">Sponsors</th>
-                                    <th scope="col" class="px-6 py-4 font-medium">Status</th>
+                                    <th scope="col" class="px-6 py-4 font-medium">Proposal Status</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-medium text-gray-900">Tech Conference 2024</td>
-                                    <td class="px-6 py-4">2024-07-15</td>
-                                    <td class="px-6 py-4">San Francisco, CA</td>
-                                    <td class="px-6 py-4">Acme Corp, Beta Inc</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-medium text-gray-900">Marketing Summit</td>
-                                    <td class="px-6 py-4">2024-08-20</td>
-                                    <td class="px-6 py-4">New York, NY</td>
-                                    <td class="px-6 py-4">Gamma Ltd</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-medium text-gray-900">Startup Expo</td>
-                                    <td class="px-6 py-4">2024-09-05</td>
-                                    <td class="px-6 py-4">Austin, TX</td>
-                                    <td class="px-6 py-4">Delta LLC, Epsilon Co</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-medium text-gray-900">Industry Forum</td>
-                                    <td class="px-6 py-4">2024-10-12</td>
-                                    <td class="px-6 py-4">Chicago, IL</td>
-                                    <td class="px-6 py-4">Zeta Group</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Confirmed</span>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4 font-medium text-gray-900">Innovation Workshop</td>
-                                    <td class="px-6 py-4">2024-11-18</td>
-                                    <td class="px-6 py-4">Seattle, WA</td>
-                                    <td class="px-6 py-4">Theta Inc</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Pending</span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="events-table-body" class="divide-y divide-gray-200">
+                                </tbody>
                         </table>
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- NAVIGATION ---
     document.querySelector('#eventListings').addEventListener('click', function() {
         window.location.href = "./sponsor-events-listing.html";
     });
@@ -171,107 +114,109 @@
     document.querySelector('#eventCalendar').addEventListener('click', function() {
         window.location.href = './sponsor-event-calendar.html';
     });
-</script>
-<script>
-    // Chart.js script to create the charts
 
-    // 1. Sponsorship Growth Chart (Line)
+    // --- DYNAMIC DATA ---
+    const welcomeMessageEl = document.getElementById('welcome-message');
+    const proposalsSentEl = document.getElementById('proposals-sent-stat');
+    const acceptedSponsorshipsEl = document.getElementById('accepted-sponsorships-stat');
+    const upcomingEventsEl = document.getElementById('upcoming-events-stat');
+    const revenueEl = document.getElementById('revenue-stat');
+    const tableBody = document.getElementById('events-table-body');
+
+    fetch('http://localhost/event-management-backend/sponsors/get_sponsor_dashboard_data.php', {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            window.location.href = '../login-page.html';
+            throw new Error('Authentication required.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        welcomeMessageEl.textContent = `Welcome, ${data.sponsor_name}`;
+        // Connect to new backend data points
+        proposalsSentEl.textContent = data.stats.proposals_sent;
+        acceptedSponsorshipsEl.textContent = data.stats.accepted_sponsorships;
+        upcomingEventsEl.textContent = data.stats.upcoming_events_count;
+        revenueEl.textContent = `$${data.stats.revenue_generated.toLocaleString('en-US')}`;
+        renderEventsTable(data.upcoming_events_list);
+    })
+    .catch(error => {
+        console.error('Error fetching dashboard data:', error);
+    });
+
+    function renderEventsTable(events) {
+        tableBody.innerHTML = '';
+        if (events.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">You have no upcoming sponsored events.</td></tr>`;
+            return;
+        }
+        const statusColors = {
+            pending: 'bg-yellow-100 text-yellow-800',
+            accepted: 'bg-green-100 text-green-800',
+            rejected: 'bg-red-100 text-red-800'
+        };
+        events.forEach(event => {
+            const formattedDate = new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const statusColor = statusColors[event.status] || 'bg-gray-100 text-gray-800';
+            const statusText = event.status.charAt(0).toUpperCase() + event.status.slice(1);
+            const row = `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900">${event.title}</td>
+                    <td class="px-6 py-4">${formattedDate}</td>
+                    <td class="px-6 py-4">${event.location}</td>
+                    <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full ${statusColor}">${statusText}</span>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+
+    // --- CHART.JS ---
     const growthCtx = document.getElementById('sponsorshipGrowthChart').getContext('2d');
-    const sponsorshipGrowthChart = new Chart(growthCtx, {
+    new Chart(growthCtx, {
         type: 'line',
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             datasets: [{
                 label: 'Sponsorships',
                 data: [65, 59, 80, 81, 56, 95, 70],
-                fill: false,
-                borderColor: '#9ca3af', // gray-400
-                tension: 0.4, // Makes the line smooth
-                pointRadius: 0 // Hides the points on the line
+                fill: false, borderColor: '#9ca3af', tension: 0.4, pointRadius: 0
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false // Hides the legend
-                },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                }
-            },
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
             scales: {
-                x: {
-                    grid: {
-                        display: false // Hides x-axis grid lines
-                    },
-                    border: {
-                        display: false // Hides x-axis line
-                    }
-                },
-                y: {
-                    grid: {
-                        display: false // Hides y-axis grid lines
-                    },
-                    ticks: {
-                        display: false // Hides y-axis labels
-                    },
-                    border: {
-                        display: false // Hides y-axis line
-                    }
-                }
+                x: { grid: { display: false }, border: { display: false } },
+                y: { grid: { display: false }, ticks: { display: false }, border: { display: false } }
             }
         }
     });
-
-    // 2. Revenue by Sponsorship Type Chart (Bar)
     const revenueCtx = document.getElementById('revenueByTypeChart').getContext('2d');
-    const revenueByTypeChart = new Chart(revenueCtx, {
+    new Chart(revenueCtx, {
         type: 'bar',
         data: {
             labels: ['Type A', 'Type B', 'Type C', 'Type D'],
             datasets: [{
                 label: 'Revenue',
                 data: [85, 65, 90, 75],
-                backgroundColor: '#e5e7eb', // gray-200
-                borderRadius: 4,
-                barPercentage: 0.5
+                backgroundColor: '#e5e7eb', borderRadius: 4, barPercentage: 0.5
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false // Hides the legend
-                }
-            },
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
             scales: {
-                x: {
-                    grid: {
-                        display: false // Hides x-axis grid lines
-                    },
-                     border: {
-                        display: false // Hides x-axis line
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        display: false // Hides y-axis grid lines
-                    },
-                    ticks: {
-                        display: false // Hides y-axis labels
-                    },
-                     border: {
-                        display: false // Hides y-axis line
-                    }
-                }
+                x: { grid: { display: false }, border: { display: false } },
+                y: { beginAtZero: true, grid: { display: false }, ticks: { display: false }, border: { display: false } }
             }
         }
     });
+});
 </script>
 
 </body>

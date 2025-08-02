@@ -113,22 +113,86 @@
   </main>
 
   <script>
-    document.getElementById('editEventForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('editEventForm');
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get('id');
 
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData.entries());
+        if (!eventId) {
+            document.querySelector('main').innerHTML = '<h1 class="text-3xl font-bold text-red-600">No Event ID Provided.</h1><p>Please return to the dashboard and select an event to edit.</p>';
+            return;
+        }
 
-      // Log the form data to the console
-      console.log('Form submitted:', data);
+        // --- PART 1: FETCH AND POPULATE EVENT DATA ---
+        fetch(`http://localhost/event-management-backend/events/get_event_details.php?id=${eventId}`, {
+                credentials: 'include' // Send session cookie for authentication
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not fetch event details.');
+                }
+                return response.json();
+            })
+            .then(event => {
+                // Populate the form with data from the server
+                document.getElementById('eventName').value = event.title;
+                document.getElementById('description').value = event.description;
+                document.getElementById('location').value = event.location;
+                document.getElementById('price').value = parseFloat(event.ticket_price).toFixed(2);
+                
+                // The 'lineup' field is not in your DB schema, you can add it or remove this line
+                // document.getElementById('lineup').value = event.lineup || '';
 
-      // In a real application, you would send this data to a server
-      // using fetch() or another AJAX method.
-      // For demonstration, we'll just show an alert.
-      // Note: alert() is used here for simplicity, in a real app a custom modal would be better.
-      alert('Event updated successfully!');
+                // Split DATETIME string (e.g., "2025-07-31 14:30:00") into date and time
+                if (event.date) {
+                    const [datePart, timePart] = event.date.split(' ');
+                    document.getElementById('date').value = datePart;
+                    // Format time to HH:mm
+                    document.getElementById('time').value = timePart.substring(0, 5);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.querySelector('main').innerHTML = `<h1 class="text-3xl font-bold text-red-600">Error</h1><p>${error.message}</p>`;
+            });
+
+        // --- PART 2: HANDLE FORM SUBMISSION ---
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                id: eventId,
+                title: document.getElementById('eventName').value,
+                description: document.getElementById('description').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                location: document.getElementById('location').value,
+                ticket_price: document.getElementById('price').value
+            };
+            
+            fetch('http://localhost/event-management-backend/events/update_event.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include', // Important for authentication
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.message) {
+                        alert(result.message);
+                        // Redirect back to the dashboard after successful update
+                        window.location.href = './organizer-dashboard.html';
+                    } else {
+                        alert(`Error: ${result.error || 'An unknown error occurred.'}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Submit Error:', error);
+                    alert('An error occurred while saving the event.');
+                });
+        });
     });
-  </script>
+</script>
 </body>
 
 </html>

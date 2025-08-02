@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white">
+        </header>
+
+    <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
+        
+        <div class="text-center">
+            <h1 id="event-title" class="text-4xl font-bold tracking-tight text-slate-900"></h1>
+            <p id="event-short-description" class="mt-3 max-w-2xl mx-auto text-lg text-slate-600"></p>
+        </div>
+
+        <div class="mt-10">
+            <img id="event-banner" class="w-full h-auto rounded-xl object-cover shadow-lg" src="" alt="">
+        </div>
+
+        <section class="mt-12">
+            <div class="rounded-lg border border-slate-200 bg-white p-8">
+                <div class="grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2">
+                    <div>
+                        <h3 class="text-sm font-medium text-slate-500">Date</h3>
+                        <p id="event-date" class="mt-1 font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-slate-500">Time</h3>
+                        <p id="event-time" class="mt-1 font-semibold text-slate-800"></p>
+                    </div>
+                    <div class="border-t border-slate-200 sm:col-span-2"></div>
+                    <div>
+                        <h3 class="text-sm font-medium text-slate-500">Location</h3>
+                        <p id="event-location" class="mt-1 font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-slate-500">Organizer</h3>
+                        <p id="event-organizer" class="mt-1 font-semibold text-slate-800"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-xl font-semibold text-slate-900">About the Event</h2>
+            <p id="event-long-description" class="mt-4 text-base leading-relaxed text-slate-700"></p>
+        </section>
+
+        <div class="mt-12">
+             <button type="button" class="w-full sm:w-auto rounded-lg bg-teal-600 px-8 py-3 text-base font-semibold text-white shadow-sm hover:bg-teal-700" id="proposeSponsorshipBtn">
+                Send Sponsorship Proposal
+            </button>
+        </div>
+        
+        <div id="proposal-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white">
+                <div class="mt-3 text-center">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Sponsorship Proposal</h3>
+                    <div class="mt-2 px-7 py-3">
+                        <p id="modal-event-title" class="text-sm text-gray-500 font-semibold"></p>
+                        <textarea id="proposal-text" class="mt-4 w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4" placeholder="Write your proposal here... (e.g., mention your brand, what you can offer, etc.)"></textarea>
+                    </div>
+                    <div class="items-center px-4 py-3">
+                        <button id="submit-proposal-btn" class="px-4 py-2 bg-teal-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            Submit Proposal
+                        </button>
+                        <button id="close-modal-btn" class="mt-2 px-4 py-2 bg-gray-200 text-gray-800 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get('id');
+
+        // Modal elements
+        const modal = document.getElementById('proposal-modal');
+        const proposeBtn = document.getElementById('proposeSponsorshipBtn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const submitProposalBtn = document.getElementById('submit-proposal-btn');
+        const proposalTextarea = document.getElementById('proposal-text');
+        const modalEventTitle = document.getElementById('modal-event-title');
+
+        if (!eventId) {
+            document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Event ID not found.</h1>';
+            return;
+        }
+        
+        // Fetch event details
+        fetch(`http://localhost/event-management-backend/events/get_public_event_details.php?id=${eventId}`)
+            .then(response => response.json())
+            .then(event => {
+                document.title = `${event.title} - Evently`;
+                document.getElementById('event-title').textContent = event.title;
+                document.getElementById('event-short-description').textContent = event.description.substring(0, 100) + '...';
+                document.getElementById('event-long-description').textContent = event.description;
+                document.getElementById('event-location').textContent = event.location;
+                document.getElementById('event-organizer').textContent = event.organizer_name;
+
+                const banner = document.getElementById('event-banner');
+                banner.src = event.banner_image ? `http://localhost/event-management-backend/${event.banner_image}` : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
+                banner.alt = event.title;
+
+                const eventDate = new Date(event.date);
+                document.getElementById('event-date').textContent = eventDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('event-time').textContent = eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+
+                modalEventTitle.textContent = `For: ${event.title}`;
+            })
+            .catch(error => console.error('Failed to load event:', error));
+
+        // --- Modal and Submission Logic ---
+
+        proposeBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        submitProposalBtn.addEventListener('click', () => {
+            const proposalText = proposalTextarea.value.trim();
+            if (!proposalText) {
+                alert('Please write a proposal message.');
+                return;
+            }
+
+            const submissionData = {
+                event_id: eventId,
+                proposal_text: proposalText
+            };
+
+            fetch('http://localhost/event-management-backend/sponsorships/propose_sponsorship.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(submissionData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error || 'Submission failed.') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.message);
+                modal.classList.add('hidden');
+                proposeBtn.disabled = true;
+                proposeBtn.textContent = 'Proposal Sent';
+            })
+            .catch(error => {
+                alert(`Error: ${error.message}`);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

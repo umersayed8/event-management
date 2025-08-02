@@ -135,9 +135,48 @@
         </form>
     </main>
     <script>
-        document.getElementById('payNow').addEventListener('click', function() {
-            window.location.href = "./ticket-buyer-payment-success.html";
-        })
-    </script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const ticketId = params.get('ticket_id');
+        const payNowBtn = document.getElementById('payNow');
+
+        if (!ticketId) {
+            payNowBtn.disabled = true;
+            payNowBtn.textContent = 'Invalid Ticket ID';
+            alert('Error: Ticket ID is missing from the URL.');
+            return;
+        }
+
+        payNowBtn.addEventListener('click', function() {
+            // Disable button to prevent multiple clicks
+            payNowBtn.disabled = true;
+            payNowBtn.textContent = 'Processing...';
+
+            // Send the ticket ID to the backend to "process" the payment
+            fetch('http://localhost/event-management-backend/tickets/process_payment.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include', // Important for authentication
+                body: JSON.stringify({ ticket_id: ticketId })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error || 'Payment failed.') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // On success, redirect to the success page
+                window.location.href = `./ticket-buyer-payment-success.html?ticket_id=${ticketId}`;
+            })
+            .catch(error => {
+                alert(`Error: ${error.message}`);
+                // Re-enable the button on failure
+                payNowBtn.disabled = false;
+                payNowBtn.textContent = 'Pay Now';
+            });
+        });
+    });
+</script>
 </body>
 </html>
