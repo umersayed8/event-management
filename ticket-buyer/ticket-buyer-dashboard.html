@@ -7,11 +7,12 @@
     <title>Explore Events - Evently</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Using a more modern font for a closer match to the image */
         @import url('https://rsms.me/inter/inter.css');
-
-        html {
-            font-family: 'Inter', sans-serif;
+        html { font-family: 'Inter', sans-serif; }
+        /* Style for the filled-in heart icon on a favorited event */
+        .favorite-btn.favorited svg {
+            fill: #ef4444; /* red-500 */
+            color: #ef4444; /* red-500 */
         }
     </style>
 </head>
@@ -32,29 +33,19 @@
                     <span class="text-xl font-bold text-gray-900">Evently</span>
                 </a>
                 <nav class="hidden items-center gap-8 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
-                    <a href="#" class="text-sm font-semibold text-blue-600">Explore</a>
+                    <a href="./ticket-buyer-dashboard.html" class="text-sm font-semibold text-blue-600">Explore</a>
                     <a href="./view-ticket.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Your
                         Ticket</a>
                 </nav>
             </div>
             <div class="flex items-center gap-5">
-                <button class="text-slate-400 hover:text-slate-600">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
+                <!-- <button class="text-slate-400 hover:text-slate-600">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                 </button>
                 <button class="text-slate-400 hover:text-slate-600">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5.98-6A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                    </svg>
-                </button>
-                <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                    alt="User avatar" />
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5.98-6A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                </button> -->
+                <a href="../general/profile.html"><img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" /></a>
             </div>
         </div>
     </header>
@@ -63,41 +54,28 @@
 
         <div class="relative">
             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-                <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clip-rule="evenodd" />
-                </svg>
+                <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
             </div>
-            <input type="search"
-                class="block w-full rounded-lg border-0 bg-slate-100 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-500 focus:ring-2 focus:ring-blue-500"
-                placeholder="Search for events, artists, venues">
+            <input type="search" id="search-input" class="block w-full rounded-lg border-0 bg-slate-100 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-500 focus:ring-2 focus:ring-blue-500" placeholder="Search for events by title or location">
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
             <div class="group transform cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-                <img class="w-full h-48 rounded-lg object-cover"
-                    src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                    alt="Live Music Festival">
+                <img class="w-full h-48 rounded-lg object-cover" src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1170&q=80" alt="Live Music Festival">
                 <div class="mt-4">
                     <h3 class="text-lg font-bold text-slate-900">Live Music Festival</h3>
                     <p class="mt-1 text-sm text-slate-600">Experience the energy of live music with top artists.</p>
                 </div>
             </div>
             <div class="group transform cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-                <img class="w-full h-48 rounded-lg object-cover"
-                    src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                    alt="Modern Art Exhibition">
+                <img class="w-full h-48 rounded-lg object-cover" src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1170&q=80" alt="Modern Art Exhibition">
                 <div class="mt-4">
                     <h3 class="text-lg font-bold text-slate-900">Modern Art Exhibition</h3>
                     <p class="mt-1 text-sm text-slate-600">Explore a diverse collection of contemporary art.</p>
                 </div>
             </div>
             <div class="group transform cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-                <img class="w-full h-48 rounded-lg object-cover"
-                    src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
-                    alt="Professional Sports Game">
+                <img class="w-full h-48 rounded-lg object-cover" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=735&q=80" alt="Professional Sports Game">
                 <div class="mt-4">
                     <h3 class="text-lg font-bold text-slate-900">Professional Sports Game</h3>
                     <p class="mt-1 text-sm text-slate-600">Cheer for your favorite team in a thrilling match.</p>
@@ -107,136 +85,158 @@
 
         <section class="mt-12">
             <div class="flex w-max items-center gap-2 rounded-lg bg-slate-100 p-1" id="event-tabs">
-                <button data-tab="upcoming"
-                    class="event-tab rounded-md px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">Upcoming
-                    Events</button>
-                <button data-tab="past"
-                    class="event-tab rounded-md bg-slate-800 px-4 py-2 text-sm font-semibold text-white shadow transition">Past
-                    Events</button>
-                <button data-tab="favorite"
-                    class="event-tab rounded-md px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">Favorite
-                    Events</button>
+                <button data-tab="upcoming" class="event-tab rounded-md bg-slate-800 px-4 py-2 text-sm font-semibold text-white shadow transition">Upcoming Events</button>
+                <button data-tab="past" class="event-tab rounded-md px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">Past Events</button>
+                <button data-tab="favorite" class="event-tab rounded-md px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">Favorite Events</button>
             </div>
 
             <div class="mt-8 space-y-10" id="event-list-container">
-            </div>
+                </div>
         </section>
-
     </main>
 
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- DATA ---
-            // In a real app, this data would be fetched from an API
-            const eventData = {
-                upcoming: [
-                    { category: 'Conference', title: 'AI & Future Tech Summit', details: 'Innovation Hall | Aug 15, 2025, 9:00 AM', image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80' },
-                    { category: 'Workshop', title: 'Digital Marketing Masterclass', details: 'Online | Sep 01, 2025, 11:00 AM', image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80' }
-                ],
-                past: [
-                    { category: 'Music', title: 'Pop Music Concert', details: 'Grand Arena | Jun 20, 2024, 7:00 PM', image: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' },
-                    { category: 'Theater', title: 'Broadway Show', details: 'City Theater | May 10, 2024, 8:00 PM', image: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' }
-                ],
-                favorite: [
-                    { category: 'Art', title: 'Impressionist Art Gala', details: 'The Modern Gallery | Apr 22, 2024, 6:00 PM', image: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&q=80' }
-                ]
-            };
-            
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.event-tab');
+    const eventListContainer = document.getElementById('event-list-container');
+    const searchInput = document.getElementById('search-input');
 
-            // --- DOM ELEMENTS ---
-            const tabs = document.querySelectorAll('.event-tab');
-            const eventListContainer = document.getElementById('event-list-container');
+    let allFetchedEvents = [];
+    let currentTab = 'upcoming';
+    let searchTerm = '';
+    let debounceTimer;
 
-            // --- FUNCTIONS ---
-            /**
-             * Creates the HTML for a single event item.
-             * @param {object} event - The event data object.
-             * @returns {string} - The HTML string for the event item.
-             */
-            function createEventHTML(event) {
-                return `
-                    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-3 animate-fade-in">
-                        <div class="lg:col-span-2">
-                            <p class="text-sm font-medium text-indigo-600">${event.category}</p>
-                            <h3 class="mt-1 text-2xl font-bold text-slate-900">${event.title}</h3>
-                            <p class="mt-1 text-sm text-slate-500">${event.details}</p>
-                            <a href="event-info.html" class="mt-4 inline-block rounded-md bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">View Details</a>
-                        </div>
-                        <div class="order-first lg:order-last">
-                            <img class="h-56 w-full rounded-lg object-cover" src="${event.image}" alt="${event.title}">
-                        </div>
-                    </div>
-                `;
-            }
+    // --- MAIN FUNCTION TO FETCH AND RENDER ---
+    function fetchAndRenderEvents() {
+        const fetchFilter = currentTab === 'favorite' ? '' : currentTab;
+        const url = `http://localhost/event-management-backend/events/get_dashboard_events.php?filter=${fetchFilter}&search=${encodeURIComponent(searchTerm)}`;
 
-            /**
-             * Renders events for a specific tab.
-             * @param {string} tabType - The type of tab ('upcoming', 'past', 'favorite').
-             */
-            function renderEvents(tabType) {
-                const eventsToRender = eventData[tabType] || [];
-                eventListContainer.innerHTML = ''; // Clear existing content
+        fetch(url, { credentials: 'include' })
+            .then(response => response.json())
+            .then(data => {
+                allFetchedEvents = data;
+                renderEvents();
+            })
+            .catch(error => {
+                console.error('Failed to load events:', error);
+                eventListContainer.innerHTML = '<p class="text-red-600">Failed to load events.</p>';
+            });
+    }
 
-                if (eventsToRender.length === 0) {
-                    eventListContainer.innerHTML = `<p class="text-slate-500">No ${tabType} events found.</p>`;
-                    return;
-                }
+    // --- RENDER FUNCTION ---
+    function renderEvents() {
+        eventListContainer.innerHTML = '';
+        
+        let eventsToRender = allFetchedEvents;
+        if (currentTab === 'favorite') {
+            eventsToRender = allFetchedEvents.filter(event => event.is_favorited);
+        }
 
-                eventsToRender.forEach(event => {
-                    eventListContainer.innerHTML += createEventHTML(event);
-                });
-            }
-            
-            /**
-             * Handles tab click events to update styles and render content.
-             * @param {Event} e - The click event object.
-             */
-            function handleTabClick(e) {
-                const clickedTab = e.currentTarget;
-                const tabType = clickedTab.dataset.tab;
-                
-                // Update tab styles
-                tabs.forEach(tab => {
-                    tab.classList.remove('bg-slate-800', 'text-white', 'shadow');
-                    tab.classList.add('text-slate-600');
-                });
-                
-                clickedTab.classList.add('bg-slate-800', 'text-white', 'shadow');
-                clickedTab.classList.remove('text-slate-600');
-                
-                // Render the corresponding events
-                renderEvents(tabType);
-            }
+        if (eventsToRender.length === 0) {
+            eventListContainer.innerHTML = `<p class="text-slate-500">No ${currentTab} events found.</p>`;
+            return;
+        }
 
-            // --- INITIALIZATION ---
-            // Add click listeners to all tabs
-            tabs.forEach(tab => tab.addEventListener('click', handleTabClick));
-
-            // Render the initial "past" events on page load
-            renderEvents('past');
-            
-            // Add a simple fade-in animation style
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-fade-in {
-                    animation: fadeIn 0.5s ease-in-out;
-                }
-            `;
-            document.head.appendChild(style);
+        eventsToRender.forEach(event => {
+            eventListContainer.innerHTML += createEventHTML(event);
         });
-    </script> -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.event-tab');
-            const eventListContainer = document.getElementById('event-list-container');
+    }
 
-            // Adds a simple fade-in effect to events
-            const style = document.createElement('style');
-            style.innerHTML = `
+    // --- HTML TEMPLATE FUNCTION ---
+    function createEventHTML(event) {
+        const eventDate = new Date(event.date);
+        const details = `${event.location} | ${eventDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+        const imageUrl = event.banner_image ? `http://localhost/event-management-backend/${event.banner_image}` : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
+        const favoritedClass = event.is_favorited ? 'favorited' : '';
+
+        return `
+            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-3 animate-fade-in">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-indigo-600">${event.category || 'General'}</p>
+                        <button class="favorite-btn p-2 rounded-full hover:bg-red-50 ${favoritedClass}" data-event-id="${event.id}">
+                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <h3 class="mt-1 text-2xl font-bold text-slate-900">${event.title}</h3>
+                    <p class="mt-1 text-sm text-slate-500">${details}</p>
+                    <a href="event-info.html?id=${event.id}" class="mt-4 inline-block rounded-md bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">View Details</a>
+                </div>
+                <div class="order-first lg:order-last">
+                    <img class="h-56 w-full rounded-lg object-cover" src="${imageUrl}" alt="${event.title}">
+                </div>
+            </div>
+        `;
+    }
+
+    // --- EVENT LISTENERS ---
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            currentTab = e.currentTarget.dataset.tab;
+            tabs.forEach(t => {
+                t.classList.remove('bg-slate-800', 'text-white', 'shadow');
+                t.classList.add('text-slate-600', 'hover:bg-slate-200');
+            });
+            e.currentTarget.classList.add('bg-slate-800', 'text-white', 'shadow');
+            e.currentTarget.classList.remove('text-slate-600', 'hover:bg-slate-200');
+            fetchAndRenderEvents();
+        });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            searchTerm = e.target.value;
+            fetchAndRenderEvents();
+        }, 300);
+    });
+
+    eventListContainer.addEventListener('click', function(e) {
+        const favoriteBtn = e.target.closest('.favorite-btn');
+        if (favoriteBtn) {
+            const eventId = favoriteBtn.dataset.eventId;
+            toggleFavorite(eventId, favoriteBtn);
+        }
+    });
+
+    // --- FAVORITE FUNCTIONALITY ---
+    function toggleFavorite(eventId, button) {
+        fetch('http://localhost/event-management-backend/events/toggle_favorite.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event_id: eventId })
+        })
+        .then(response => {
+            if (response.status === 401) {
+                alert('Please log in to favorite events.');
+                throw new Error('Unauthorized');
+            }
+            return response.json();
+        })
+        .then(data => {
+            button.classList.toggle('favorited', data.status === 'added');
+            const event = allFetchedEvents.find(e => e.id == eventId);
+            if (event) {
+                event.is_favorited = (data.status === 'added');
+            }
+            if (currentTab === 'favorite') {
+                renderEvents();
+            }
+        })
+        .catch(error => {
+            if (error.message !== 'Unauthorized') {
+                console.error('Error toggling favorite:', error);
+            }
+        });
+    }
+
+    // --- INITIALIZATION ---
+    fetchAndRenderEvents();
+
+    // Add animation style to the head
+    const style = document.createElement('style');
+    style.innerHTML = `
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -245,61 +245,9 @@
             animation: fadeIn 0.5s ease-in-out;
         }
     `;
-            document.head.appendChild(style);
-
-            function createEventHTML(event) {
-                return `
-            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-3 animate-fade-in">
-                <div class="lg:col-span-2">
-                    <p class="text-sm font-medium text-indigo-600">${event.category || 'General'}</p>
-                    <h3 class="mt-1 text-2xl font-bold text-slate-900">${event.title}</h3>
-                    <p class="mt-1 text-sm text-slate-500">${event.details}</p>
-                    <a href="event-info.html?id=${event.id}" class="mt-4 inline-block rounded-md bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">View Details</a>
-                </div>
-                <div class="order-first lg:order-last">
-                    <img class="h-56 w-full rounded-lg object-cover" src="${event.image}" alt="${event.title}">
-                </div>
-            </div>
-        `;
-            }
-
-            function renderEvents(events) {
-                eventListContainer.innerHTML = '';
-                if (events.length === 0) {
-                    eventListContainer.innerHTML = '<p class="text-slate-500">No events found.</p>';
-                    return;
-                }
-                events.forEach(event => {
-                    eventListContainer.innerHTML += createEventHTML(event);
-                });
-            }
-
-            async function fetchAndRenderEvents() {
-                try {
-                    const res = await fetch('http://localhost/event-management-backend/events/fetch_events.php');
-                    const data = await res.json();
-                    renderEvents(data);
-                } catch (err) {
-                    console.error('Failed to load events:', err);
-                    eventListContainer.innerHTML = '<p class="text-red-600">Failed to load events</p>';
-                }
-            }
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // update tab styles
-                    tabs.forEach(t => t.classList.remove('bg-slate-800', 'text-white', 'shadow'));
-                    tab.classList.add('bg-slate-800', 'text-white', 'shadow');
-
-                    // fetch all events (optional: implement filtering later)
-                    fetchAndRenderEvents();
-                });
-            });
-
-            // Load events initially
-            fetchAndRenderEvents();
-        });
-    </script>
+    document.head.appendChild(style);
+});
+</script>
 
 </body>
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sales - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <header class="bg-white">
+        <nav class="container mx-auto flex items-center justify-between p-6">
+            <a href="#" class="flex items-center space-x-2">
+                <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="text-xl font-bold text-gray-900">Evently</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="./home-page.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20 max-w-4xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <!-- Contact Form Section -->
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Contact Sales</h1>
+                <p class="mt-2 text-gray-600">Interested in Evently for your business? Reach out to our sales team.</p>
+                
+                <form id="contact-form" class="mt-8 space-y-6">
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="full-name" name="full_name" required class="mt-1 block w-full bg-gray-100 border-transparent rounded-md py-3 px-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="company-name" class="block text-sm font-medium text-gray-700">Company Name</label>
+                        <input type="text" id="company-name" name="company_name" required class="mt-1 block w-full bg-gray-100 border-transparent rounded-md py-3 px-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full bg-gray-100 border-transparent rounded-md py-3 px-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full bg-gray-100 border-transparent rounded-md py-3 px-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-100 border-transparent rounded-md py-3 px-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+                <div id="response-message" class="mt-4 text-center"></div>
+            </div>
+
+            <!-- Contact Information Section -->
+            <div class="mt-12 md:mt-0">
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h2 class="text-2xl font-bold text-gray-900">Contact Information</h2>
+                    <p class="mt-4 text-gray-600">For sales inquiries, please contact us at:</p>
+                    <a href="mailto:sales@evently.com" class="mt-1 block font-semibold text-blue-600 hover:underline">sales@evently.com</a>
+                    <p class="mt-6 text-gray-600">Or call us at:</p>
+                    <p class="mt-1 font-semibold text-gray-900">+1 (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    const responseMessage = document.getElementById('response-message');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        responseMessage.textContent = 'Sending...';
+        responseMessage.className = 'text-gray-600';
+
+        fetch('http://localhost/event-management-backend/contact/contact.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json().then(result => ({ ok: response.ok, result })))
+        .then(({ ok, result }) => {
+            if (ok) {
+                responseMessage.textContent = result.message;
+                responseMessage.className = 'text-green-600 font-semibold';
+                contactForm.reset();
+            } else {
+                throw new Error(result.error || 'An unknown error occurred.');
+            }
+        })
+        .catch(error => {
+            responseMessage.textContent = `Error: ${error.message}`;
+            responseMessage.className = 'text-red-600 font-semibold';
+        });
+    });
+});
+</script>
+
+</body>
+</html>

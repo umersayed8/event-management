@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="./organizer-dashboard.html" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <nav class="hidden items-center gap-8 md:flex">
+                <a href="./organizer-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                <a href="./organizer-sponsorships.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
+                <a href="./organizer-analytics.html" class="text-sm font-semibold text-blue-600">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900">Event Analytics</h1>
+        <p class="mt-1 text-base text-slate-500">Visualize your event performance and sponsorship engagement.</p>
+
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Revenue Over Time Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">Revenue (Last 30 Days)</h2>
+                <div class="mt-4 h-80">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Ticket Sales Per Event Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-900">Ticket Sales per Event (Top 10)</h2>
+                <div class="mt-4 h-80">
+                    <canvas id="ticketSalesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Sponsorship Status Chart -->
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 lg:col-span-2">
+                <h2 class="text-lg font-semibold text-gray-900">Sponsorship Proposal Status</h2>
+                <div class="mt-4 h-80 flex justify-center">
+                    <canvas id="sponsorshipStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost/event-management-backend/events/get_organizer_analytics.php', {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            window.location.href = '../login-page.html';
+            throw new Error('Authentication failed.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        renderRevenueChart(data.revenue_over_time);
+        renderTicketSalesChart(data.ticket_sales_per_event);
+        renderSponsorshipStatusChart(data.sponsorship_status);
+    })
+    .catch(error => {
+        console.error('Error fetching analytics data:', error);
+        document.querySelector('main').innerHTML += `<p class="text-red-600 mt-4">${error.message}</p>`;
+    });
+
+    function renderRevenueChart(revenueData) {
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const labels = revenueData.map(d => new Date(d.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        const values = revenueData.map(d => d.daily_revenue);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Daily Revenue',
+                    data: values,
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
+
+    function renderTicketSalesChart(ticketData) {
+        const ctx = document.getElementById('ticketSalesChart').getContext('2d');
+        const labels = ticketData.map(d => d.title);
+        const values = ticketData.map(d => d.tickets_sold);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Tickets Sold',
+                    data: values,
+                    backgroundColor: 'rgb(16, 185, 129)',
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y' }
+        });
+    }
+
+    function renderSponsorshipStatusChart(sponsorshipData) {
+        const ctx = document.getElementById('sponsorshipStatusChart').getContext('2d');
+        const labels = sponsorshipData.map(d => d.status.charAt(0).toUpperCase() + d.status.slice(1));
+        const values = sponsorshipData.map(d => d.count);
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Proposal Status',
+                    data: values,
+                    backgroundColor: [
+                        'rgb(251, 191, 36)', // Pending (yellow)
+                        'rgb(16, 185, 129)', // Accepted (green)
+                        'rgb(239, 68, 68)'   // Rejected (red)
+                    ],
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
+});
+</script>
+</body>
+</html> 

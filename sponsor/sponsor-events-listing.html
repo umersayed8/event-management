@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SponsorConnect - Event Listings</title>
+    <title>Evently - Event Listings</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +16,31 @@
 <body class="text-gray-800">
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <header class="flex justify-between items-center py-6 border-b border-gray-200">
-            </header>
+        <!-- Header -->
+        <header class="flex justify-between items-center py-5 border-b border-gray-200">
+            <div class="flex items-center space-x-8">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="./sponsor-dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+                    <a href="./sponsor-sponsorships.html" class="text-gray-600 hover:text-gray-900">Sponsorships</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-500 hover:text-gray-700"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5.98-6A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg></button>
+                <a href="./sponsor-events-listing.html"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar"></a>
+            </div>
+        </header>
 
+        <!-- Main Content -->
         <main class="py-10">
             <div class="max-w-3xl mb-8">
                 <h1 class="text-4xl font-bold text-gray-900">Event Listings</h1>
@@ -27,10 +49,12 @@
                 </p>
             </div>
 
+            <!-- Filters -->
             <div class="flex flex-wrap items-center gap-4 mb-8">
                 <div class="relative">
                     <button id="category-button" data-dropdown-toggle="category-dropdown" class="dropdown-button inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        Category
+                        <span>All Categories</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div id="category-dropdown" class="dropdown-menu hidden absolute z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                         <div class="py-1 filter-options" data-filter-type="category">
@@ -43,7 +67,8 @@
                 </div>
                 <div class="relative">
                     <button id="date-button" data-dropdown-toggle="date-dropdown" class="dropdown-button inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        Date
+                        <span>Any Time</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                      <div id="date-dropdown" class="dropdown-menu hidden absolute z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                         <div class="py-1 filter-options" data-filter-type="date_range">
@@ -53,109 +78,112 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
-            <div id="event-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
+            <!-- Event Cards Grid -->
+            <div id="event-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Event cards will be injected here -->
+            </div>
         </main>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const eventGrid = document.getElementById('event-grid');
-            
-            let activeFilters = {
-                category: '',
-                date_range: '',
-                location: ''
-            };
+    document.addEventListener('DOMContentLoaded', function() {
+        const eventGrid = document.getElementById('event-grid');
+        
+        let activeFilters = {
+            category: '',
+            date_range: ''
+        };
 
-            // Fetches events based on the current active filters
-            function fetchAndRenderEvents() {
-                const queryParams = new URLSearchParams(activeFilters).toString();
-                const url = `http://localhost/event-management-backend/events/get_all_public_events.php?${queryParams}`;
+        function fetchAndRenderEvents() {
+            const cleanFilters = Object.fromEntries(Object.entries(activeFilters).filter(([_, v]) => v != ''));
+            const queryParams = new URLSearchParams(cleanFilters).toString();
+            const url = `http://localhost/event-management-backend/events/get_all_public_events.php?${queryParams}`;
 
-                fetch(url)
-                    .then(response => response.json())
-                    .then(events => {
-                        renderEvents(events);
-                    })
-                    .catch(error => {
-                        console.error('Failed to load events:', error);
-                        eventGrid.innerHTML = `<p class="text-red-600 col-span-full">Failed to load events.</p>`;
-                    });
+            fetch(url)
+                .then(response => response.json())
+                .then(events => {
+                    renderEvents(events);
+                })
+                .catch(error => {
+                    console.error('Failed to load events:', error);
+                    eventGrid.innerHTML = `<p class="text-red-600 col-span-full">Failed to load events.</p>`;
+                });
+        }
+
+        function renderEvents(events) {
+            eventGrid.innerHTML = '';
+            if (events.length === 0) {
+                eventGrid.innerHTML = `<p class="text-gray-500 col-span-full">No events match the current filters.</p>`;
+                return;
             }
-
-            // Renders the event cards
-            function renderEvents(events) {
-                eventGrid.innerHTML = '';
-                if (events.length === 0) {
-                    eventGrid.innerHTML = `<p class="text-gray-500 col-span-full">No events match the current filters.</p>`;
-                    return;
-                }
-                events.forEach(event => {
-                    const eventDate = new Date(event.date);
-                    const formattedDate = eventDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-                    const imageUrl = event.banner_image
-                        ? `http://localhost/event-management-backend/${event.banner_image}`
-                        : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
-                    
-                    const card = `
-                        <a href="./sponsor-event-info.html?id=${event.id}" class="group cursor-pointer">
-                            <div class="overflow-hidden rounded-lg"><img src="${imageUrl}" alt="${event.title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"></div>
-                            <div class="mt-4">
-                                <h3 class="text-lg font-semibold text-gray-900">${event.title}</h3>
-                                <p class="mt-1 text-sm text-gray-600">${formattedDate}</p>
-                                <p class="text-sm text-gray-600">${event.location}</p>
+            events.forEach(event => {
+                const eventDate = new Date(event.date);
+                const formattedDate = eventDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                const imageUrl = event.banner_image
+                    ? `http://localhost/event-management-backend/${event.banner_image}`
+                    : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
+                
+                const card = `
+                    <a href="./sponsor-event-info.html?id=${event.id}" class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-lg shadow-md">
+                            <img src="${imageUrl}" alt="${event.title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="text-white text-xs font-bold uppercase tracking-wider bg-black/30 px-2 py-1 rounded">${event.category || 'General'}</span>
                             </div>
-                        </a>
-                    `;
-                    eventGrid.innerHTML += card;
-                });
-            }
-
-            // --- Dropdown and Filter Logic ---
-            const dropdownButtons = document.querySelectorAll('[data-dropdown-toggle]');
-            dropdownButtons.forEach(button => {
-                const dropdownMenu = document.getElementById(button.dataset.dropdownToggle);
-                button.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    closeAllDropdowns(button.dataset.dropdownToggle);
-                    dropdownMenu.classList.toggle('hidden');
-                });
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-md font-bold text-gray-900">${event.title}</h3>
+                            <p class="mt-1 text-sm text-gray-600">${formattedDate}</p>
+                            <p class="text-sm text-gray-600">${event.location}</p>
+                        </div>
+                    </a>
+                `;
+                eventGrid.innerHTML += card;
             });
+        }
 
-            const filterOptionContainers = document.querySelectorAll('.filter-options');
-            filterOptionContainers.forEach(container => {
-                container.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'A') {
-                        e.preventDefault();
-                        const filterType = container.dataset.filterType;
-                        const filterValue = e.target.dataset.value;
-                        
-                        // Update active filters and button text
-                        activeFilters[filterType] = filterValue;
-                        const button = document.getElementById(`${filterType.split('_')[0]}-button`);
-                        button.textContent = e.target.textContent;
-
-                        // Re-fetch events with new filters
-                        fetchAndRenderEvents();
-                        closeAllDropdowns();
-                    }
-                });
+        // --- Dropdown and Filter Logic ---
+        const dropdownButtons = document.querySelectorAll('[data-dropdown-toggle]');
+        dropdownButtons.forEach(button => {
+            const dropdownMenu = document.getElementById(button.dataset.dropdownToggle);
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                closeAllDropdowns(button.dataset.dropdownToggle);
+                dropdownMenu.classList.toggle('hidden');
             });
-
-            function closeAllDropdowns(exceptId = null) {
-                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                     if (menu.id !== exceptId) menu.classList.add('hidden');
-                 });
-            }
-            window.addEventListener('click', () => closeAllDropdowns());
-            
-            // Initial load
-            fetchAndRenderEvents();
         });
-    </script>
 
+        const filterOptionContainers = document.querySelectorAll('.filter-options');
+        filterOptionContainers.forEach(container => {
+            container.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    e.preventDefault();
+                    const filterType = container.dataset.filterType;
+                    const filterValue = e.target.dataset.value;
+                    
+                    activeFilters[filterType] = filterValue;
+                    const button = document.getElementById(`${filterType.split('_')[0]}-button`);
+                    button.querySelector('span').textContent = e.target.textContent;
+
+                    fetchAndRenderEvents();
+                    closeAllDropdowns();
+                }
+            });
+        });
+
+        function closeAllDropdowns(exceptId = null) {
+             document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                 if (menu.id !== exceptId) menu.classList.add('hidden');
+             });
+        }
+        window.addEventListener('click', () => closeAllDropdowns());
+        
+        // Initial load
+        fetchAndRenderEvents();
+    });
+    </script>
 </body>
 </html>

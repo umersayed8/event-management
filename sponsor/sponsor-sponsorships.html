@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sponsorships - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white border-b border-gray-200">
+        <nav class="container mx-auto flex items-center justify-between p-6">
+            <a href="./sponsor-dashboard.html" class="flex items-center space-x-2">
+                <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                <span class="text-xl font-bold text-gray-900">Evently</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="./sponsor-dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+                <a href="./sponsor-sponsorships.html" class="text-blue-600 font-semibold">Sponsorships</a>
+                <a href="./sponsor-events-listing.html" class="text-gray-600 hover:text-gray-900">Explore Events</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <h1 class="text-3xl font-bold text-gray-900">My Sponsorships</h1>
+        <p class="mt-2 text-gray-600">A history of all sponsorship proposals you have sent.</p>
+
+        <div class="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Event</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Event Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Proposal Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sponsorships-table-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.getElementById('sponsorships-table-body');
+
+    fetch('http://localhost/event-management-backend/sponsorships/get_my_sponsorships.php', {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            window.location.href = '../login-page.html';
+            throw new Error('Authentication failed.');
+        }
+        return response.json();
+    })
+    .then(sponsorships => {
+        renderSponsorships(sponsorships);
+    })
+    .catch(error => {
+        console.error('Error fetching sponsorships:', error);
+        tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-red-600">${error.message}</td></tr>`;
+    });
+
+    function renderSponsorships(sponsorships) {
+        tableBody.innerHTML = '';
+        if (sponsorships.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">You have not sent any sponsorship proposals yet.</td></tr>`;
+            return;
+        }
+
+        const statusColors = {
+            pending: 'bg-yellow-100 text-yellow-800',
+            accepted: 'bg-green-100 text-green-800',
+            rejected: 'bg-red-100 text-red-800'
+        };
+
+        sponsorships.forEach(sponsorship => {
+            const eventDate = new Date(sponsorship.event_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const proposalDate = new Date(sponsorship.proposal_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            const statusColor = statusColors[sponsorship.status] || 'bg-gray-100 text-gray-800';
+            const statusText = sponsorship.status.charAt(0).toUpperCase() + sponsorship.status.slice(1);
+
+            const row = `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${sponsorship.event_title}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${eventDate}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${proposalDate}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <span class="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full ${statusColor}">
+                            ${statusText}
+                        </span>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+});
+</script>
+
+</body>
+</html>

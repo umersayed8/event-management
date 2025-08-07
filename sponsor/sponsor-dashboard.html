@@ -33,12 +33,12 @@
                     </a>
                     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
                         <a href="#" class="text-gray-900">Dashboard</a>
-                        <a href="#" class="hover:text-gray-900">Sponsorships</a>
-                        <a href="#" class="hover:text-gray-900">Events</a>
+                        <a href="./sponsor-sponsorships.html" class="hover:text-gray-900">Sponsorships</a>
+                        <a href="./sponsor-events-listing.html" class="hover:text-gray-900">Events</a>
                     </nav>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar">
+                    <a href="./profile.html"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar"></a>
                 </div>
             </header>
 
@@ -75,10 +75,12 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Sponsorship Trends</h3>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                         <div class="bg-white p-6 rounded-xl border border-gray-200">
+                             <h4 class="font-semibold">Sponsorship Growth</h4>
                              <div class="h-56"><canvas id="sponsorshipGrowthChart"></canvas></div>
                         </div>
                         <div class="bg-white p-6 rounded-xl border border-gray-200">
-                             <div class="h-56"><canvas id="revenueByTypeChart"></canvas></div>
+                             <h4 class="font-semibold">Sponsorships by Category</h4>
+                             <div class="h-56"><canvas id="sponsorshipByCategoryChart"></canvas></div>
                         </div>
                     </div>
 
@@ -94,7 +96,8 @@
                                 </tr>
                             </thead>
                             <tbody id="events-table-body" class="divide-y divide-gray-200">
-                                </tbody>
+                                <!-- Dynamic rows will be inserted here -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -105,25 +108,12 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // --- NAVIGATION ---
-    document.querySelector('#eventListings').addEventListener('click', function() {
-        window.location.href = "./sponsor-events-listing.html";
-    });
-    document.querySelector('#sponsorPackage').addEventListener('click', function() {
-        window.location.href = './sponsor-packages.html';
-    });
-    document.querySelector('#eventCalendar').addEventListener('click', function() {
-        window.location.href = './sponsor-event-calendar.html';
-    });
+    document.querySelector('#eventListings').addEventListener('click', () => window.location.href = "./sponsor-events-listing.html");
+    document.querySelector('#sponsorPackage').addEventListener('click', () => window.location.href = './sponsor-packages.html');
+    document.querySelector('#eventCalendar').addEventListener('click', () => window.location.href = './sponsor-event-calendar.html');
 
     // --- DYNAMIC DATA ---
-    const welcomeMessageEl = document.getElementById('welcome-message');
-    const proposalsSentEl = document.getElementById('proposals-sent-stat');
-    const acceptedSponsorshipsEl = document.getElementById('accepted-sponsorships-stat');
-    const upcomingEventsEl = document.getElementById('upcoming-events-stat');
-    const revenueEl = document.getElementById('revenue-stat');
-    const tableBody = document.getElementById('events-table-body');
-
-    fetch('http://localhost/event-management-backend/sponsors/get_sponsor_dashboard_data.php', {
+    fetch('http://localhost/event-management-backend/sponsorships/get_sponsor_dashboard_data.php', {
         credentials: 'include'
     })
     .then(response => {
@@ -134,21 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
     })
     .then(data => {
-        welcomeMessageEl.textContent = `Welcome, ${data.sponsor_name}`;
-        // Connect to new backend data points
-        proposalsSentEl.textContent = data.stats.proposals_sent;
-        acceptedSponsorshipsEl.textContent = data.stats.accepted_sponsorships;
-        upcomingEventsEl.textContent = data.stats.upcoming_events_count;
-        revenueEl.textContent = `$${data.stats.revenue_generated.toLocaleString('en-US')}`;
+        // Populate stat cards and table
+        document.getElementById('welcome-message').textContent = `Welcome, ${data.sponsor_name}`;
+        document.getElementById('proposals-sent-stat').textContent = data.stats.proposals_sent;
+        document.getElementById('accepted-sponsorships-stat').textContent = data.stats.accepted_sponsorships;
+        document.getElementById('upcoming-events-stat').textContent = data.stats.upcoming_events_count;
+        document.getElementById('revenue-stat').textContent = `$${data.stats.revenue_generated.toLocaleString('en-US')}`;
         renderEventsTable(data.upcoming_events_list);
+
+        // Render dynamic charts
+        renderSponsorshipGrowthChart(data.chart_data.sponsorship_growth);
+        renderSponsorshipByCategoryChart(data.chart_data.sponsorship_by_category);
     })
-    .catch(error => {
-        console.error('Error fetching dashboard data:', error);
-    });
+    .catch(error => console.error('Error fetching dashboard data:', error));
 
     function renderEventsTable(events) {
+        const tableBody = document.getElementById('events-table-body');
         tableBody.innerHTML = '';
-        if (events.length === 0) {
+        if (!events || events.length === 0) {
             tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">You have no upcoming sponsored events.</td></tr>`;
             return;
         }
@@ -175,47 +168,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- CHART.JS ---
-    const growthCtx = document.getElementById('sponsorshipGrowthChart').getContext('2d');
-    new Chart(growthCtx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [{
-                label: 'Sponsorships',
-                data: [65, 59, 80, 81, 56, 95, 70],
-                fill: false, borderColor: '#9ca3af', tension: 0.4, pointRadius: 0
-            }]
-        },
-        options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-            scales: {
-                x: { grid: { display: false }, border: { display: false } },
-                y: { grid: { display: false }, ticks: { display: false }, border: { display: false } }
-            }
-        }
-    });
-    const revenueCtx = document.getElementById('revenueByTypeChart').getContext('2d');
-    new Chart(revenueCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Type A', 'Type B', 'Type C', 'Type D'],
-            datasets: [{
-                label: 'Revenue',
-                data: [85, 65, 90, 75],
-                backgroundColor: '#e5e7eb', borderRadius: 4, barPercentage: 0.5
-            }]
-        },
-        options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid: { display: false }, border: { display: false } },
-                y: { beginAtZero: true, grid: { display: false }, ticks: { display: false }, border: { display: false } }
-            }
-        }
-    });
+    // --- CHART RENDERING FUNCTIONS ---
+    function renderSponsorshipGrowthChart(growthData) {
+        const ctx = document.getElementById('sponsorshipGrowthChart').getContext('2d');
+        const labels = growthData.map(item => new Date(item.month + '-02').toLocaleString('default', { month: 'short' }));
+        const data = growthData.map(item => item.count);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Accepted Sponsorships',
+                    data: data,
+                    fill: false, borderColor: '#4f46e5', tension: 0.4, pointRadius: 2
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+    }
+
+    function renderSponsorshipByCategoryChart(categoryData) {
+        const ctx = document.getElementById('sponsorshipByCategoryChart').getContext('2d');
+        const labels = categoryData.map(item => item.category);
+        const data = categoryData.map(item => item.count);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Sponsorships',
+                    data: data,
+                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+    }
 });
 </script>
 
