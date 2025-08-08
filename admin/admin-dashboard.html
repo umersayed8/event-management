@@ -1,42 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evently Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-        }
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            color: #4b5563;
-            font-weight: 500;
-        }
-        .sidebar-link:hover {
-            background-color: #e5e7eb;
-        }
-        .sidebar-link.active {
-            background-color: #f3f4f6;
-            color: #111827;
-            font-weight: 600;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
+        .sidebar-link { display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; color: #4b5563; font-weight: 500; }
+        .sidebar-link:hover { background-color: #e5e7eb; }
+        .sidebar-link.active { background-color: #f3f4f6; color: #111827; font-weight: 600; }
     </style>
 </head>
-
 <body class="text-gray-800">
-
     <div class="flex h-screen bg-white">
         <aside class="w-64 flex-shrink-0 border-r border-gray-200 flex flex-col">
             <div class="h-16 flex items-center px-6">
@@ -85,76 +64,39 @@
             </div>
         </aside>
 
+
         <main class="flex-1 overflow-y-auto bg-gray-50">
             <div class="p-8">
                 <h1 id="welcome-message" class="text-3xl font-bold text-gray-900 mb-8">Dashboard</h1>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <p class="text-sm text-gray-600">Total Users</p>
-                        <p id="total-users-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <p class="text-sm text-gray-600">Events</p>
-                        <p id="total-events-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <p class="text-sm text-gray-600">Revenue</p>
-                        <p id="total-revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p>
-                    </div>
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <p class="text-sm text-gray-600">Tickets Sold</p>
-                        <p id="total-tickets-sold-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg"><p class="text-sm text-gray-600">Total Users</p><p id="total-users-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
+                    <div class="bg-gray-100 p-6 rounded-lg"><p class="text-sm text-gray-600">Events</p><p id="total-events-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
+                    <div class="bg-gray-100 p-6 rounded-lg"><p class="text-sm text-gray-600">Revenue</p><p id="total-revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p></div>
+                    <div class="bg-gray-100 p-6 rounded-lg"><p class="text-sm text-gray-600">Tickets Sold</p><p id="total-tickets-sold-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
                 </div>
 
                 <div>
-    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <h3 class="font-semibold text-gray-800">User Growth</h3>
-            <div class="h-48 mt-4">
-                <canvas id="userGrowthChart1"></canvas>
-            </div>
-        </div>
-        <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <h3 class="font-semibold text-gray-800">Ticket Sales Trend</h3>
-            <div class="h-48 mt-4">
-                <canvas id="ticketSalesChart1"></canvas>
-            </div>
-        </div>
-        <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <h3 class="font-semibold text-gray-800">Event Frequency</h3>
-            <div class="h-48 mt-4">
-                <canvas id="userGrowthChart2"></canvas>
-            </div>
-        </div>
-        <div class="bg-white p-6 rounded-lg border border-gray-200">
-            <h3 class="font-semibold text-gray-800">Sponsor Funds</h3>
-            <div class="h-48 mt-4">
-                <canvas id="ticketSalesChart2"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Overview (Last 7 Days)</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg border border-gray-200"><h3 class="font-semibold text-gray-800">User Growth</h3><div class="h-48 mt-4"><canvas id="userGrowthChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200"><h3 class="font-semibold text-gray-800">Ticket Sales Trend</h3><div class="h-48 mt-4"><canvas id="ticketSalesChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200"><h3 class="font-semibold text-gray-800">Event Frequency</h3><div class="h-48 mt-4"><canvas id="eventFrequencyChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200"><h3 class="font-semibold text-gray-800">Revenue Trend</h3><div class="h-48 mt-4"><canvas id="revenueTrendChart"></canvas></div></div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Feather Icons
-        feather.replace();
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
 
-        // --- FETCH ADMIN STATS (no changes here) ---
-        fetch('http://localhost/event-management-backend/admin/get_admin_stats.php', {
-            credentials: 'include'
-        })
+    // --- FETCH STAT CARDS DATA ---
+    fetch('http://localhost/event-management-backend/admin/get_admin_stats.php', { credentials: 'include' })
         .then(response => {
-            if (!response.ok) {
-                window.location.href = '../login-page.html';
-                throw new Error('Admin authentication failed.');
-            }
+            if (!response.ok) { window.location.href = '../login-page.html'; throw new Error('Admin auth failed.'); }
             return response.json();
         })
         .then(stats => {
@@ -164,69 +106,52 @@
             document.getElementById('total-revenue-stat').textContent = `$${stats.total_revenue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             document.getElementById('total-tickets-sold-stat').textContent = stats.total_tickets_sold.toLocaleString('en-US');
         })
-        .catch(error => {
-            console.error('Error fetching admin stats:', error);
-        });
+        .catch(error => console.error('Error fetching admin stats:', error));
 
-        // --- Chart.js Configuration ---
-        const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { enabled: true, intersect: false, mode: 'index' } },
-            scales: {
-                x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
-                y: { grid: { display: false }, ticks: { display: false }, border: { display: false } }
-            }
-        };
-
-        const createChart = (canvasId, chartData, options) => {
-            const ctx = document.getElementById(canvasId)?.getContext('2d');
-            if (ctx) {
-                new Chart(ctx, { type: 'line', data: chartData, options: options });
-            }
-        };
-        
-        // --- NEW: FETCH DYNAMIC DATA FOR USER GROWTH CHART ---
-        fetch('http://localhost/event-management-backend/admin/get_user_growth_data.php', {
-            credentials: 'include'
-        })
+    // --- FETCH ALL CHART DATA ---
+    fetch('http://localhost/event-management-backend/admin/get_admin_dashboard_charts.php', { credentials: 'include' })
         .then(response => response.json())
-        .then(userGrowth => {
-            const userGrowthChartData = {
-                labels: userGrowth.labels, // Use dynamic labels
+        .then(charts => {
+            // Render all four charts with the data received from the new script
+            renderChart('userGrowthChart', 'New Users', charts.user_growth);
+            renderChart('ticketSalesChart', 'Tickets Sold', charts.ticket_sales);
+            renderChart('eventFrequencyChart', 'New Events', charts.event_frequency);
+            renderChart('revenueTrendChart', 'Revenue ($)', charts.revenue_trend);
+        })
+        .catch(error => console.error('Error fetching chart data:', error));
+
+    // --- UNIVERSAL CHART RENDERING FUNCTION ---
+    function renderChart(canvasId, label, chartData) {
+        const ctx = document.getElementById(canvasId)?.getContext('2d');
+        if (!ctx) return;
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartData.labels,
                 datasets: [{
-                    label: 'New Users',
-                    data: userGrowth.data,  // Use dynamic data
-                    fill: false,
-                    borderColor: '#6366f1',
+                    label: label,
+                    data: chartData.data,
+                    borderColor: '#4f46e5', // indigo-600
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    fill: true,
                     tension: 0.4,
                     pointRadius: 2,
                     borderWidth: 2,
                 }]
-            };
-            createChart('userGrowthChart1', userGrowthChartData, chartOptions);
-        })
-        .catch(error => console.error('Error fetching user growth data:', error));
-
-
-        // --- DUMMY DATA FOR OTHER CHARTS (for now) ---
-        const dummyChartData = {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'Trend',
-                data: [12, 19, 3, 5, 2, 3, 9],
-                fill: false,
-                borderColor: '#6366f1',
-                tension: 0.4,
-                pointRadius: 2,
-                borderWidth: 2,
-            }]
-        };
-        createChart('ticketSalesChart1', dummyChartData, chartOptions);
-        createChart('userGrowthChart2', dummyChartData, chartOptions);
-        createChart('ticketSalesChart2', dummyChartData, chartOptions);
-    });
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#9ca3af' } },
+                    y: { beginAtZero: true, grid: { color: '#e5e7eb' }, border: { display: false } }
+                }
+            }
+        });
+    }
+});
 </script>
 </body>
-
 </html>

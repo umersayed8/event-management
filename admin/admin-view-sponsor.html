@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Details - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="./admin-dashboard.html" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <nav class="hidden items-center gap-8 md:flex">
+                <a href="./admin-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                <a href="./admin-sponsor.html" class="text-sm font-semibold text-blue-600">Sponsors</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+        <!-- Sponsor Header -->
+        <div id="sponsor-header" class="md:flex md:items-center md:justify-between">
+            <div class="min-w-0 flex-1">
+                <h1 id="sponsor-name" class="text-3xl font-bold leading-7 text-slate-900 sm:truncate sm:tracking-tight"></h1>
+                <p id="sponsor-email" class="mt-1 text-sm text-slate-500"></p>
+            </div>
+        </div>
+
+        <!-- Sponsorship History Table -->
+        <div class="mt-8 flow-root">
+            <h2 class="text-xl font-semibold text-slate-900 mb-4">Sponsorship History</h2>
+            <div class="-mx-6 -my-2 overflow-x-auto lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                    <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                        <table class="min-w-full divide-y divide-slate-200">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th scope="col" class="py-3.5 pl-6 pr-3 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Event</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Event Date</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-slate-500">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body" class="divide-y divide-slate-200 bg-white">
+                                <!-- Rows will be inserted by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const sponsorId = params.get('id');
+
+    const sponsorNameEl = document.getElementById('sponsor-name');
+    const sponsorEmailEl = document.getElementById('sponsor-email');
+    const tableBody = document.getElementById('history-table-body');
+
+    if (!sponsorId) {
+        document.querySelector('main').innerHTML = '<h1 class="text-red-600 font-bold text-2xl">Sponsor ID not provided.</h1>';
+        return;
+    }
+
+    fetch(`http://localhost/event-management-backend/admin/get_sponsor_details.php?id=${sponsorId}`, {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Could not load sponsor details.') });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Populate sponsor header
+        sponsorNameEl.textContent = data.sponsor_info.name;
+        sponsorEmailEl.textContent = data.sponsor_info.email;
+        document.title = `${data.sponsor_info.name} - Sponsor Details`;
+
+        // Populate sponsorship history table
+        renderHistoryTable(data.sponsorship_history);
+    })
+    .catch(error => {
+        console.error('Error fetching sponsor details:', error);
+        document.querySelector('main').innerHTML = `<h1 class="text-red-600 font-bold text-2xl">${error.message}</h1>`;
+    });
+
+    function renderHistoryTable(history) {
+        tableBody.innerHTML = '';
+        if (history.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-4 text-slate-500">This sponsor has no sponsorship history.</td></tr>';
+            return;
+        }
+
+        const statusColors = {
+            pending: 'bg-yellow-100 text-yellow-800',
+            accepted: 'bg-green-100 text-green-800',
+            rejected: 'bg-red-100 text-red-800'
+        };
+
+        history.forEach(item => {
+            const eventDate = new Date(item.event_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const statusColor = statusColors[item.status] || 'bg-gray-100 text-gray-800';
+            const statusText = item.status.charAt(0).toUpperCase() + item.status.slice(1);
+
+            const row = `
+                <tr class="hover:bg-slate-50">
+                    <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-slate-900">${item.event_title}</td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">${eventDate}</td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm">
+                        <span class="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold ${statusColor}">
+                            ${statusText}
+                        </span>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+});
+</script>
+</body>
+</html>

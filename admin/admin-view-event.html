@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="./admin-dashboard.html" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <nav class="hidden items-center gap-8 md:flex">
+                <a href="./admin-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                <a href="./admin-events.html" class="text-sm font-semibold text-blue-600">Events</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+        <!-- Event Header -->
+        <div id="event-header">
+            <a href="./admin-events.html" class="text-sm font-medium text-slate-500 hover:text-slate-700 mb-4 inline-block">&larr; Back to All Events</a>
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="min-w-0 flex-1">
+                    <h1 id="event-title" class="text-3xl font-bold leading-7 text-slate-900 sm:truncate sm:tracking-tight"></h1>
+                    <p id="event-details" class="mt-1 text-sm text-slate-500"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-lg bg-white border border-slate-200 p-6">
+                <p class="text-sm font-medium text-slate-600">Total Revenue</p>
+                <p id="total-revenue-stat" class="mt-2 text-3xl font-bold text-slate-900">$0</p>
+            </div>
+            <div class="rounded-lg bg-white border border-slate-200 p-6">
+                <p class="text-sm font-medium text-slate-600">Tickets Sold</p>
+                <p id="tickets-sold-stat" class="mt-2 text-3xl font-bold text-slate-900">0</p>
+            </div>
+            <div class="rounded-lg bg-white border border-slate-200 p-6">
+                <p class="text-sm font-medium text-slate-600">Accepted Sponsors</p>
+                <p id="sponsors-stat" class="mt-2 text-3xl font-bold text-slate-900">0</p>
+            </div>
+        </div>
+
+        <!-- Event Description -->
+        <div class="mt-8 bg-white rounded-lg border border-slate-200 p-6">
+            <h2 class="text-xl font-semibold text-slate-900">About This Event</h2>
+            <p id="event-description" class="mt-4 text-slate-600 leading-relaxed"></p>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('id');
+
+    if (!eventId) {
+        document.querySelector('main').innerHTML = '<h1 class="text-red-600 font-bold text-2xl">Event ID not provided.</h1>';
+        return;
+    }
+
+    fetch(`http://localhost/event-management-backend/admin/get_event_details.php?id=${eventId}`, {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Could not load event details.') });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Populate header
+        const eventInfo = data.event_info;
+        const eventDate = new Date(eventInfo.date);
+        document.getElementById('event-title').textContent = eventInfo.title;
+        document.getElementById('event-details').textContent = `${eventDate.toLocaleDateString('en-US', { dateStyle: 'full' })} · ${eventInfo.location} · Organized by ${eventInfo.organizer_name}`;
+        document.title = `${eventInfo.title} - Event Details`;
+
+        // Populate stat cards
+        document.getElementById('total-revenue-stat').textContent = `$${parseFloat(data.ticket_stats.total_revenue).toLocaleString('en-US')}`;
+        document.getElementById('tickets-sold-stat').textContent = data.ticket_stats.tickets_sold.toLocaleString('en-US');
+        document.getElementById('sponsors-stat').textContent = data.sponsor_stats.accepted_sponsors.toLocaleString('en-US');
+
+        // Populate description
+        document.getElementById('event-description').textContent = eventInfo.description || 'No description provided for this event.';
+    })
+    .catch(error => {
+        console.error('Error fetching event details:', error);
+        document.querySelector('main').innerHTML = `<h1 class="text-red-600 font-bold text-2xl">${error.message}</h1>`;
+    });
+});
+</script>
+</body>
+</html>
