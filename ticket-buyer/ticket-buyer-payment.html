@@ -19,7 +19,7 @@
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
             <!-- Left Side: Logo -->
             <div class="flex items-center gap-12">
-                <a href="#" class="flex items-center space-x-2">
+                <a href="./ticket-buyer-dashboard.html" class="flex items-center space-x-2">
                     <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -33,16 +33,14 @@
             <!-- Right Side: Nav & Actions -->
             <div class="flex items-center gap-8">
                 <nav class="hidden items-center gap-8 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="./ticket-buyer-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                     <a href="../general/profile.html">
+    <img id="header-profile-picture" 
+         class="h-9 w-9 rounded-full object-cover" 
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" 
+         alt="User avatar" />
+</a>
                 </nav>
-                <!-- <div class="flex items-center gap-5">
-                    <button class="text-slate-400 hover:text-slate-600">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </button>
-                    <button class="text-slate-400 hover:text-slate-600">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    </button>
-                </div> -->
             </div> 
         </div>
     </header>
@@ -178,5 +176,81 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If the element doesn't exist on this page, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full URL to the photo and update the image source
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will remain.
+        })
+        .catch(error => {
+            // This error is expected on pages where the user isn't logged in.
+            // We can log it for debugging but won't show an alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its unique ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If this page doesn't have the profile picture element, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full, correct URL to the photo
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                // Update the image source to display the user's picture
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will simply remain.
+        })
+        .catch(error => {
+            // This error is normal on pages where a user isn't logged in.
+            // We can log it for debugging but won't show a disruptive alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+
 </body>
 </html>

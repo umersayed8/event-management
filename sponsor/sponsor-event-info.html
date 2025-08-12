@@ -12,8 +12,23 @@
 </head>
 <body class="bg-slate-50">
 
-    <header class="bg-white">
-        </header>
+   <header class="flex justify-between items-center p-6 bg-white border-b border-gray-200">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="flex items-center space-x-2">
+                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                        <span class="text-xl font-bold text-gray-900">Evently</span>
+                    </a>
+                    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                        <a href="./sponsor-dashboard.html" class="text-gray-900">Dashboard</a>
+                        <a href="./sponsor-sponsorships.html" class="hover:text-gray-900">Sponsorships</a>
+                        <a href="./sponsor-events-listing.html" class="hover:text-gray-900">Events</a>
+                        <a href="../ticket-buyer/ticket-buyer-dashboard.html" class="hover:text-gray-900">Buy Ticket</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="../general/profile.html"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar"></a>
+                </div>
+            </header>
 
     <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
         
@@ -81,93 +96,140 @@
             </div>
         </div>
     </main>
-    
+    <div id="alert-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 border w-full max-w-sm shadow-lg rounded-md bg-white">
+        <div class="mt-3 text-center">
+            <div id="alert-modal-icon" class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                </div>
+            <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2" id="alert-modal-title"></h3>
+            <div class="mt-2 px-7 py-3">
+                <p class="text-sm text-gray-500" id="alert-modal-body"></p>
+            </div>
+            <div class="items-center px-4 py-3">
+                <button id="alert-modal-close-btn" class="px-4 py-2 bg-teal-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>  
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const params = new URLSearchParams(window.location.search);
-        const eventId = params.get('id');
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('id');
 
-        // Modal elements
-        const modal = document.getElementById('proposal-modal');
-        const proposeBtn = document.getElementById('proposeSponsorshipBtn');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const submitProposalBtn = document.getElementById('submit-proposal-btn');
-        const proposalTextarea = document.getElementById('proposal-text');
-        const modalEventTitle = document.getElementById('modal-event-title');
+    // Proposal Modal elements
+    const proposalModal = document.getElementById('proposal-modal');
+    const proposeBtn = document.getElementById('proposeSponsorshipBtn');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const submitProposalBtn = document.getElementById('submit-proposal-btn');
+    const proposalTextarea = document.getElementById('proposal-text');
+    const modalEventTitle = document.getElementById('modal-event-title');
 
-        if (!eventId) {
-            document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Event ID not found.</h1>';
+    // --- NEW: Alert Modal elements ---
+    const alertModal = document.getElementById('alert-modal');
+    const alertModalIcon = document.getElementById('alert-modal-icon');
+    const alertModalTitle = document.getElementById('alert-modal-title');
+    const alertModalBody = document.getElementById('alert-modal-body');
+    const alertModalCloseBtn = document.getElementById('alert-modal-close-btn');
+
+    if (!eventId) {
+        document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Event ID not found.</h1>';
+        return;
+    }
+    
+    // --- NEW: Function to show a custom alert ---
+    function showAlert(title, message, type = 'success') {
+        alertModalTitle.textContent = title;
+        alertModalBody.textContent = message;
+
+        if (type === 'success') {
+            alertModalIcon.className = 'mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100';
+            alertModalIcon.innerHTML = `<svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+            alertModalCloseBtn.className = 'px-4 py-2 bg-teal-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500';
+        } else { // 'error'
+            alertModalIcon.className = 'mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100';
+            alertModalIcon.innerHTML = `<svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>`;
+            alertModalCloseBtn.className = 'px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500';
+        }
+        alertModal.classList.remove('hidden');
+    }
+
+    alertModalCloseBtn.addEventListener('click', () => {
+        alertModal.classList.add('hidden');
+    });
+
+    // Fetch event details
+    fetch(`http://localhost/event-management-backend/events/get_public_event_details.php?id=${eventId}`)
+        .then(response => response.json())
+        .then(event => {
+            document.title = `${event.title} - Evently`;
+            document.getElementById('event-title').textContent = event.title;
+            document.getElementById('event-short-description').textContent = event.description.substring(0, 100) + '...';
+            document.getElementById('event-long-description').textContent = event.description;
+            document.getElementById('event-location').textContent = event.location;
+            document.getElementById('event-organizer').textContent = event.organizer_name;
+
+            const banner = document.getElementById('event-banner');
+            banner.src = event.banner_image ? `http://localhost/event-management-backend/${event.banner_image}` : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
+            banner.alt = event.title;
+
+            const eventDate = new Date(event.date);
+            document.getElementById('event-date').textContent = eventDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('event-time').textContent = eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+
+            modalEventTitle.textContent = `For: ${event.title}`;
+        })
+        .catch(error => console.error('Failed to load event:', error));
+
+    // --- Modal and Submission Logic ---
+    proposeBtn.addEventListener('click', () => {
+        proposalModal.classList.remove('hidden');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        proposalModal.classList.add('hidden');
+    });
+
+    submitProposalBtn.addEventListener('click', () => {
+        const proposalText = proposalTextarea.value.trim();
+        if (!proposalText) {
+            // REPLACED ALERT
+            showAlert('Proposal Empty', 'Please write a proposal message before submitting.', 'error');
             return;
         }
-        
-        // Fetch event details
-        fetch(`http://localhost/event-management-backend/events/get_public_event_details.php?id=${eventId}`)
-            .then(response => response.json())
-            .then(event => {
-                document.title = `${event.title} - Evently`;
-                document.getElementById('event-title').textContent = event.title;
-                document.getElementById('event-short-description').textContent = event.description.substring(0, 100) + '...';
-                document.getElementById('event-long-description').textContent = event.description;
-                document.getElementById('event-location').textContent = event.location;
-                document.getElementById('event-organizer').textContent = event.organizer_name;
 
-                const banner = document.getElementById('event-banner');
-                banner.src = event.banner_image ? `http://localhost/event-management-backend/${event.banner_image}` : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
-                banner.alt = event.title;
+        const submissionData = {
+            event_id: eventId,
+            proposal_text: proposalText
+        };
 
-                const eventDate = new Date(event.date);
-                document.getElementById('event-date').textContent = eventDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                document.getElementById('event-time').textContent = eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-
-                modalEventTitle.textContent = `For: ${event.title}`;
-            })
-            .catch(error => console.error('Failed to load event:', error));
-
-        // --- Modal and Submission Logic ---
-
-        proposeBtn.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        submitProposalBtn.addEventListener('click', () => {
-            const proposalText = proposalTextarea.value.trim();
-            if (!proposalText) {
-                alert('Please write a proposal message.');
-                return;
+        fetch('http://localhost/event-management-backend/sponsorships/propose_sponsorship.php', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(submissionData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.error || 'Submission failed.') });
             }
-
-            const submissionData = {
-                event_id: eventId,
-                proposal_text: proposalText
-            };
-
-            fetch('http://localhost/event-management-backend/sponsorships/propose_sponsorship.php', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(submissionData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(err => { throw new Error(err.error || 'Submission failed.') });
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert(data.message);
-                modal.classList.add('hidden');
-                proposeBtn.disabled = true;
-                proposeBtn.textContent = 'Proposal Sent';
-            })
-            .catch(error => {
-                alert(`Error: ${error.message}`);
-            });
+            return response.json();
+        })
+        .then(data => {
+            // REPLACED ALERT
+            showAlert('Success!', data.message, 'success');
+            proposalModal.classList.add('hidden');
+            proposeBtn.disabled = true;
+            proposeBtn.textContent = 'Proposal Sent';
+            proposalTextarea.value = '';
+        })
+        .catch(error => {
+            // REPLACED ALERT
+            showAlert('Submission Error', error.message, 'error');
         });
     });
-    </script>
+});
+</script>
 </body>
 </html>

@@ -1,49 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Event - Evently</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Using a more modern font for a closer match to the image */
         @import url('https://rsms.me/inter/inter.css');
-
-        html {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Style the placeholder for the date input */
-        /* input[type="date"]::-webkit-calendar-picker-indicator {
-            opacity: 0;
-        } */
-        input {
-            padding: 0.5rem;
-        }
-
-        .message {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+        html { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-
 <body class="bg-white">
 
     <header class="bg-white border-b border-slate-200">
@@ -62,25 +28,25 @@
             </div>
             <div class="flex items-center gap-8">
                 <nav class="hidden items-center gap-8 md:flex">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-slate-900">Resources</a>
+                    <a href="./organizer-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Dashboard</a>
+                    <a href="./event-page.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Events</a>
+                    <a href="./organizer-sponsorships.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
                 </nav>
                 <div class="flex items-center gap-5">
-                    <button class="text-slate-500 hover:text-slate-800">
+                    <!-- <button class="text-slate-500 hover:text-slate-800">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                         </svg>
-                    </button>
-                    <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                        alt="User avatar" />
+                    </button> -->
+                    <a href="../general/profile.html"><img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                        alt="User avatar" /></a>
                 </div>
             </div>
         </div>
     </header>
+
 
     <main class="mx-auto max-w-3xl px-6 py-12 lg:px-8">
         <div>
@@ -92,234 +58,175 @@
             <div>
                 <label for="event-title" class="block text-sm font-medium leading-6 text-slate-900">Event Title</label>
                 <div class="mt-2">
-                    <input type="text" name="title" id="event-title"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600"
-                        placeholder="Enter event title">
+                    <input type="text" name="title" id="event-title" maxlength="30" class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600" placeholder="Max 30 characters">
                 </div>
             </div>
 
             <div>
                 <label for="event-date" class="block text-sm font-medium leading-6 text-slate-900">Date and Time</label>
                 <div class="mt-2">
-                    <input type="datetime-local" name="date" id="event-date"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600">
+                    <input type="datetime-local" name="date" id="event-date" class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600">
                 </div>
             </div>
 
             <div>
                 <label for="event-location" class="block text-sm font-medium leading-6 text-slate-900">Location</label>
-                <div class="mt-2">
-                    <input type="text" name="location" id="event-location"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600"
-                        placeholder="Enter location">
-                </div>
+                <input type="text" name="location" id="event-location" class="mt-2 block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600" placeholder="Enter location">
+            </div>
+            <div>
+    <label for="event-category" class="block text-sm font-medium leading-6 text-slate-900">Category</label>
+    <select name="category" id="event-category" class="mt-2 block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600">
+        <option value="">Select a category</option>
+        <option value="Music">Music</option>
+        <option value="Sports">Sports</option>
+        <option value="Technology">Technology</option>
+        <option value="Education">Education</option>
+        <option value="Art">Art</option>
+        <option value="Business">Business</option>
+        <option value="Other">Other</option>
+    </select>
+</div>
+            <div>
+                <label for="event-description" class="block text-sm font-medium leading-6 text-slate-900">Description</label>
+                <textarea name="description" id="event-description" rows="4" class="mt-2 block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600"></textarea>
             </div>
 
             <div>
-                <label for="event-category" class="block text-sm font-medium leading-6 text-slate-900">Category</label>
-                <div class="mt-2">
-                    <select id="event-category" name="event-category"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600">
-                        <option value="">Select category</option>
-                        <option value="technology">Technology</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="design">Design</option>
-                    </select>
-                </div>
+                <label for="audience-size" class="block text-sm font-medium leading-6 text-slate-900">Audience Size</label>
+                <input type="number" name="audience_size" id="audience-size" min="1" class="mt-2 block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600" placeholder="Enter a number greater than 0">
             </div>
 
             <div>
-                <label for="event-description"
-                    class="block text-sm font-medium leading-6 text-slate-900">Description</label>
-                <div class="mt-2">
-                    <textarea name="description" id="event-description" rows="4"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600"></textarea>
-                </div>
+                <label for="ticket-price" class="block text-sm font-medium leading-6 text-slate-900">Ticket Price</label>
+                <input type="number" name="ticket_price" id="ticket-price" step="0.01" min="0" class="mt-2 block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-blue-600" placeholder="Enter ticket price (e.g., 25.00)">
             </div>
-
+            
             <div>
-                <label for="audience-size" class="block text-sm font-medium leading-6 text-slate-900">Audience
-                    Size</label>
-                <div class="mt-2">
-                    <input type="number" name="audience-size" id="audience-size"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600"
-                        placeholder="Enter expected audience size">
+                <label class="block text-sm font-medium leading-6 text-slate-900">Upload Banner</label>
+                <div id="dropzone" class="mt-2 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 px-6 py-10">
+                    <label for="file-upload" class="cursor-pointer rounded-md bg-white font-semibold text-blue-600 hover:text-blue-500">
+                        <span>Upload a PNG file</span>
+                        <input id="file-upload" name="banner" type="file" class="sr-only" accept=".png">
+                    </label>
+                    <p class="text-xs text-slate-600">PNG only. Click or drag and drop.</p>
                 </div>
-            </div>
-
-            <div>
-                <label for="ticket-price" class="block text-sm font-medium leading-6 text-slate-900">Ticket
-                    Price</label>
-                <div class="mt-2">
-                    <input type="number" name="ticket_price" id="ticket-price" step="0.01" min="0"
-                        class="block w-full rounded-md border-0 py-2.5 px-2.5 text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-600"
-                        placeholder="Enter ticket price">
-                </div>
-            </div>
-
-            <div>
-                <div id="dropzone"
-                    class="mt-2 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 px-6 py-10">
-                    <div class="text-center">
-                        <svg class="mx-auto h-12 w-12 text-slate-300" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12A2.25 2.25 0 0120.25 20.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p class="mt-3 text-sm font-semibold text-slate-900">Upload Banner</p>
-                        <p class="mt-1 text-sm text-slate-600">Click to upload or drag and drop a banner image for your
-                            event.</p>
-                        <div class="mt-6">
-                            <label for="file-upload"
-                                class="cursor-pointer rounded-md bg-white font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500">
-                                <span
-                                    class="rounded-md bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200">Upload
-                                    Image</span>
-                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <div id="file-upload-feedback" class="mt-2 text-sm text-green-600 font-medium"></div>
             </div>
 
             <div class="flex justify-end pt-4">
-                <button type="submit"
-                    class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
-                    id="createEventButton">Create Event</button>
+                <button type="submit" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Create Event</button>
             </div>
         </form>
-        <div id="responseMessage" class="message hidden"></div>
+        <div id="responseMessage" class="mt-6 text-center"></div>
     </main>
 
-    <script>
-        // Drag and drop functionality (already present, not modified)
-        const dropzone = document.getElementById('dropzone');
-        const fileUpload = document.getElementById('file-upload');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const createEventForm = document.getElementById('createEventForm');
+    const responseMessageDiv = document.getElementById('responseMessage');
+    const dropzone = document.getElementById('dropzone');
+    const fileUpload = document.getElementById('file-upload');
+    const fileUploadFeedback = document.getElementById('file-upload-feedback');
+    const eventDateInput = document.getElementById('event-date');
 
-        dropzone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropzone.classList.add('border-blue-500', 'bg-blue-50');
-        });
-
-        dropzone.addEventListener('dragleave', () => {
-            dropzone.classList.remove('border-blue-500', 'bg-blue-50');
-        });
-
-        dropzone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropzone.classList.remove('border-blue-500', 'bg-blue-50');
-            if (e.dataTransfer.files.length) {
-                fileUpload.files = e.dataTransfer.files;
-                console.log('File dropped:', e.dataTransfer.files[0].name);
-            }
-        });
-
-        fileUpload.addEventListener('change', () => {
-            if (fileUpload.files.length) {
-                console.log('File selected:', fileUpload.files[0].name);
-            }
-        });
-
-        // --- Core JavaScript for connecting to PHP Backend ---
-        const createEventForm = document.getElementById('createEventForm');
-        const responseMessageDiv = document.getElementById('responseMessage');
-
-        createEventForm.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            responseMessageDiv.textContent = ''; // Clear previous messages
-            responseMessageDiv.className = 'message hidden'; // Reset class and hide
-
-            // Get values from form inputs
-            const title = document.getElementById('event-title').value.trim();
-            const date = document.getElementById('event-date').value; // YYYY-MM-DDTHH:mm format
-            const location = document.getElementById('event-location').value.trim();
-            const description = document.getElementById('event-description').value.trim();
-            const ticketPrice = parseFloat(document.getElementById('ticket-price').value);
-
-            // Client-side validation
-            if (!title || !date || !location) {
-                responseMessageDiv.classList.add('error');
-                responseMessageDiv.textContent = 'Title, Date, and Location are required.';
-                responseMessageDiv.classList.remove('hidden');
-                return;
-            }
-
-            if (isNaN(ticketPrice) || ticketPrice < 0) {
-                responseMessageDiv.classList.add('error');
-                responseMessageDiv.textContent = 'Invalid ticket price. Must be a non-negative number.';
-                responseMessageDiv.classList.remove('hidden');
-                return;
-            }
-
-            // PHP expects 'Y-m-d H:i:s'. Convert 'datetime-local' format.
-            // Example: "2023-10-26T14:30" -> "2023-10-26 14:30:00"
-            let formattedDate = '';
-            if (date) {
-                // For simplicity, we assume seconds are '00'.
-                // If you need actual seconds, you'd need a more complex date picker or client-side logic.
-                formattedDate = date.replace('T', ' ') + ':00';
-            }
-
-
-            const eventData = {
-                title: title,
-                description: description,
-                date: formattedDate,
-                location: location,
-                ticket_price: ticketPrice
-                // organizer_id is handled by getCurrentUserId() in PHP, not sent from frontend
-            };
-
-            // --- IMPORTANT: Configure your API URL here ---
-            // This URL must point to your create_event.php file on your web server.
-            // Adjust this path based on where you host your PHP files.
-            // Example: 'http://localhost/your_project_folder_name/api/create_event.php'
-            const apiUrl = 'http://localhost/event-management-backend/events/create_event.php'; // <--- VERIFY THIS PATH!
-
-            try {
-                const formData = new FormData();
-                formData.append('title', title);
-                formData.append('description', description);
-                formData.append('date', formattedDate);  // Already formatted as "YYYY-MM-DD HH:mm:ss"
-                formData.append('location', location);
-                formData.append('ticket_price', ticketPrice);
-                formData.append('banner', document.getElementById('file-upload').files[0]); // Get the uploaded file
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    body: formData
-                });
-
-
-        const result = await response.json(); // Parse the JSON response from PHP
-
-        if (response.ok) { // Check for 2xx status codes (e.g., 200 OK, 201 Created)
-            responseMessageDiv.classList.add('success');
-            responseMessageDiv.textContent = result.message + `. Event ID: ${result.event_id}`;
-            responseMessageDiv.classList.remove('hidden');
-            createEventForm.reset(); // Clear the form on success
-            // Optionally, redirect after a short delay:
-            // setTimeout(() => {
-            //     window.location.href = "./event-successfully.html";
-            // }, 2000);
+    // --- NEW: Set Min/Max Dates ---
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    
+    const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+    eventDateInput.min = minDateTime;
+    eventDateInput.max = '2026-12-31T23:59';
+    
+    // --- NEW: File Upload UI Feedback ---
+    function handleFileSelect(file) {
+        if (file) {
+            fileUploadFeedback.textContent = `File selected: ${file.name}`;
         } else {
-            // Handle server-side errors (e.g., 400 Bad Request, 500 Internal Server Error)
-            responseMessageDiv.classList.add('error');
-            responseMessageDiv.textContent = result.error || 'An unknown error occurred.';
-            responseMessageDiv.classList.remove('hidden');
-            console.error('Server error response:', result);
+            fileUploadFeedback.textContent = '';
         }
-            } catch (error) {
-            // Handle network errors or issues with fetch itself (e.g., server not running, CORS issue)
-            responseMessageDiv.classList.add('error');
-            responseMessageDiv.textContent = 'Network error: Could not connect to the server. Check console for details.';
-            responseMessageDiv.classList.remove('hidden');
-            console.error('Fetch error:', error);
+    }
+    fileUpload.addEventListener('change', () => handleFileSelect(fileUpload.files[0]));
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+        if (e.dataTransfer.files.length) {
+            fileUpload.files = e.dataTransfer.files;
+            handleFileSelect(fileUpload.files[0]);
         }
-        });
-    </script>
-</body>
+    });
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-blue-500', 'bg-blue-50'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-blue-500', 'bg-blue-50'));
 
+    // --- Form Submission with NEW Validation ---
+    createEventForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        responseMessageDiv.textContent = '';
+        responseMessageDiv.className = 'text-center';
+
+        const title = document.getElementById('event-title').value;
+        const dateValue = eventDateInput.value;
+        const audienceSize = document.getElementById('audience-size').value;
+        const bannerFile = fileUpload.files[0];
+
+        // --- NEW: Client-Side Validation ---
+        if (title.length > 30) {
+            responseMessageDiv.textContent = 'Error: Event name must be 30 characters or less.';
+            responseMessageDiv.className = 'text-red-600 font-medium'; return;
+        }
+        if (new Date(dateValue) < new Date()) {
+            responseMessageDiv.textContent = 'Error: Event date cannot be in the past.';
+            responseMessageDiv.className = 'text-red-600 font-medium'; return;
+        }
+        if (new Date(dateValue).getFullYear() > 2026) {
+            responseMessageDiv.textContent = 'Error: Event year cannot be after 2026.';
+            responseMessageDiv.className = 'text-red-600 font-medium'; return;
+        }
+        if (parseInt(audienceSize) <= 0) {
+            responseMessageDiv.textContent = 'Error: Audience size must be greater than 0.';
+            responseMessageDiv.className = 'text-red-600 font-medium'; return;
+        }
+        if (bannerFile && bannerFile.type !== 'image/png') {
+            responseMessageDiv.textContent = 'Error: Banner image must be a PNG file.';
+            responseMessageDiv.className = 'text-red-600 font-medium'; return;
+        }
+
+        const formData = new FormData(createEventForm);
+        // Format the date correctly for the backend
+        const formattedDate = dateValue.replace('T', ' ') + ':00';
+        formData.set('date', formattedDate);
+        // Rename file input for backend
+        if (bannerFile) {
+            formData.set('banner', bannerFile);
+        }
+        formData.delete('file-upload'); // remove original file input name
+
+        try {
+            const response = await fetch('http://localhost/event-management-backend/events/create_event.php', {
+                method: 'POST',
+                credentials: 'include',
+                body: formData
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                responseMessageDiv.textContent = result.message;
+                responseMessageDiv.className = 'text-green-600 font-medium';
+                location.href = "./organizer-dashboard.html";
+                createEventForm.reset();
+                fileUploadFeedback.textContent = '';
+            } else {
+                throw new Error(result.error || 'An unknown error occurred.');
+            }
+        } catch (error) {
+            responseMessageDiv.textContent = `Error: ${error.message}`;
+            responseMessageDiv.className = 'text-red-600 font-medium';
+        }
+    });
+});
+</script>
+</body>
 </html>

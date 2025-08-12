@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsored Event Details - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="flex justify-between items-center p-6 bg-white border-b border-gray-200">
+                <div class="flex items-center space-x-8">
+                    <a href="#" class="flex items-center space-x-2">
+                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                        <span class="text-xl font-bold text-gray-900">Evently</span>
+                    </a>
+                    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                        <a href="#" class="text-gray-900">Dashboard</a>
+                        <a href="./sponsor-sponsorships.html" class="hover:text-gray-900">Sponsorships</a>
+                        <a href="./sponsor-events-listing.html" class="hover:text-gray-900">Events</a>
+                        <a href="../ticket-buyer/ticket-buyer-dashboard.html" class="hover:text-gray-900">Buy Ticket</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                     <a href="../general/profile.html">
+    <img id="header-profile-picture" 
+         class="h-9 w-9 rounded-full object-cover" 
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" 
+         alt="User avatar" />
+</a>
+                </div>
+            </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+        <!-- Event Header -->
+        <div>
+            <a href="./sponsor-dashboard.html" class="text-sm font-medium text-slate-500 hover:text-slate-700 mb-4 inline-block">&larr; Back to Dashboard</a>
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="min-w-0 flex-1">
+                    <h1 id="event-title" class="text-3xl font-bold leading-7 text-slate-900 sm:truncate sm:tracking-tight"></h1>
+                    <p id="event-details" class="mt-1 text-sm text-slate-500"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="rounded-lg bg-white border border-slate-200 p-6">
+                <p class="text-sm font-medium text-slate-600">Total Revenue</p>
+                <p id="total-revenue-stat" class="mt-2 text-3xl font-bold text-slate-900">$0</p>
+            </div>
+            <div class="rounded-lg bg-white border border-slate-200 p-6">
+                <p class="text-sm font-medium text-slate-600">Tickets Sold</p>
+                <p id="tickets-sold-stat" class="mt-2 text-3xl font-bold text-slate-900">0</p>
+            </div>
+        </div>
+
+        <!-- About the Event -->
+        <div class="mt-8 bg-white rounded-lg border border-slate-200 p-6">
+            <h2 class="text-xl font-semibold text-slate-900">About This Event</h2>
+            <p id="event-description" class="mt-4 text-slate-600 leading-relaxed"></p>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('id');
+
+    if (!eventId) {
+        document.querySelector('main').innerHTML = '<h1 class="text-red-600 font-bold text-2xl">Event ID not provided.</h1>';
+        return;
+    }
+
+    fetch(`http://localhost/event-management-backend/sponsorships/get_sponsored_event_details.php?id=${eventId}`, {
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Could not load event details.') });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Populate header
+        const eventInfo = data.event_info;
+        const eventDate = new Date(eventInfo.date);
+        document.getElementById('event-title').textContent = eventInfo.title;
+        document.getElementById('event-details').textContent = `${eventDate.toLocaleDateString('en-US', { dateStyle: 'full' })} · ${eventInfo.location}`;
+        document.title = `${eventInfo.title} - Event Details`;
+
+        // Populate stat cards
+        document.getElementById('total-revenue-stat').textContent = `$${parseFloat(data.performance_stats.total_revenue).toLocaleString('en-US')}`;
+        document.getElementById('tickets-sold-stat').textContent = data.performance_stats.tickets_sold.toLocaleString('en-US');
+
+        // Populate description
+        document.getElementById('event-description').textContent = eventInfo.description || 'No description provided for this event.';
+    })
+    .catch(error => {
+        console.error('Error fetching event details:', error);
+        document.querySelector('main').innerHTML = `<h1 class="text-red-600 font-bold text-2xl">${error.message}</h1>`;
+    });
+});
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If the element doesn't exist on this page, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full URL to the photo and update the image source
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will remain.
+        })
+        .catch(error => {
+            // This error is expected on pages where the user isn't logged in.
+            // We can log it for debugging but won't show an alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its unique ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If this page doesn't have the profile picture element, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full, correct URL to the photo
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                // Update the image source to display the user's picture
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will simply remain.
+        })
+        .catch(error => {
+            // This error is normal on pages where a user isn't logged in.
+            // We can log it for debugging but won't show a disruptive alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+
+</body>
+</html>

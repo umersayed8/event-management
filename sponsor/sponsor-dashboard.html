@@ -17,104 +17,128 @@
             <header class="flex justify-between items-center p-6 bg-white border-b border-gray-200">
                 <div class="flex items-center space-x-8">
                     <a href="#" class="flex items-center space-x-2">
-                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5"></path>
-                            <path d="M2 12l10 5 10-5"></path>
-                        </svg>
+                        <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                         <span class="text-xl font-bold text-gray-900">Evently</span>
                     </a>
                     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
                         <a href="#" class="text-gray-900">Dashboard</a>
                         <a href="./sponsor-sponsorships.html" class="hover:text-gray-900">Sponsorships</a>
                         <a href="./sponsor-events-listing.html" class="hover:text-gray-900">Events</a>
+                        <a href="../ticket-buyer/ticket-buyer-dashboard.html" class="hover:text-gray-900">Buy Ticket</a>
                     </nav>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="./profile.html"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/150?img=1" alt="User Avatar"></a>
+                     <a href="../general/profile.html">
+    <img id="header-profile-picture" 
+         class="h-9 w-9 rounded-full object-cover" 
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" 
+         alt="User avatar" />
+</a>
                 </div>
             </header>
 
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6 md:p-8">
                 <div class="max-w-7xl mx-auto">
-                    
                     <h2 id="welcome-message" class="text-3xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Proposals Sent</p>
-                            <p id="proposals-sent-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                        </div>
-                        <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Accepted Sponsorships</p>
-                            <p id="accepted-sponsorships-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                        </div>
-                        <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Upcoming Events</p>
-                            <p id="upcoming-events-stat" class="text-3xl font-semibold text-gray-900">0</p>
-                        </div>
-                        <div class="bg-gray-100 p-6 rounded-xl">
-                            <p class="text-sm text-gray-600">Revenue Generated</p>
-                            <p id="revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p>
-                        </div>
+                        <div class="bg-gray-100 p-6 rounded-xl"><p class="text-sm text-gray-600">Proposals Sent</p><p id="proposals-sent-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
+                        <div class="bg-gray-100 p-6 rounded-xl"><p class="text-sm text-gray-600">Accepted Sponsorships</p><p id="accepted-sponsorships-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
+                        <div class="bg-gray-100 p-6 rounded-xl"><p class="text-sm text-gray-600">Upcoming Events</p><p id="upcoming-events-stat" class="text-3xl font-semibold text-gray-900">0</p></div>
+                        <div class="bg-gray-100 p-6 rounded-xl"><p class="text-sm text-gray-600">Revenue Generated</p><p id="revenue-stat" class="text-3xl font-semibold text-gray-900">$0</p></div>
                     </div>
-
-                    <div class="flex items-center space-x-4 my-8">
-                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="eventListings">Event Listings</button>
-                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="sponsorPackage">Sponsorship Packages</button>
-                        <button class="bg-gray-200 text-gray-800 font-medium py-2 px-5 rounded-lg text-sm" id="eventCalendar">Event Calendar</button>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Navigation</h3>
+                    <div class="mb-6">
+                        <a href="./sponsor-events-listing.html" class="inline-block bg-slate-300 hover:bg-slate-400 text-black font-bold py-2 px-4 rounded-full transition-colors">Event Listings</a>
+                        <a href="./sponsor-event-calendar.html" class="inline-block bg-slate-300 hover:bg-slate-400 text-black font-bold py-2 px-4 rounded-full transition-colors">Event Calendar</a>
                     </div>
-                    
-                    <div id="suggested-events-section" class="mb-12">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Suggested Events for You</h3>
-                        <div id="suggested-events-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <!-- Suggested event cards will be inserted here -->
-                        </div>
-                    </div>
-
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Sponsorship Trends</h3>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-white p-6 rounded-xl border border-gray-200">
-                             <h4 class="font-semibold">Sponsorship Growth</h4>
-                             <div class="h-56"><canvas id="sponsorshipGrowthChart"></canvas></div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl border border-gray-200">
-                             <h4 class="font-semibold">Sponsorships by Category</h4>
-                             <div class="h-56"><canvas id="sponsorshipByCategoryChart"></canvas></div>
-                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200"><h4 class="font-semibold">Sponsorship Growth (Last 6 Months)</h4><div class="h-56"><canvas id="sponsorshipGrowthChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200"><h4 class="font-semibold">Sponsorships by Category</h4><div class="h-56"><canvas id="sponsorshipByCategoryChart"></canvas></div></div>
                     </div>
 
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Your Upcoming Sponsored Events</h3>
                     <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                        <table class="w-full text-sm text-left">
-                            <thead class="bg-gray-50 text-xs text-gray-600 uppercase">
-                                <tr>
-                                    <th scope="col" class="px-6 py-4 font-medium">Event Name</th>
-                                    <th scope="col" class="px-6 py-4 font-medium">Date</th>
-                                    <th scope="col" class="px-6 py-4 font-medium">Location</th>
-                                    <th scope="col" class="px-6 py-4 font-medium">Proposal Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="events-table-body" class="divide-y divide-gray-200">
-                                <!-- Dynamic rows will be inserted here -->
-                            </tbody>
-                        </table>
+                        <table class="w-full text-sm text-left"><thead class="bg-gray-50 text-xs text-gray-600 uppercase"><tr><th scope="col" class="px-6 py-4 font-medium">Event Name</th><th scope="col" class="px-6 py-4 font-medium">Date</th><th scope="col" class="px-6 py-4 font-medium">Location</th><th scope="col" class="px-6 py-4 font-medium">Status</th></tr></thead><tbody id="upcoming-events-table-body" class="divide-y divide-gray-200"></tbody></table>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Your Past Sponsored Events</h3>
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <table class="w-full text-sm text-left"><thead class="bg-gray-50 text-xs text-gray-600 uppercase"><tr><th scope="col" class="px-6 py-4 font-medium">Event Name</th><th scope="col" class="px-6 py-4 font-medium">Date</th><th scope="col" class="px-6 py-4 font-medium">Location</th><th scope="col" class="px-6 py-4 font-medium">Status</th></tr></thead><tbody id="past-events-table-body" class="divide-y divide-gray-200"></tbody></table>
                     </div>
                 </div>
+                <footer class="bg-slate-100 text-slate-700 mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Branding -->
+    <div>
+      <h2 class="text-xl font-bold text-slate-900 mb-2">Evently</h2>
+      <p class="text-sm">Connecting you to events that matter.</p>
+    </div>
+
+    <!-- Contact Information -->
+    <div>
+      <h3 class="text-sm font-semibold text-slate-900 mb-2">Contact</h3>
+      <p class="text-sm">📧 support@evently.com</p>
+      <p class="text-sm">📞 +91 98765 43210</p>
+      <p class="text-sm">📍 Mumbai, India</p>
+    </div>
+
+    <!-- Event Categories -->
+    <div>
+      <h3 class="text-sm font-semibold text-slate-900 mb-2">Know More About Us</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#" class="hover:text-blue-600">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-blue-600">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:text-blue-600">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Our Socials (Moved from below) -->
+    <div>
+        <h3 class="text-sm font-semibold text-slate-900 mb-2">Our Socials</h3>
+        <div class="flex space-x-4">
+            <!-- Facebook -->
+            <a href="#" class="hover:text-blue-600">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+                </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="hover:text-pink-500">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
+                </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="hover:text-blue-700">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452H16.89v-5.568c0-1.327-.027-3.036-1.85-3.036-1.851 0-2.136 1.445-2.136 2.939v5.665H9.348V9h3.409v1.561h.048c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.267 2.369 4.267 5.455v6.286zM5.337 7.433a1.992 1.992 0 1 1 0-3.984 1.992 1.992 0 0 1 0 3.984zM6.896 20.452H3.778V9h3.118v11.452z"/>
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="#" class="hover:text-gray-800">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 .5a12 12 0 0 0-3.792 23.39c.6.113.82-.26.82-.577 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.107-.775.42-1.304.763-1.604-2.665-.303-5.467-1.332-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 6 0c2.292-1.552 3.3-1.23 3.3-1.23.652 1.653.241 2.873.118 3.176.768.839 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.476 5.921.431.371.815 1.102.815 2.222 0 1.604-.015 2.896-.015 3.293 0 .319.218.694.825.576A12.001 12.001 0 0 0 12 .5z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+  </div>
+
+  <!-- Copyright Section -->
+  <div class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-300">
+    <p class="text-sm text-slate-500 text-center">&copy; 2025 Evently. All rights reserved.</p>
+  </div>
+</footer>
+
             </main>
         </div>
     </div>
-
+    
 <script>
+// The rest of the script for this page remains exactly the same...
 document.addEventListener('DOMContentLoaded', () => {
-    // --- NAVIGATION ---
-    document.querySelector('#eventListings').addEventListener('click', () => window.location.href = "./sponsor-events-listing.html");
-    document.querySelector('#sponsorPackage').addEventListener('click', () => window.location.href = './sponsor-packages.html');
-    document.querySelector('#eventCalendar').addEventListener('click', () => window.location.href = './sponsor-event-calendar.html');
-
-    // --- DYNAMIC DATA ---
     fetch('http://localhost/event-management-backend/sponsorships/get_sponsor_dashboard_data.php', {
         credentials: 'include'
     })
@@ -130,20 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('proposals-sent-stat').textContent = data.stats.proposals_sent;
         document.getElementById('accepted-sponsorships-stat').textContent = data.stats.accepted_sponsorships;
         document.getElementById('upcoming-events-stat').textContent = data.stats.upcoming_events_count;
-        document.getElementById('revenue-stat').textContent = `$${data.stats.revenue_generated.toLocaleString('en-US')}`;
-        
-        renderEventsTable(data.upcoming_events_list);
-        renderSuggestedEvents(data.suggested_events);
+        const revenue = data.stats.total_revenue || 0;
+        document.getElementById('revenue-stat').textContent = `$${revenue.toLocaleString('en-US')}`;
+        renderEventsTable('upcoming-events-table-body', data.upcoming_events_list, 'upcoming');
+        renderEventsTable('past-events-table-body', data.past_events_list, 'past');
         renderSponsorshipGrowthChart(data.chart_data.sponsorship_growth);
         renderSponsorshipByCategoryChart(data.chart_data.sponsorship_by_category);
     })
     .catch(error => console.error('Error fetching dashboard data:', error));
-
-    function renderEventsTable(events) {
-        const tableBody = document.getElementById('events-table-body');
+    function renderEventsTable(tableId, events, type) {
+        const tableBody = document.getElementById(tableId);
         tableBody.innerHTML = '';
         if (!events || events.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">You have no upcoming sponsored events.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">You have no ${type} sponsored events.</td></tr>`;
             return;
         }
         const statusColors = {
@@ -155,9 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const formattedDate = new Date(event.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
             const statusColor = statusColors[event.status] || 'bg-gray-100 text-gray-800';
             const statusText = event.status.charAt(0).toUpperCase() + event.status.slice(1);
+            
+            const link = event.status === 'accepted' 
+                ? `./sponsor-view-event-details.html?id=${event.event_id}` 
+                : `../general/sponsor-event-info.html?id=${event.event_id}`;
+
             const row = `
                 <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 font-medium text-gray-900">${event.title}</td>
+                    <td class="px-6 py-4 font-medium text-gray-900">
+                        <a href="${link}" class="text-blue-600 hover:underline">${event.title}</a>
+                    </td>
                     <td class="px-6 py-4">${formattedDate}</td>
                     <td class="px-6 py-4">${event.location}</td>
                     <td class="px-6 py-4">
@@ -168,36 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tableBody.innerHTML += row;
         });
     }
-
-    function renderSuggestedEvents(events) {
-        const grid = document.getElementById('suggested-events-grid');
-        grid.innerHTML = '';
-        if (!events || events.length === 0) {
-            document.getElementById('suggested-events-section').style.display = 'none';
-            return;
-        }
-        events.forEach(event => {
-            const eventDate = new Date(event.date);
-            const formattedDate = eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            const imageUrl = event.banner_image 
-                ? `http://localhost/event-management-backend/${event.banner_image}` 
-                : 'https://placehold.co/600x400/e2e8f0/64748b?text=Event';
-            
-            const card = `
-                <a href="./sponsor-event-info.html?id=${event.id}" class="group block bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
-                    <img src="${imageUrl}" alt="${event.title}" class="w-full h-32 object-cover rounded-t-xl">
-                    <div class="p-4">
-                        <p class="text-xs font-semibold text-blue-600 uppercase">${event.category || 'General'}</p>
-                        <h4 class="font-bold text-gray-900 mt-1">${event.title}</h4>
-                        <p class="text-sm text-gray-600 mt-1">${formattedDate} &middot; ${event.location}</p>
-                    </div>
-                </a>
-            `;
-            grid.innerHTML += card;
-        });
-    }
-
     function renderSponsorshipGrowthChart(growthData) {
+        if (!growthData || growthData.length === 0) return;
         const ctx = document.getElementById('sponsorshipGrowthChart').getContext('2d');
         const labels = growthData.map(item => new Date(item.month + '-02').toLocaleString('default', { month: 'short' }));
         const data = growthData.map(item => item.count);
@@ -208,14 +210,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Accepted Sponsorships',
                     data: data,
-                    fill: false, borderColor: '#4f46e5', tension: 0.4, pointRadius: 2
+                    fill: true,
+                    borderColor: '#4f46e5',
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    tension: 0.4
                 }]
             },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
     }
-
     function renderSponsorshipByCategoryChart(categoryData) {
+        if (!categoryData || categoryData.length === 0) return;
         const ctx = document.getElementById('sponsorshipByCategoryChart').getContext('2d');
         const labels = categoryData.map(item => item.category);
         const data = categoryData.map(item => item.count);
@@ -226,14 +231,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Sponsorships',
                     data: data,
-                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
-                    borderRadius: 4, barPercentage: 0.6
+                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'],
+                    borderRadius: 4
                 }]
             },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
     }
 });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If the element doesn't exist on this page, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full URL to the photo and update the image source
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will remain.
+        })
+        .catch(error => {
+            // This error is expected on pages where the user isn't logged in.
+            // We can log it for debugging but won't show an alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its unique ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If this page doesn't have the profile picture element, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full, correct URL to the photo
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                // Update the image source to display the user's picture
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will simply remain.
+        })
+        .catch(error => {
+            // This error is normal on pages where a user isn't logged in.
+            // We can log it for debugging but won't show a disruptive alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
 </script>
 
 </body>

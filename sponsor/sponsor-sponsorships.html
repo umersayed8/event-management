@@ -22,6 +22,12 @@
                 <a href="./sponsor-dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
                 <a href="./sponsor-sponsorships.html" class="text-blue-600 font-semibold">Sponsorships</a>
                 <a href="./sponsor-events-listing.html" class="text-gray-600 hover:text-gray-900">Explore Events</a>
+                 <a href="../general/profile.html">
+    <img id="header-profile-picture" 
+         class="h-9 w-9 rounded-full object-cover" 
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" 
+         alt="User avatar" />
+</a>
             </div>
         </nav>
     </header>
@@ -106,6 +112,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If the element doesn't exist on this page, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full URL to the photo and update the image source
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will remain.
+        })
+        .catch(error => {
+            // This error is expected on pages where the user isn't logged in.
+            // We can log it for debugging but won't show an alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Find the profile picture element in the header by its unique ID
+        const headerProfilePic = document.getElementById('header-profile-picture');
+
+        // If this page doesn't have the profile picture element, do nothing.
+        if (!headerProfilePic) {
+            return;
+        }
+
+        // Fetch the user's profile data from the backend
+        fetch('http://localhost/event-management-backend/user/get_profile.php', {
+            credentials: 'include' // Important for sending session cookies
+        })
+        .then(response => {
+            // If the user is not logged in, the response will not be 'ok'
+            if (!response.ok) {
+                throw new Error('User not logged in or session expired');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check if the user data contains a path to a profile photo
+            if (data && data.profile_photo_path) {
+                // Construct the full, correct URL to the photo
+                const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+                // Update the image source to display the user's picture
+                headerProfilePic.src = photoUrl;
+            }
+            // If no photo path exists, the default placeholder image will simply remain.
+        })
+        .catch(error => {
+            // This error is normal on pages where a user isn't logged in.
+            // We can log it for debugging but won't show a disruptive alert.
+            console.log('Profile picture loader:', error.message);
+        });
+    });
 </script>
 
 </body>

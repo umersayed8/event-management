@@ -8,9 +8,12 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-      /* Using a more modern font for a closer match to the image */
-      @import url('https://rsms.me/inter/inter.css');
-      html { font-family: 'Inter', sans-serif; }
+    /* Using a more modern font for a closer match to the image */
+    @import url('https://rsms.me/inter/inter.css');
+
+    html {
+      font-family: 'Inter', sans-serif;
+    }
   </style>
 </head>
 
@@ -20,39 +23,35 @@
     <div class="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
       <!-- Logo and Navigation -->
       <div class="flex items-center gap-10">
-        <a href="#" class="flex items-center space-x-2">
-                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-900">Evently</span>
-                </a>
+        <a href="./organizer-dashboard.html" class="flex items-center space-x-2">
+          <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="text-xl font-bold text-gray-900">Evently</span>
+        </a>
         <nav class="hidden md:flex items-center gap-8">
-          <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Home</a>
-          <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Events</a>
-          <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Artists</a>
-          <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Venues</a>
+          <a href="./organizer-dashboard.html" class="text-sm font-medium text-gray-600 hover:text-gray-900">Home</a>
+          <!-- <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900">Events</a> -->
+          <a href="./organizer-sponsorships.html"
+            class="text-sm font-medium text-gray-600 hover:text-gray-900">Sponsors</a>
+          <a href="./organizer-analytics.html"
+            class="text-sm font-medium text-gray-600 hover:text-gray-900">Analytics</a>
         </nav>
       </div>
 
       <!-- Action Icons and User Avatar -->
       <div class="flex items-center gap-5">
-        <button class="text-gray-500 hover:text-gray-800">
-          <!-- Search Icon -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
-        <button class="text-gray-500 hover:text-gray-800">
-          <!-- Notification Bell Icon -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </button>
-        <img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User avatar" />
+
+
+        <a href="../general/profile.html">
+          <img id="header-profile-picture" class="h-9 w-9 rounded-full object-cover"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg=="
+            alt="User avatar" />
+        </a>
       </div>
     </div>
   </header>
@@ -64,48 +63,72 @@
       <!-- Event Name -->
       <div>
         <label for="eventName" class="block text-sm font-medium text-gray-700 mb-1">Event Name</label>
-        <input type="text" name="eventName" id="eventName" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+        <input type="text" name="eventName" id="eventName"
+          class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required />
       </div>
 
       <!-- Description -->
       <div>
         <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-        <textarea name="description" id="description" rows="5" class="w-full resize-y rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+        <textarea name="description" id="description" rows="5"
+          class="w-full resize-y rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required></textarea>
       </div>
 
       <!-- Date & Time -->
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div>
           <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
-          <input type="date" name="date" id="date" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+          <input type="date" name="date" id="date"
+            class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required />
         </div>
         <div>
           <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
-          <input type="time" name="time" id="time" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+          <input type="time" name="time" id="time"
+            class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required />
         </div>
       </div>
 
       <!-- Location -->
       <div>
         <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
-        <input type="text" name="location" id="location" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+        <input type="text" name="location" id="location"
+          class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required />
       </div>
 
       <!-- Lineup -->
       <div>
-        <label for="lineup" class="block text-sm font-medium text-gray-700 mb-1">Lineup</label>
-        <input type="text" name="lineup" id="lineup" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+        <select name="category" id="category"
+          class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required>
+          <option value="">Select a category</option>
+          <option value="Music">Music</option>
+          <option value="Sports">Sports</option>
+          <option value="Technology">Technology</option>
+          <option value="Education">Education</option>
+          <option value="Art">Art</option>
+          <option value="Business">Business</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
+
 
       <!-- Ticket Price -->
       <div>
         <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Ticket Price</label>
-        <input type="number" name="price" id="price" min="0" step="0.01" class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="number" name="price" id="price" min="0" step="0.01"
+          class="w-full rounded-lg border-gray-200 bg-slate-100 p-3 text-sm focus:border-transparent focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
       </div>
 
       <!-- Actions -->
       <div class="flex justify-end pt-4">
-        <button type="submit" class="rounded-lg bg-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-300">
+        <button type="submit"
+          class="rounded-lg bg-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-300">
           Save Changes
         </button>
       </div>
@@ -114,85 +137,164 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('editEventForm');
-        const params = new URLSearchParams(window.location.search);
-        const eventId = params.get('id');
+      const form = document.getElementById('editEventForm');
+      const params = new URLSearchParams(window.location.search);
+      const eventId = params.get('id');
 
-        if (!eventId) {
-            document.querySelector('main').innerHTML = '<h1 class="text-3xl font-bold text-red-600">No Event ID Provided.</h1><p>Please return to the dashboard and select an event to edit.</p>';
-            return;
-        }
+      if (!eventId) {
+        document.querySelector('main').innerHTML = '<h1 class="text-3xl font-bold text-red-600">No Event ID Provided.</h1><p>Please return to the dashboard and select an event to edit.</p>';
+        return;
+      }
 
-        // --- PART 1: FETCH AND POPULATE EVENT DATA ---
-        fetch(`http://localhost/event-management-backend/events/get_event_details.php?id=${eventId}`, {
-                credentials: 'include' // Send session cookie for authentication
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Could not fetch event details.');
-                }
-                return response.json();
-            })
-            .then(event => {
-                // Populate the form with data from the server
-                document.getElementById('eventName').value = event.title;
-                document.getElementById('description').value = event.description;
-                document.getElementById('location').value = event.location;
-                document.getElementById('price').value = parseFloat(event.ticket_price).toFixed(2);
-                
-                // The 'lineup' field is not in your DB schema, you can add it or remove this line
-                // document.getElementById('lineup').value = event.lineup || '';
+      // --- PART 1: FETCH AND POPULATE EVENT DATA ---
+      fetch(`http://localhost/event-management-backend/events/get_event_details.php?id=${eventId}`, {
+        credentials: 'include' // Send session cookie for authentication
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Could not fetch event details.');
+          }
+          return response.json();
+        })
+        .then(event => {
+          // Populate the form with data from the server
+          document.getElementById('eventName').value = event.title;
+          document.getElementById('description').value = event.description;
+          document.getElementById('location').value = event.location;
+          document.getElementById('price').value = parseFloat(event.ticket_price).toFixed(2);
+          document.getElementById('category').value = event.category || '';
 
-                // Split DATETIME string (e.g., "2025-07-31 14:30:00") into date and time
-                if (event.date) {
-                    const [datePart, timePart] = event.date.split(' ');
-                    document.getElementById('date').value = datePart;
-                    // Format time to HH:mm
-                    document.getElementById('time').value = timePart.substring(0, 5);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.querySelector('main').innerHTML = `<h1 class="text-3xl font-bold text-red-600">Error</h1><p>${error.message}</p>`;
-            });
 
-        // --- PART 2: HANDLE FORM SUBMISSION ---
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+          // The 'lineup' field is not in your DB schema, you can add it or remove this line
+          // document.getElementById('lineup').value = event.lineup || '';
 
-            const formData = {
-                id: eventId,
-                title: document.getElementById('eventName').value,
-                description: document.getElementById('description').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                location: document.getElementById('location').value,
-                ticket_price: document.getElementById('price').value
-            };
-            
-            fetch('http://localhost/event-management-backend/events/update_event.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include', // Important for authentication
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.message) {
-                        alert(result.message);
-                        // Redirect back to the dashboard after successful update
-                        window.location.href = './organizer-dashboard.html';
-                    } else {
-                        alert(`Error: ${result.error || 'An unknown error occurred.'}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Submit Error:', error);
-                    alert('An error occurred while saving the event.');
-                });
+          // Split DATETIME string (e.g., "2025-07-31 14:30:00") into date and time
+          if (event.date) {
+            const [datePart, timePart] = event.date.split(' ');
+            document.getElementById('date').value = datePart;
+            // Format time to HH:mm
+            document.getElementById('time').value = timePart.substring(0, 5);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.querySelector('main').innerHTML = `<h1 class="text-3xl font-bold text-red-600">Error</h1><p>${error.message}</p>`;
+        });
+
+      // --- PART 2: HANDLE FORM SUBMISSION ---
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = {
+          id: eventId,
+          title: document.getElementById('eventName').value,
+          description: document.getElementById('description').value,
+          date: document.getElementById('date').value,
+          time: document.getElementById('time').value,
+          location: document.getElementById('location').value,
+          category: document.getElementById('category').value,
+          ticket_price: document.getElementById('price').value
+        };
+
+        fetch('http://localhost/event-management-backend/events/update_event.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include', // Important for authentication
+          body: JSON.stringify(formData)
+        })
+          .then(response => response.json())
+          .then(result => {
+            if (result.message) {
+              alert(result.message);
+              // Redirect back to the dashboard after successful update
+              window.location.href = './organizer-dashboard.html';
+            } else {
+              alert(`Error: ${result.error || 'An unknown error occurred.'}`);
+            }
+          })
+          .catch(error => {
+            console.error('Submit Error:', error);
+            alert('An error occurred while saving the event.');
+          });
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find the profile picture element in the header by its ID
+      const headerProfilePic = document.getElementById('header-profile-picture');
+
+      // If the element doesn't exist on this page, do nothing.
+      if (!headerProfilePic) {
+        return;
+      }
+
+      // Fetch the user's profile data from the backend
+      fetch('http://localhost/event-management-backend/user/get_profile.php', {
+        credentials: 'include' // Important for sending session cookies
+      })
+        .then(response => {
+          // If the user is not logged in, the response will not be 'ok'
+          if (!response.ok) {
+            throw new Error('User not logged in or session expired');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Check if the user data contains a path to a profile photo
+          if (data && data.profile_photo_path) {
+            // Construct the full URL to the photo and update the image source
+            const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+            headerProfilePic.src = photoUrl;
+          }
+          // If no photo path exists, the default placeholder image will remain.
+        })
+        .catch(error => {
+          // This error is expected on pages where the user isn't logged in.
+          // We can log it for debugging but won't show an alert.
+          console.log('Profile picture loader:', error.message);
         });
     });
-</script>
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find the profile picture element in the header by its unique ID
+      const headerProfilePic = document.getElementById('header-profile-picture');
+
+      // If this page doesn't have the profile picture element, do nothing.
+      if (!headerProfilePic) {
+        return;
+      }
+
+      // Fetch the user's profile data from the backend
+      fetch('http://localhost/event-management-backend/user/get_profile.php', {
+        credentials: 'include' // Important for sending session cookies
+      })
+        .then(response => {
+          // If the user is not logged in, the response will not be 'ok'
+          if (!response.ok) {
+            throw new Error('User not logged in or session expired');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Check if the user data contains a path to a profile photo
+          if (data && data.profile_photo_path) {
+            // Construct the full, correct URL to the photo
+            const photoUrl = `http://localhost/event-management-backend/${data.profile_photo_path}`;
+            // Update the image source to display the user's picture
+            headerProfilePic.src = photoUrl;
+          }
+          // If no photo path exists, the default placeholder image will simply remain.
+        })
+        .catch(error => {
+          // This error is normal on pages where a user isn't logged in.
+          // We can log it for debugging but won't show a disruptive alert.
+          console.log('Profile picture loader:', error.message);
+        });
+    });
+  </script>
+
 </body>
 
 </html>

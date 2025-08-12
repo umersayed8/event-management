@@ -13,14 +13,38 @@
 <body class="bg-gray-50">
 
     <header class="bg-white border-b border-slate-200">
-        <!-- You can copy a header from another page like ticket-buyer-dashboard.html -->
-    </header>
+    <div class="mx-auto flex h-20 max-w-full items-center justify-between px-6 lg:px-8">
+        <div class="flex items-center gap-12">
+            <a href="#" class="flex items-center space-x-2" id="logo-link">
+                <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="text-xl font-bold text-gray-900">Evently</span>
+            </a>
+        </div>
+        <div class="flex items-center gap-8">
+            <nav id="navbar-links" class="hidden items-center gap-8 md:flex"></nav>
+
+            <div class="flex items-center gap-5">
+                <a href="../general/profile.html">
+    <img id="header-profile-picture" 
+         class="h-9 w-9 rounded-full object-cover" 
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg=="
+         alt="User avatar" />
+</a>
+            </div>
+        </div>
+    </div>
+</header>
 
     <main class="mx-auto max-w-4xl px-6 py-12 lg:px-8">
         <h1 class="text-3xl font-bold tracking-tight text-slate-900">Your Profile</h1>
         
         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Left Sidebar/Menu -->
             <div class="md:col-span-1">
                 <nav class="space-y-1">
                     <a href="#" id="profile-tab" data-target="profile-section" class="tab-link bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
@@ -32,13 +56,21 @@
                 </nav>
             </div>
 
-            <!-- Right Content Area -->
             <div class="md:col-span-2 space-y-6">
-                <!-- Profile Form Section -->
                 <div id="profile-section" class="tab-content bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h2 class="text-xl font-semibold text-gray-900">Profile Information</h2>
                     <p class="mt-1 text-sm text-gray-500">Update your personal details here.</p>
                     <form id="profile-form" class="mt-6 space-y-6">
+                        <div class="flex items-center gap-6">
+    <img id="profile-preview" class="h-20 w-20 rounded-full object-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" alt="Current profile photo">
+    <div>
+        <label for="profile_photo" class="block text-sm font-medium text-gray-700">Change Photo</label>
+        <input type="file" id="profile_photo" name="profile_photo" accept="image/png, image/jpeg" class="mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
+        <p class="mt-1 text-xs text-gray-500">PNG or JPG up to 2MB.</p>
+    </div>
+</div>
+<div class="border-t border-slate-200 my-6"></div>
+
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
                             <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
@@ -55,7 +87,6 @@
                     </form>
                 </div>
 
-                <!-- Password Change Form Section (Initially Hidden) -->
                 <div id="password-section" class="tab-content hidden bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                     <h2 class="text-xl font-semibold text-gray-900">Change Password</h2>
                     <p class="mt-1 text-sm text-gray-500">Update your password. Please enter your current password to continue.</p>
@@ -80,7 +111,6 @@
                     </form>
                 </div>
 
-                <!-- Logout Button -->
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                      <h2 class="text-xl font-semibold text-gray-900">Logout</h2>
                      <p class="mt-1 text-sm text-gray-500">Log out of your Evently account.</p>
@@ -96,97 +126,155 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // --- FORM AND BUTTON ELEMENTS ---
+    // --- 1. GATHER ALL ELEMENTS ---
+    // Forms & Buttons
     const profileForm = document.getElementById('profile-form');
     const passwordForm = document.getElementById('password-form');
     const logoutBtn = document.getElementById('logout-btn');
+    const logoLink = document.getElementById('logo-link');
+    
+    // Inputs
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
+    const profilePhotoInput = document.getElementById('profile_photo');
 
-    // --- TAB SWITCHING LOGIC ---
+    // Display Elements
+    const profilePreview = document.getElementById('profile-preview');
+    const headerProfilePic = document.querySelector('header img'); // Note: See improvement below
+    const navbarLinksContainer = document.getElementById('navbar-links');
+    
+    // Tabs
     const tabs = document.querySelectorAll('.tab-link');
     const tabContents = document.querySelectorAll('.tab-content');
+
+    // --- 2. DEFINE NAVIGATION LINKS ---
+    const navLinksByRole = {
+        organizer: [
+            { text: 'Dashboard', href: '../organizer/organizer-dashboard.html' },
+            { text: 'Sponsors', href: '../organizer/organizer-sponsorships.html' },
+            { text: 'Analytics', href: '../organizer/organizer-analytics.html' },
+            { text: 'Buy Tickets', href: '../ticket-buyer/ticket-buyer-dashboard.html' }
+        ],
+        ticket_buyer: [
+            { text: 'My Tickets', href: '../ticket-buyer/view-ticket.html' },
+            { text: 'Browse Events', href: '../ticket-buyer/ticket-buyer-dashboard.html' }
+        ],
+        sponsor: [
+            { text: 'Dashboard', href: '../sponsor/sponsor-dashboard.html' },
+            { text: 'Sponsorships', href: '../sponsor/sponsor-dashboard.html' },
+            { text: 'Events', href: '../sponsor/sponsor-events-listing.html' }
+        ]
+    };
+
+    // --- 3. FETCH INITIAL DATA & POPULATE PAGE ---
+    fetch('http://localhost/event-management-backend/user/get_profile.php', { credentials: 'include' })
+        .then(response => {
+            if (!response.ok) {
+                // If not logged in, redirect to login page
+                window.location.href = './login-page.html';
+                throw new Error('Not logged in');
+            }
+            return response.json();
+        })
+        .then(user => {
+            // -- Start: Logic from the first fetch is now here --
+            if (user.role === 'organizer') {
+                logoLink.href = '../organizer/organizer-dashboard.html';
+            } else if (user.role === 'sponsor') {
+                logoLink.href = '../sponsor/sponsor-dashboard.html';
+            } else if (user.role === 'ticket_buyer') {
+                logoLink.href = '../ticket-buyer/ticket-buyer-dashboard.html';
+            }
+            // -- End: Logic from the first fetch --
+
+            // Populate form fields
+            nameInput.value = user.name;
+            emailInput.value = user.email;
+
+            // Populate profile picture
+            if (user.profile_photo_path) {
+                const photoUrl = `http://localhost/event-management-backend/${user.profile_photo_path}`;
+                profilePreview.src = photoUrl;
+                if (headerProfilePic) headerProfilePic.src = photoUrl;
+            }
+
+            // Populate navigation bar based on user role
+            const linksToCreate = navLinksByRole[user.role] || [];
+            if (linksToCreate.length > 0) {
+                navbarLinksContainer.innerHTML = ''; // Clear any existing links
+                navbarLinksContainer.classList.remove('hidden');
+                linksToCreate.forEach(linkInfo => {
+                    const linkElement = document.createElement('a');
+                    linkElement.href = linkInfo.href;
+                    linkElement.textContent = linkInfo.text;
+                    linkElement.className = 'text-sm font-medium text-slate-600 hover:text-slate-900';
+                    navbarLinksContainer.appendChild(linkElement);
+                });
+            }
+        })
+        .catch(error => {
+            // The redirect in the first .then handles the "Not logged in" case.
+            // This will catch other network errors.
+            console.error('Error fetching initial data:', error);
+        });
+
+    // --- 4. SETUP ALL EVENT LISTENERS ---
+
+    // Tab Switching
     tabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = tab.dataset.target;
-            
-            // Update tab styles
-            tabs.forEach(t => {
-                t.classList.remove('bg-gray-200', 'text-gray-900');
-                t.classList.add('text-gray-600', 'hover:bg-gray-100');
-            });
+            tabs.forEach(t => t.classList.remove('bg-gray-200', 'text-gray-900') && t.classList.add('text-gray-600', 'hover:bg-gray-100'));
             tab.classList.add('bg-gray-200', 'text-gray-900');
-            tab.classList.remove('text-gray-600', 'hover:bg-gray-100');
-
-            // Show/hide content
-            tabContents.forEach(content => {
-                if (content.id === targetId) {
-                    content.classList.remove('hidden');
-                } else {
-                    content.classList.add('hidden');
-                }
-            });
+            tabContents.forEach(content => content.id === targetId ? content.classList.remove('hidden') : content.classList.add('hidden'));
         });
     });
-
-    // --- FETCH AND POPULATE PROFILE DATA ---
-    fetch('http://localhost/event-management-backend/user/get_profile.php', { credentials: 'include' })
-        .then(response => {
-            if (!response.ok) { window.location.href = './login-page.html'; throw new Error('Not logged in'); }
-            return response.json();
-        })
-        .then(data => {
-            nameInput.value = data.name;
-            emailInput.value = data.email;
-        })
-        .catch(error => console.error('Error fetching profile:', error));
-
-    // --- HANDLE PROFILE UPDATE ---
+    
+    // Profile Update Form (with file upload)
     profileForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const updatedData = { name: nameInput.value, email: emailInput.value };
+        const formData = new FormData();
+        formData.append('name', nameInput.value);
+        formData.append('email', emailInput.value);
+        if (profilePhotoInput.files.length > 0) {
+            formData.append('profile_photo', profilePhotoInput.files[0]);
+        }
         fetch('http://localhost/event-management-backend/user/update_profile.php', {
-            method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(updatedData)
+            method: 'POST',
+            credentials: 'include',
+            body: formData // Use FormData for file uploads
         })
         .then(response => response.json())
         .then(data => {
-            if (data.message) { alert(data.message); } 
-            else { alert(`Error: ${data.error}`); }
-        })
-        .catch(error => alert('An error occurred. Please try again.'));
-    });
-    
-    // --- HANDLE PASSWORD CHANGE ---
-    passwordForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(passwordForm);
-        const data = Object.fromEntries(formData.entries());
-
-        fetch('http://localhost/event-management-backend/user/change_password.php', {
-            method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(result => {
-            if (result.message) {
-                alert(result.message);
-                passwordForm.reset(); // Clear form on success
-            } else {
-                alert(`Error: ${result.error}`);
+            alert(data.message || data.error);
+            if (data.new_photo_path) {
+                const newPhotoUrl = `http://localhost/event-management-backend/${data.new_photo_path}`;
+                profilePreview.src = newPhotoUrl;
+                if(headerProfilePic) headerProfilePic.src = newPhotoUrl;
             }
         })
         .catch(error => alert('An error occurred. Please try again.'));
     });
 
-    // --- HANDLE LOGOUT ---
+    // Password Change Form
+    passwordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(passwordForm);
+        const data = Object.fromEntries(formData.entries());
+        fetch('http://localhost/event-management-backend/user/change_password.php', {
+            method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(res => res.json()).then(result => {
+            alert(result.message || result.error);
+            if(result.message) passwordForm.reset();
+        });
+    });
+
+    // Logout Button
     logoutBtn.addEventListener('click', () => {
-        fetch('http://localhost/event-management-backend/auth/logout.php', {
-            method: 'POST', credentials: 'include'
-        })
-        .then(() => { window.location.href = './login-page.html'; })
-        .catch(error => console.error('Logout failed:', error));
+        fetch('http://localhost/event-management-backend/auth/logout.php', { method: 'POST', credentials: 'include' })
+        .then(() => { window.location.href = './login-page.html'; });
     });
 });
 </script>

@@ -8,7 +8,6 @@
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        xintegrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google Fonts -->
@@ -19,7 +18,6 @@
     <!-- Tailwind CSS Script -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Optional: You can customize Tailwind here if needed
         tailwind.config = {
             theme: {
                 extend: {
@@ -35,26 +33,26 @@
 
 <body class="bg-white font-inter flex flex-col min-h-screen">
 
-    <!-- =========== Responsive Header =========== -->
+    <!-- Header -->
     <header class="bg-white sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
-            <a href="#" class="flex items-center space-x-2">
-                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-900">Evently</span>
-                </a>
+            <a href="./home-page.html" class="flex items-center space-x-2">
+                <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="text-xl font-bold text-gray-900">Evently</span>
+            </a>
 
-            <!-- Desktop Nav Links -->
+            <!-- Desktop Nav -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="./home-page.html" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                <a href="./about-us.html" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="./contact-us.html" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
                 <a href="./sign-up.html"
                     class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition-all">Sign-up</a>
             </div>
@@ -70,18 +68,21 @@
             <a href="./home-page.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
             <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
             <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
-            <a href="#"
+            <a href="./sign-up.html"
                 class="block py-2 px-4 text-sm bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold">Sign-up</a>
         </div>
     </header>
 
-    <!-- =========== Main Login Form Content =========== -->
+    <!-- Main Content -->
     <main class="flex-grow bg-gray-50 flex items-center justify-center px-4 py-12">
         <div class="w-full max-w-sm space-y-6">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-gray-900">Welcome Back!</h1>
                 <p class="mt-2 text-gray-600">Sign in to continue to Evently</p>
             </div>
+
+            <!-- Message Container -->
+            <div id="message" class="hidden text-center p-3 rounded-lg text-sm font-medium"></div>
 
             <!-- Login Form -->
             <form method="POST" class="space-y-4">
@@ -97,14 +98,6 @@
                         class="password-toggle absolute top-1/2 right-4 -translate-y-1/2 text-sm font-semibold text-gray-500 hover:text-blue-600">Show</button>
                 </div>
 
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                        <input type="checkbox" name="remember"
-                            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                        Remember me
-                    </label>
-                </div>
-
                 <button type="submit"
                     class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-all text-base">Login</button>
             </form>
@@ -116,41 +109,102 @@
                 <div class="flex-grow bg-gray-300 h-px"></div>
             </div>
 
-            <!-- Google Sign-in Button -->
-            <!-- Google Sign-In Integration -->
-<div id="g_id_onload"
-     data-client_id="180752526091-nqg0onvdj70ii90g4r101ffq1pak7a5h.apps.googleusercontent.com"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-callback="handleGoogleSignIn"
-     data-auto_prompt="false">
-</div>
-<div class="flex justify-center">
-  <div class="g_id_signin"
-       data-type="standard"
-       data-shape="rectangular"
-       data-theme="outline"
-       data-text="continue_with"
-       data-size="large"
-       data-logo_alignment="left"
-       data-width="700">
-  </div>
-</div>
-
-
+            <!-- Google Sign-in -->
+            <div id="g_id_onload"
+                data-client_id="180752526091-nqg0onvdj70ii90g4r101ffq1pak7a5h.apps.googleusercontent.com"
+                data-context="signin" data-ux_mode="popup" data-callback="handleGoogleSignIn" data-auto_prompt="false">
+            </div>
+            <div class="flex justify-center">
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                    data-text="continue_with" data-size="large" data-logo_alignment="left" data-width="700">
+                </div>
+            </div>
 
             <p class="text-center text-sm text-gray-600">
-                Don't have an account? <a href="./sign-up.html" class="font-semibold text-blue-600 hover:underline">Sign
+                Don't have an account? <a href="./sign-up.html"
+                    class="font-semibold text-blue-600 hover:underline">Sign
                     up</a>
             </p>
         </div>
     </main>
+    <footer class="bg-slate-100 text-slate-700">
+  <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-    <!-- External JavaScript -->
+    <!-- Branding -->
+    <div>
+      <h2 class="text-xl font-bold text-slate-900 mb-2">Evently</h2>
+      <p class="text-sm">Connecting you to events that matter.</p>
+    </div>
+
+    <!-- Contact Information -->
+    <div>
+      <h3 class="text-sm font-semibold text-slate-900 mb-2">Contact</h3>
+      <p class="text-sm">📧 support@evently.com</p>
+      <p class="text-sm">📞 +91 98765 43210</p>
+      <p class="text-sm">📍 Mumbai, India</p>
+    </div>
+
+    <!-- Event Categories -->
+    <div>
+      <h3 class="text-sm font-semibold text-slate-900 mb-2">Know More About Us</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#" class="hover:text-blue-600">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-blue-600">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:text-blue-600">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Our Socials (Moved from below) -->
+    <div>
+        <h3 class="text-sm font-semibold text-slate-900 mb-2">Our Socials</h3>
+        <div class="flex space-x-4">
+            <!-- Facebook -->
+            <a href="#" class="hover:text-blue-600">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+                </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="hover:text-pink-500">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
+                </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="hover:text-blue-700">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452H16.89v-5.568c0-1.327-.027-3.036-1.85-3.036-1.851 0-2.136 1.445-2.136 2.939v5.665H9.348V9h3.409v1.561h.048c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.267 2.369 4.267 5.455v6.286zM5.337 7.433a1.992 1.992 0 1 1 0-3.984 1.992 1.992 0 0 1 0 3.984zM6.896 20.452H3.778V9h3.118v11.452z"/>
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="#" class="hover:text-gray-800">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 .5a12 12 0 0 0-3.792 23.39c.6.113.82-.26.82-.577 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.107-.775.42-1.304.763-1.604-2.665-.303-5.467-1.332-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 6 0c2.292-1.552 3.3-1.23 3.3-1.23.652 1.653.241 2.873.118 3.176.768.839 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.476 5.921.431.371.815 1.102.815 2.222 0 1.604-.015 2.896-.015 3.293 0 .319.218.694.825.576A12.001 12.001 0 0 0 12 .5z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+  </div>
+
+  <!-- Copyright Section -->
+  <div class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-300">
+    <p class="text-sm text-slate-500 text-center">&copy; 2025 Evently. All rights reserved.</p>
+  </div>
+</footer>
+    <!-- JS -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        function showMessage(message, type = "success") {
+            const msgDiv = document.getElementById("message");
+            msgDiv.textContent = message;
+            msgDiv.className = `text-center p-3 rounded-lg text-sm font-medium ${type === "success"
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+                }`;
+            msgDiv.classList.remove("hidden");
+        }
 
-            // --- Mobile Menu Toggle ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu Toggle
             const menuBtn = document.getElementById('menu-btn');
             const menu = document.getElementById('menu');
             if (menuBtn) {
@@ -162,9 +216,8 @@
                 });
             }
 
-            // --- Password Visibility Toggle ---
-            const passwordToggles = document.querySelectorAll('.password-toggle');
-            passwordToggles.forEach(toggle => {
+            // Password Toggle
+            document.querySelectorAll('.password-toggle').forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const passwordInput = toggle.previousElementSibling;
                     if (passwordInput.type === 'password') {
@@ -176,19 +229,14 @@
                     }
                 });
             });
-        });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // (your menu and password toggle code already here...)
-
+            // Login Form
             const loginForm = document.querySelector("form");
-
             loginForm.addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
-                console.log("Sending login for", email, password);
 
                 fetch("http://localhost/event-management-backend/auth/login.php", {
                     method: "POST",
@@ -210,84 +258,81 @@
 
                         const data = await res.json();
                         if (data.user) {
-                            alert("Login successful!");
-                            // Redirect based on role (optional)
-                            if (data.user.role === "admin") {
-                                window.location.href = "../admin/admin-dashboard.html";
-                            } else if (data.user.role === "organizer") {
-                                window.location.href = "../organizer/organizer-dashboard.html";
-                            } else if (data.user.role === "sponsor") {
-                                window.location.href = "../sponsor/sponsor-dashboard.html";
-                            } else {
-                                window.location.href = "../ticket-buyer/ticket-buyer-dashboard.html";
-                            }
-
+                            showMessage("Login successful!", "success");
+                            setTimeout(() => {
+                                if (data.user.role === "admin") {
+                                    window.location.href = "../admin/admin-dashboard.html";
+                                } else if (data.user.role === "organizer") {
+                                    window.location.href = "../organizer/organizer-dashboard.html";
+                                } else if (data.user.role === "sponsor") {
+                                    window.location.href = "../sponsor/sponsor-dashboard.html";
+                                } else {
+                                    window.location.href = "../ticket-buyer/ticket-buyer-dashboard.html";
+                                }
+                            }, 1000);
                         } else {
-                            alert(data.error || "Login failed");
+                            showMessage(data.error || "Login failed", "error");
                         }
                     })
                     .catch(err => {
                         console.error("Error:", err);
-                        alert("An error occurred: " + err.message);
+                        showMessage("An error occurred: " + err.message, "error");
                     });
             });
         });
 
+        function handleGoogleSignIn(response) {
+            const userObject = parseJwt(response.credential);
+
+            fetch("http://localhost/event-management-backend/auth/google-auth.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    email: userObject.email,
+                    name: userObject.name,
+                    google_id: userObject.sub,
+                    role: "ticket_buyer"
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success || data.user) {
+                        showMessage("Signed in with Google!", "success");
+                        setTimeout(() => {
+                            const role = data.user?.role || "ticket_buyer";
+                            if (role === "admin") {
+                                window.location.href = "../admin/admin-dashboard.html";
+                            } else if (role === "organizer") {
+                                window.location.href = "../organizer/organizer-dashboard.html";
+                            } else if (role === "sponsor") {
+                                window.location.href = "../sponsor/sponsor-dashboard.html";
+                            } else {
+                                window.location.href = "../ticket-buyer/ticket-buyer-dashboard.html";
+                            }
+                        }, 1000);
+                    } else {
+                        showMessage("Google login failed: " + (data.message || "Unknown error"), "error");
+                    }
+                })
+                .catch(err => {
+                    console.error("Google Sign-In Error:", err);
+                    showMessage("Something went wrong!", "error");
+                });
+        }
+
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+                '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+            ).join(''));
+            return JSON.parse(jsonPayload);
+        }
     </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-<script>
-    function handleGoogleSignIn(response) {
-        const userObject = parseJwt(response.credential);
-
-        fetch("http://localhost/event-management-backend/auth/google-auth.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                email: userObject.email,
-                name: userObject.name,
-                google_id: userObject.sub,
-                role: "ticket_buyer" // Or fetch dynamically later
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success || data.user) {
-                alert("Signed in with Google!");
-                const role = data.user?.role || "ticket_buyer";
-                // Redirect based on role
-                if (role === "admin") {
-                    window.location.href = "../admin/admin-dashboard.html";
-                } else if (role === "organizer") {
-                    window.location.href = "../organizer/organizer-dashboard.html";
-                } else if (role === "sponsor") {
-                    window.location.href = "../sponsor/sponsor-dashboard.html";
-                } else {
-                    window.location.href = "../ticket-buyer/ticket-buyer-dashboard.html";
-                }
-            } else {
-                alert("Google login failed: " + (data.message || "Unknown error"));
-            }
-        })
-        .catch(err => {
-            console.error("Google Sign-In Error:", err);
-            alert("Something went wrong!");
-        });
-    }
-
-    function parseJwt(token) {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        return JSON.parse(jsonPayload);
-    }
-</script>
-
 </body>
-
 </html>
