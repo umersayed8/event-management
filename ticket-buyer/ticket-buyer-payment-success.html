@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -238,6 +238,210 @@
         });
     });
 </script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Evently</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <header class="bg-white">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+            <div class="flex items-center gap-12">
+                <a href="./ticket-buyer-dashboard.html" class="flex items-center space-x-2">
+                    <svg class="h-7 w-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Evently</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-8">
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="./ticket-buyer-dashboard.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
+                    <a href="./view-ticket.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">My Tickets</a>
+                </nav>
+                <div class="flex items-center gap-5">
+                     <a href="../general/profile.html">
+                        <img id="header-profile-picture" 
+                             class="h-9 w-9 rounded-full object-cover" 
+                             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYTBiMyI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMyAwIDEuNjYtMS4zNCAzLTMgMy0xLjY2IDAtMy0xLjM0LTMtMyAwLTEuNjYgMS4zNC0zIDMtM3ptMCAxNC4yYy0yLjUgMC00LjcxLTEuMjgtNi0zLjIyLjAzLTEuOTkgNC0zLjA4IDYtMy4wOHM1Ljk3IDEuMDkgNiAzLjA4Yy0xLjI5IDEuOTQtMy41IDMuMjItNiAzLjIyeiIvPjwvc3ZnPg==" 
+                             alt="User avatar" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-6 py-12 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900">Payment Successful!</h1>
+            <p class="mt-2 text-base text-slate-600">Your order has been successfully processed. Thank you for your purchase!</p>
+        </div>
+
+        <div class="mt-12">
+            <section>
+                <h2 class="text-xl font-semibold text-slate-900">Order Summary</h2>
+                <div class="mt-4 space-y-6 border-t border-slate-200 pt-6">
+                    <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2">
+                        <div>
+                            <p class="text-sm text-slate-500">Event</p>
+                            <p id="event-title" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Date</p>
+                            <p id="event-date" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-y-6 border-t border-slate-200 pt-6 sm:grid-cols-2">
+                        <div>
+                            <p class="text-sm text-slate-500">Time</p>
+                            <p id="event-time" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Venue</p>
+                            <p id="event-venue" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-y-6 border-t border-slate-200 pt-6 sm:grid-cols-2">
+                        <div>
+                            <p class="text-sm text-slate-500">Tickets</p>
+                            <p id="ticket-quantity" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Total</p>
+                            <p id="total-amount" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-10">
+                <h2 class="text-xl font-semibold text-slate-900">Payment Details</h2>
+                <div class="mt-4 space-y-6 border-t border-slate-200 pt-6">
+                     <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2">
+                        <div>
+                            <p class="text-sm text-slate-500">Payment Method</p>
+                            <p class="mt-1 font-medium text-slate-800">Card (Simulated)</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">Amount Paid</p>
+                            <p id="amount-paid" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                    </div>
+                     <div class="grid grid-cols-1 gap-y-6 border-t border-slate-200 pt-6 sm:grid-cols-2">
+                        <div>
+                            <p class="text-sm text-slate-500">Confirmation Number</p>
+                            <p id="confirmation-number" class="mt-1 font-medium text-slate-800"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="mt-12 flex flex-col gap-4 sm:flex-row">
+                <button type="button" class="w-full rounded-lg bg-blue-100 px-6 py-3 text-base font-semibold text-blue-700 hover:bg-blue-200" id="viewTicketBtn">View Tickets</button>
+                <button type="button" class="w-full rounded-lg bg-slate-100 px-6 py-3 text-base font-semibold text-slate-700 hover:bg-slate-200" id="downloadTicketBtn">Download Tickets</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const ticketId = params.get('ticket_id');
+
+            if (!ticketId) {
+                document.querySelector('main').innerHTML = '<h1 class="text-center text-red-600 font-bold text-2xl">Confirmation details not found.</h1>';
+                return;
+            }
+
+            fetch(`http://localhost/event-management-backend/tickets/get_ticket_details.php?ticket_id=${ticketId}`, {
+                credentials: 'include'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error || 'Could not load your ticket information.') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                const amount = parseFloat(data.amount_paid);
+                const eventDate = new Date(data.event_date);
+
+                document.getElementById('event-title').textContent = data.event_title;
+                document.getElementById('event-date').textContent = eventDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('event-time').textContent = eventDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+                document.getElementById('event-venue').textContent = data.event_location;
+                document.getElementById('ticket-quantity').textContent = `${data.quantity} x General Admission`;
+                document.getElementById('total-amount').textContent = `$${amount.toFixed(2)}`;
+                document.getElementById('amount-paid').textContent = `$${amount.toFixed(2)}`;
+                document.getElementById('confirmation-number').textContent = ticketId.padStart(10, '0');
+
+                document.getElementById('viewTicketBtn').addEventListener('click', () => {
+                    window.location.href = `./your-ticket.html?ticket_id=${ticketId}`;
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching ticket details:', error);
+                document.querySelector('main').innerHTML = `<h1 class="text-center text-red-600 font-bold text-2xl">${error.message}</h1>`;
+            });
+        });
+    </script>
+
+    <!-- PDF + QR Code Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const { jsPDF } = window.jspdf;
+        const downloadBtn = document.getElementById("downloadTicketBtn");
+
+        downloadBtn.addEventListener("click", () => {
+            const eventTitle = document.getElementById("event-title").textContent;
+            const eventDate = document.getElementById("event-date").textContent;
+            const eventTime = document.getElementById("event-time").textContent;
+            const eventVenue = document.getElementById("event-venue").textContent;
+            const ticketQuantity = document.getElementById("ticket-quantity").textContent;
+            const totalAmount = document.getElementById("total-amount").textContent;
+            const confirmationNumber = document.getElementById("confirmation-number").textContent;
+
+            const qr = new QRious({
+                value: confirmationNumber,
+                size: 120
+            });
+
+            const doc = new jsPDF();
+doc.setFontSize(18);
+doc.text("Event Ticket", 20, 20); // Fixed
+
+doc.setFontSize(12);
+doc.text(`Event: ${eventTitle}`, 20, 40);
+doc.text(`Date: ${eventDate}`, 20, 50);
+doc.text(`Time: ${eventTime}`, 20, 60);
+doc.text(`Venue: ${eventVenue}`, 20, 70);
+doc.text(`Tickets: ${ticketQuantity}`, 20, 80);
+doc.text(`Total: ${totalAmount}`, 20, 90);
+doc.text(`Confirmation #: ${confirmationNumber}`, 20, 100);
+
+doc.addImage(qr.toDataURL(), "PNG", 150, 40, 40, 40);
+doc.save(`Ticket_${confirmationNumber}.pdf`);
+
+        });
+    });
+    </script>
 
 </body>
 </html>

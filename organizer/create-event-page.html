@@ -33,13 +33,6 @@
                     <a href="./organizer-sponsorships.html" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sponsors</a>
                 </nav>
                 <div class="flex items-center gap-5">
-                    <!-- <button class="text-slate-500 hover:text-slate-800">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                        </svg>
-                    </button> -->
                     <a href="../general/profile.html"><img class="h-9 w-9 rounded-full" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                         alt="User avatar" /></a>
                 </div>
@@ -105,10 +98,10 @@
                 <label class="block text-sm font-medium leading-6 text-slate-900">Upload Banner</label>
                 <div id="dropzone" class="mt-2 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 px-6 py-10">
                     <label for="file-upload" class="cursor-pointer rounded-md bg-white font-semibold text-blue-600 hover:text-blue-500">
-                        <span>Upload a PNG file</span>
-                        <input id="file-upload" name="banner" type="file" class="sr-only" accept=".png">
+                        <span>Upload a PNG or JPG file</span>
+                        <input id="file-upload" name="banner" type="file" class="sr-only" accept=".png, .jpg, .jpeg">
                     </label>
-                    <p class="text-xs text-slate-600">PNG only. Click or drag and drop.</p>
+                    <p class="text-xs text-slate-600">PNG or JPG. Click or drag and drop.</p>
                 </div>
                 <div id="file-upload-feedback" class="mt-2 text-sm text-green-600 font-medium"></div>
             </div>
@@ -189,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
             responseMessageDiv.textContent = 'Error: Audience size must be greater than 0.';
             responseMessageDiv.className = 'text-red-600 font-medium'; return;
         }
-        if (bannerFile && bannerFile.type !== 'image/png') {
-            responseMessageDiv.textContent = 'Error: Banner image must be a PNG file.';
+        if (bannerFile && bannerFile.type !== 'image/png' && bannerFile.type !== 'image/jpeg') {
+            responseMessageDiv.textContent = 'Error: Banner image must be a PNG or JPEG file.';
             responseMessageDiv.className = 'text-red-600 font-medium'; return;
         }
 
